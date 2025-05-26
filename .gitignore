@@ -1,0 +1,7 @@
+# Ignore system-generated files and folders
+/AppData/
+*.jtx
+
+# Ignore other common system files
+Thumbs.db
+.DS_Store
