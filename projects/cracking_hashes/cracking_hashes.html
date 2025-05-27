@@ -1,84 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Cracking Hashes Project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cracking Hashes Lab</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+    .summary {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-left: 4px solid #3498db;
+      margin-top: 1rem;
+    }
+    .back-link {
+      margin-top: 2rem;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
-    <div class="wrapper style1 fade-up">
-        <div class="inner">
-            <h1>Cracking Hashes Project</h1>
-            <p><strong>By Robin Boucher | 2024</strong></p>
-            <hr>
-            <h2>About</h2>
-            <p>
-                This project contains scripts and resources for cracking hashes using various tools and techniques.<br>
-                <strong>GitHub Repository:</strong>
-                <a href="https://github.com/RobinBoucherSec/Cracking-hashes" target="_blank">
-                    https://github.com/RobinBoucherSec/Cracking-hashes
-                </a>
-            </p>
-            <hr>
-            <h2>Table of Contents</h2>
-            <ul>
-                <li><a href="#requirements">Requirements</a></li>
-                <li><a href="#usage">Usage</a></li>
-                <li><a href="#screenshots">Screenshots</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#license">License</a></li>
-            </ul>
-            <hr>
-            <h2 id="requirements">Requirements</h2>
-            <ul>
-                <li>Python 3.x</li>
-                <li>hashcat</li>
-                <li>John the Ripper</li>
-                <li>Other tools as described in the scripts</li>
-            </ul>
-            <hr>
-            <h2 id="usage">Usage</h2>
-            <p>
-                Clone the repository and run the scripts as described in the documentation.<br>
-                <code>git clone https://github.com/RobinBoucherSec/Cracking-hashes.git</code>
-            </p>
-            <p>
-                For detailed usage instructions, refer to the <code>README.md</code> in the repository.
-            </p>
-            <hr>
-            <h2 id="screenshots">Screenshots</h2>
-            <ul>
-                <li>
-                    <img src="../Generating_Hashes/images_hashes_generating/bcrypt.png" alt="bcrypt example" style="max-width:100%;border:1px solid #ccc;">
-                    <div>bcrypt example</div>
-                </li>
-                <li>
-                    <img src="../Generating_Hashes/images_hashes_generating/md5.png" alt="md5 example" style="max-width:100%;border:1px solid #ccc;">
-                    <div>md5 example</div>
-                </li>
-                <li>
-                    <img src="../Generating_Hashes/images_hashes_generating/sha256.png" alt="sha256 example" style="max-width:100%;border:1px solid #ccc;">
-                    <div>sha256 example</div>
-                </li>
-                <li>
-                    <img src="../Generating_Hashes/images_hashes_generating/sha512crypt.png" alt="sha512crypt example" style="max-width:100%;border:1px solid #ccc;">
-                    <div>sha512crypt example</div>
-                </li>
-            </ul>
-            <hr>
-            <h2 id="resources">Resources</h2>
-            <ul>
-                <li><a href="https://hashcat.net/hashcat/" target="_blank">Hashcat</a></li>
-                <li><a href="https://www.openwall.com/john/" target="_blank">John the Ripper</a></li>
-                <li><a href="https://github.com/RobinBoucherSec/Cracking-hashes" target="_blank">Cracking Hashes GitHub</a></li>
-            </ul>
-            <hr>
-            <h2 id="license">License</h2>
-            <p>
-                This project is licensed under the MIT License. See the <a href="https://github.com/RobinBoucherSec/Cracking-hashes/blob/main/LICENSE" target="_blank">LICENSE</a> file for details.
-            </p>
-        </div>
-    </div>
+
+  <h1>🎯 Cracking Hashes</h1>
+
+  <section>
+    <h2>📝 Description</h2>
+    <p>
+      Here we will 
+      <a href="https://github.com/RobinBoucherSec/Cracking-hashes/tree/main/Generating%20Hashes ">
+        generate hashes
+      </a>
+      and then we will 
+      <a href="https://github.com/RobinBoucherSec/Cracking-hashes/tree/main/Hashcat%20cracking ">
+        crack them
+      </a>
+      just like if it was some stolen passwords.
+    </p>
+  </section>
+
+  <section>
+    <h2>🎯 Objective</h2>
+    <p>
+      This lab aims to build foundational knowledge in password security, improve technical documentation skills, and develop a structured approach to using cybersecurity tools effectively in both offensive and defensive contexts.
+    </p>
+  </section>
+
+  <section>
+    <h2>🔧 Tools Used</h2>
+    <ul>
+      <li>Kali Linux</li>
+      <li>Hashcat</li>
+      <li>Tools to identify hash types based on format</li>
+      <li>Tools to generate hashes</li>
+      <li>rockyou.txt wordlist for dictionary attacks</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💡 Skills Learned</h2>
+    <ul>
+      <li>Generated hashes using multiple algorithms</li>
+      <li>Identified hash types</li>
+      <li>Cracking hashes</li>
+      <li>Understood how salts affect hash uniqueness</li>
+      <li>Improved Python one-liners and Linux commands</li>
+      <li>Documented technical processes clearly and systematically</li>
+    </ul>
+  </section>
+
+  <section class="summary">
+    <h3>Summary</h3>
+    <p>
+      This project taught me how to identify and crack various hash types using Hashcat and other tools. Challenges included recognizing bcrypt hashes without reliable tool support and troubleshooting file and command formatting. I learned how salts protect passwords and improved both my Linux command skills and technical documentation.
+    </p>
+  </section>
+
+  <div class="back-link">
+    <a href="https://github.com/RobinBoucherSec/RobinBoucherSec ">
+      ⬅️ Back to my Cybersecurity Portfolio
+    </a>
+  </div>
+
 </body>
 </html>
