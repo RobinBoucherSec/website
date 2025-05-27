@@ -11,6 +11,21 @@
     </head>
     <body class="is-preload">
 
+        <!-- Social Links Bar -->
+        <div style="width:100%;background:#222;padding:0.5em 0;text-align:center;position:fixed;top:0;left:0;z-index:1000;">
+            <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin:0 1em;color:#fff;text-decoration:none;font-size:1.5em;">
+                <i class="fab fa-github" aria-hidden="true"></i>
+                <span style="font-size:0.9em;vertical-align:middle;">GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="margin:0 1em;color:#0077b5;text-decoration:none;font-size:1.5em;">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                <span style="font-size:0.9em;vertical-align:middle;">LinkedIn</span>
+            </a>
+        </div>
+
+        <!-- Add this style to push the rest of the content down so it doesn't hide under the bar -->
+        <div style="height:2.8em;"></div>
+
         <!-- Sidebar -->
         <section id="sidebar">
             <div class="inner">
@@ -19,10 +34,8 @@
                         <li><a href="#welcome"><i class="fa fa-house"></i> Welcome Page</a></li>
                         <li><a href="#whoiam"><i class="fa fa-user"></i> Who I Am</a></li>
                         <li><a href="#education"><i class="fa fa-graduation-cap"></i> Education</a></li>
-                        <li><a href="#services"><i class="fa fa-briefcase"></i> Services</a></li>
-                        <li><a href="#techdocs"><i class="fa fa-file-alt"></i> Technical Documents</a></li>
-                        <li><a href="#labs-ctfs"><i class="fa fa-flask"></i> Proof of Concept Labs & CTFs</a></li>
-                        <li><a href="#lectures"><i class="fa fa-chalkboard-teacher"></i> Academic Lectures</a></li>
+                        <li><a href="#labs-ctfs"><i class="fa fa-flask"></i> PoC, Labs & CTFs</a></li>
+
                         <li><a href="#funprojects"><i class="fa fa-laugh"></i> Fun Projects</a></li>
                         <li><a href="#articles"><i class="fa fa-newspaper"></i> Articles</a></li>
                         <li><a href="#contact"><i class="fa fa-envelope"></i> Contact</a></li>
@@ -37,8 +50,9 @@
             <!-- Welcome Page -->
             <section id="welcome" class="wrapper style1 fullscreen fade-up">
                 <div class="inner">
-                    <h1>Welcome Page</h1>
-                    <p>Here will be some data to be added.</p>
+                    <h1>My Digital Playground — or portfolio</h1>
+                    <p>I'm Robin Boucher, a persevering student in Cybersecurity, turning complex challenges into clear, secure solutions. Here I share only secure samples of my work as a way to grow and be recognized in the world of CyberSecurity.</p>
+                    <p>Please, enjoy exploring my work!</p>
                 </div>
             </section>
 
@@ -46,7 +60,16 @@
             <section id="whoiam" class="wrapper style3 fade-up">
                 <div class="inner">
                     <h2>Who I Am</h2>
-                    <p>Here will be some data to be added.</p>
+                    <p>
+                        <strong>Robin Boucher • Cybersecurity Student</strong><br>
+                        I'm a bilingual French Canadian. My insane curiosity led me to the field of cybersecurity — the infinite hole to dig. Currently studying at Cumberland College, I’m diving deep into the world of digital security with dedication, curiosity, and a hands-on approach.
+                    </p>
+                    <p>
+                        As you can see this is my digital playground where I document my learning journey, share projects, and showcase only what can safely be shared. My goal is to grow as a future cybersecurity professional while learning from every challenge and always trying harder.
+                    </p>
+                    <p>
+                        Whether you're here to explore my work, learn alongside me, or just say hello — thank you for visiting. Let’s connect and build a secure world together!
+                    </p>
                 </div>
             </section>
 
@@ -54,27 +77,24 @@
             <section id="education" class="wrapper style1 fade-up">
                 <div class="inner">
                     <h2>Education</h2>
-                    <p>Here will be some data to be added.</p>
+                    <div style="display: flex; gap: 2em; flex-wrap: wrap;">
+                        <div style="flex:1; min-width:200px;">
+                            <h3>School</h3>
+                            <p>Cumberland College</p>
+                        </div>
+                        <div style="flex:1; min-width:200px;">
+                            <h3>Certifications</h3>
+                            <p>Google Cybersecurity Certification</p>
+                        </div>
+                        <div style="flex:1; min-width:200px;">
+                            <h3>Events & Conferences</h3>
+                            <p>Attended Hackerfest 2024</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Services -->
-            <section id="services" class="wrapper style2 fade-up">
-                <div class="inner">
-                    <h2>Services</h2>
-                    <p>Here will be some data to be added.</p>
-                </div>
-            </section>
-
-            <!-- Technical Documents -->
-            <section id="techdocs" class="wrapper style2 fade-up">
-                <div class="inner">
-                    <h2>Technical Documents</h2>
-                    <p>Here will be some data to be added.</p>
-                </div>
-            </section>
-
-            <!-- Proof of Concept Labs & CTFs -->
+            <!-- PoC, Labs & CTFs -->
             <section id="labs-ctfs" class="wrapper style3 fade-up">
                 <div class="inner">
                     <h2>Proof of Concept Labs & CTFs</h2>
@@ -123,19 +143,22 @@
                 </div>
             </section>
 
-            <!-- Academic Lectures -->
-            <section id="lectures" class="wrapper style1 fade-up">
-                <div class="inner">
-                    <h2>Academic Lectures</h2>
-                    <p>Here will be some data to be added.</p>
-                </div>
-            </section>
-
+        
             <!-- Fun Projects -->
             <section id="funprojects" class="wrapper style2 fade-up">
                 <div class="inner">
                     <h2>Fun Projects</h2>
-                    <p>Here will be some data to be added.</p>
+                    <ul>
+                        <li>
+                            <details>
+                                <summary><strong>"Fart Injection"</strong> – A Harmless Python Prank Script</summary>
+                                <p>
+                                    A silly yet surprisingly technical Python script designed to hijack your computer’s system sounds — turning boring notifications into something… way better. Perfect for light-hearted pranks, this script replaces default system sounds (like Device Connected/Disconnected, Low Battery Alarm, or Critical Stop) with a hidden sound — like a fart. No matter what triggers it, your computer will suddenly start… letting one rip!
+                                </p>
+                            </details>
+                        </li>
+                        <!-- Add more fun projects as needed -->
+                    </ul>
                 </div>
             </section>
 
