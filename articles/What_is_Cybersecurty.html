@@ -5,32 +5,177 @@
     <title>Cybersecurity Essentials: Practical Protection for Individuals and Small Businesses</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <style>
+        body {
+            background: #3a0066;
+            margin: 0;
+            padding: 0;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: #3a0066;
+        }
+        .side-column {
+            flex: 1;
+            background: linear-gradient(180deg, #6a1b9a 0%, #3a0066 100%);
+            min-width: 80px;
+            max-width: 200px;
+            height: 100vh;
+        }
+        .main-content {
+            flex: 2.5;
+            background: #fff;
+            color: #222;
+            margin: 2em 0;
+            padding: 2em 2em 2em 2em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 900px;
+            font-size: 1.05em;
+        }
+        .main-content h1 {
+            color: #3a0066;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+            margin-top: 0.2em;
+            line-height: 1.1;
+        }
+        .main-content h2 {
+            color: #3a0066;
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+            margin-top: 1.2em;
+        }
+        .main-content h3, .main-content h4 {
+            color: #3a0066;
+            margin-bottom: 0.2em;
+            margin-top: 1em;
+        }
+        .main-content p, .main-content ul, .main-content ol, .main-content blockquote {
+            margin-top: 0.3em;
+            margin-bottom: 0.7em;
+            font-size: 0.98em;
+        }
+        .main-content strong {
+            font-size: 1.1em;
+        }
+        .main-content .byline {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1em;
+            margin-top: 0.5em;
+            font-size: 1.1em;
+        }
+        .main-content blockquote {
+            border-left: 4px solid #6a1b9a;
+            padding-left: 1em;
+            color: #444;
+            background: #f6f2fa;
+            font-style: italic;
+        }
+        .main-content a {
+            color: #6a1b9a;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+            margin: 1.5em 0 1em 0;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            font-size: 1.2em;
+            color: #222;
+            text-decoration: none;
+            font-weight: bold;
+            gap: 0.4em;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: #3a0066;
+        }
+        .back-portfolio {
+            display: inline-block;
+            text-align: center;
+            margin: 1.5em auto 1em auto;
+            font-size: 1.08em;
+            color: #fff;
+            background: #3a0066;
+            padding: 0.7em 1.7em;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(60,0,80,0.10);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            border: none;
+        }
+        .back-portfolio:hover {
+            background: #6a1b9a;
+            color: #fff;
+            box-shadow: 0 4px 18px rgba(60,0,80,0.18);
+            text-decoration: none;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .side-column {
+                display: none;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+            }
+        }
+    </style>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-    <div class="wrapper style1 fade-up">
-        <div class="inner">
-    <h1>Cybersecurity Essentials: Practical Protection for Individuals and Small Businesses</h1>
-            <p><strong>By Robin Boucher | 2025-05-27</strong></p>
+    <div class="centered-layout">
+        <div class="side-column"></div>
+        <div class="main-content">
+            <!-- Back to Portfolio (top) -->
+            <a class="back-portfolio" href="../index.html"><i class="fas fa-arrow-left"></i> Back to my portfolio</a>
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="https://github.com/RobinBoucherSec" target="_blank">
+                    <i class="fab fa-github fa-lg"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank">
+                    <i class="fab fa-linkedin fa-lg" style="color:#0077b5"></i> LinkedIn
+                </a>
+            </div>
+            <h1>Cybersecurity Essentials:<br>Practical Protection for Individuals<br>and Small Businesses</h1>
+            <div class="byline">Robin Boucher | 2025-05-27</div>
 
             <h2>Introduction</h2>
             <p>
-                In today's digital landscape, cybersecurity threats affect everyone—from individuals protecting personal data to small businesses safeguarding sensitive customer information. According to the Federal Trade Commission (FTC), identity theft reports increased by 45% in 2023<sup>[1]</sup>, while 60% of small businesses fold within six months of a cyberattack<sup>[2]</sup>.<br>
-                This article distills actionable cybersecurity strategies from authoritative sources like the Cybersecurity and Infrastructure Security Agency (CISA) and the National Institute of Standards and Technology (NIST), providing clear guidance for both personal and professional digital protection.
+                In today's digital landscape, cybersecurity threats affect everyone—from individuals protecting personal data to small businesses safeguarding sensitive customer information. According to the Federal Trade Commission (FTC), identity theft reports increased by 45% in 2023<sup>[1]</sup>, while 60% of small businesses fold within six months of a cyberattack<sup>[2]</sup>. This article distills actionable cybersecurity strategies from authoritative sources like the Cybersecurity and Infrastructure Security Agency (CISA) and the National Institute of Standards and Technology (NIST), providing clear guidance for both personal and professional digital protection.
             </p>
 
             <h2>Section 1: Personal Cybersecurity Fundamentals</h2>
             <h3>The Growing Threat Landscape</h3>
-    <ul>
+            <ul>
                 <li>Phishing scams (96% of attacks start with email)<sup>[3]</sup></li>
                 <li>Credential stuffing (using leaked passwords across accounts)<sup>[4]</sup></li>
                 <li>Ransomware (locking personal files for payment)<sup>[5]</sup></li>
-    </ul>
+            </ul>
             <h3>Three Essential Protections</h3>
             <h4>Password Management</h4>
             <ul>
                 <li>Use complex, unique passwords (e.g., <code>Winter@Mountains!2024</code>)<sup>[6]</sup></li>
                 <li>Implement a password manager (Bitwarden, 1Password)<sup>[7]</sup></li>
-    </ul>
+            </ul>
             <h4>Multi-Factor Authentication (MFA)</h4>
             <ul>
                 <li>Enable MFA on all critical accounts<sup>[8]</sup></li>
@@ -41,9 +186,9 @@
                 <li>Freeze credit reports at all three bureaus<sup>[1]</sup></li>
                 <li>Set up fraud alerts through <a href="https://www.identitytheft.gov" target="_blank">IdentityTheft.gov</a><sup>[1]</sup></li>
             </ul>
-    <blockquote>
+            <blockquote>
                 "Individuals who enable MFA block 99.9% of automated attacks."<sup>[8]</sup>
-    </blockquote>
+            </blockquote>
 
             <h2>Section 2: Small Business Cybersecurity Priorities</h2>
             <h3>Critical Risks for SMEs</h3>
@@ -67,32 +212,25 @@
             <ul>
                 <li>Maintain encrypted backups (follow the 3-2-1 rule)<sup>[15]</sup></li>
                 <li>Purchase cyber insurance (average cost: $1,500/year)<sup>[16]</sup></li>
-    </ul>
+            </ul>
 
             <h2>Implementation Roadmap</h2>
-            <div style="display: flex; gap: 2em;">
-                <div>
-                    <h4>For Individuals</h4>
-    <ol>
-                        <li>Audit password strength<sup>[6]</sup></li>
-                        <li>Enable MFA<sup>[8]</sup></li>
-                        <li>Freeze credit<sup>[1]</sup></li>
-    </ol>
-                </div>
-                <div>
-                    <h4>For Businesses</h4>
-                    <ol>
-                        <li>Train staff on phishing<sup>[12]</sup></li>
-                        <li>Install endpoint protection<sup>[13]</sup></li>
-                        <li>Test backup systems<sup>[15]</sup></li>
-    </ol>
-                </div>
-            </div>
+            <h4>For Individuals</h4>
+            <ol>
+                <li>Audit password strength<sup>[6]</sup></li>
+                <li>Enable MFA<sup>[8]</sup></li>
+                <li>Freeze credit<sup>[1]</sup></li>
+            </ol>
+            <h4>For Businesses</h4>
+            <ol>
+                <li>Train staff on phishing<sup>[12]</sup></li>
+                <li>Install endpoint protection<sup>[13]</sup></li>
+                <li>Test backup systems<sup>[15]</sup></li>
+            </ol>
 
             <h2>Conclusion</h2>
             <p>
-                Cybersecurity is not a luxury—it's a necessity in our interconnected world. By implementing these measures, individuals can protect their digital identities, while small businesses can significantly reduce operational risks.<br>
-                <strong>Start today:</strong> Choose one recommendation from each section to implement this week.
+                Cybersecurity is not a luxury—it's a necessity in our interconnected world. By implementing these measures, individuals can protect their digital identities, while small businesses can significantly reduce operational risks. <strong>Start today:</strong> Choose one recommendation from each section to implement this week.
             </p>
             <p>
                 For ongoing guidance:<br>
@@ -113,7 +251,10 @@
                 <li>[5] <a href="https://www.sophos.com/en-us/content/state-of-ransomware/smb" target="_blank">Sophos Ransomware - SMB</a></li>
                 <li>[8] <a href="https://www.microsoft.com/security/blog/2019/08/20/one-simple-action-you-can-take-to-prevent-99-9-percent-of-account-attacks/" target="_blank">Microsoft MFA Study</a></li>
             </ul>
+            <!-- Back to Portfolio (bottom) -->
+            <a class="back-portfolio" href="../index.html"><i class="fas fa-arrow-left"></i> Back to my portfolio</a>
         </div>
+        <div class="side-column"></div>
     </div>
 </body>
 </html>
