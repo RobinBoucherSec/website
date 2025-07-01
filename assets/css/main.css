@@ -3240,15 +3240,15 @@ input, select, textarea {
 		}
 
 		.wrapper.style1 {
-			background-color: #5e42a6;
-		}
-
-		.wrapper.style1-alt {
 			background-color: #493382;
 		}
 
+		.wrapper.style1-alt {
+			background-color: #493382
+		}
+
 		.wrapper.style2 {
-			background-color: #5052b5;
+			background-color: #493382
 		}
 
 		.wrapper.style2-alt {
@@ -3907,3 +3907,17 @@ input, select, textarea {
 			}
 
 		}
+		/* Responsive footer QR code for mobile */
+@media screen and (max-width: 600px) {
+  #footer .inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left;
+  }
+  #footer .inner img {
+    margin: 1em 0 0 0 !important;
+    width: 100px !important;
+    height: 100px !important;
+    align-self: center;
+  }
+}

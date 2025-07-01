@@ -6,5 +6,6 @@
 <body>
     <h1>Hello, World!</h1>
     <p>Welcome to my first website.</p>
+    <p>Check out my other projects and articles on <a href="https://robinboucher.tech/">my website</a>.</p>
 </body>
 </html>
