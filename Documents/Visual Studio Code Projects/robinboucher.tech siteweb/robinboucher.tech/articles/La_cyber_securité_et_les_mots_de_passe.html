@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>La cybersécurité et les mots de passe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <style>
+        body {
+            background: #3a0066;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: #3a0066;
+        }
+        .side-column {
+            flex: 1;
+            background: linear-gradient(180deg, #6a1b9a 0%, #3a0066 100%);
+            min-width: 80px;
+            max-width: 200px;
+            height: 100vh;
+        }
+        .main-content {
+            flex: 2.5;
+            background: #fff;
+            color: #111 !important;
+            margin: 2em 0;
+            padding: 2em 2em 2em 2em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em; /* réduit légèrement la police */
+        }
+        .main-content h1, .main-content h2, .main-content h3 {
+            color: #3a0066;
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 2em;
+            margin-bottom: 0.2em;
+            margin-top: 0.2em;
+            line-height: 1.1;
+        }
+        .main-content h2 {
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+            margin-top: 1.2em;
+        }
+        .main-content h3 {
+            font-size: 1.1em;
+            margin-bottom: 0.2em;
+            margin-top: 1em;
+        }
+        .main-content p, .main-content ul, .main-content ol, .main-content blockquote {
+            margin-top: 0.3em;
+            margin-bottom: 0.7em;
+            font-size: 1em;
+            color: #111 !important;
+        }
+        .main-content strong {
+            font-size: 1.05em;
+        }
+        .main-content p strong,
+        .main-content ul strong {
+            color: #111 !important;
+        }
+        .main-content .byline {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1em;
+            margin-top: 0.5em;
+            font-size: 1.1em;
+        }
+        .main-content a {
+            color: #6a1b9a;
+            text-decoration: none;
+        }
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+        .main-content ul {
+            margin-bottom: 1em;
+            padding-left: 1.2em;
+        }
+        .main-content code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #111 !important;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .side-column {
+                display: none;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="side-column"></div>
+        <div class="main-content">
+            <div style="text-align:center; margin-top:2.5em; margin-bottom:1.5em;">
+                <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right: 1.5em; color: #111; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="color: #0077b5; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <br>
+                <a href="https://robinboucher.tech/#welcome"
+                   style="display:inline-block; margin-top:1.2em; background:#741761; color:#fff; font-weight:bold; text-decoration:none; font-size:1.1em; padding:0.7em 1.6em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); transition:background 0.2s;">
+                    &larr; Back to welcome page
+                </a>
+            </div>
+            <h1>La cybersécurité et les mots de passe</h1>
+            <h2>Guide pour renforcer votre sécurité en ligne</h2>
+            <div class="byline">
+                Robin Boucher – Étudiant en cybersécurité<br>
+                <em>Juin 2025</em>
+            </div>
+
+            <p>Aujourd’hui, tout le monde est exposé aux cybermenaces. Les hackers ne visent pas seulement les grandes entreprises : PME, familles et individus sont aussi dans leur ligne de mire.</p>
+
+            <p>Un bon mot de passe est la première barrière contre ces attaques. Mais…</p>
+
+            <h2>Qu’est-ce qu’un mot de passe fort&nbsp;?</h2>
+
+            <p>Un mot de passe comme <code>bonjours123</code> n’est pas seulement faible, il est déjà connu des hackers. Ces derniers utilisent des outils automatisés pour tester des millions de combinaisons extraites de fuites de données passées.</p>
+
+            <p>Ces techniques s’appellent des <strong>attaques par dictionnaire</strong> (<em>dictionary attacks</em>)—des méthodes redoutablement efficaces.</p>
+
+            <p>Un exemple marquant est <strong>RockYou2021</strong>, une compilation de <strong>8,4&nbsp;milliards de mots de passe en texte clair</strong>, dévoilée fin&nbsp;2021. Et ce n’est qu’un exemple&nbsp;: des dizaines de bases similaires circulent sur le web, alimentant les outils des cybercriminels.</p>
+
+            <h2>Comment savoir si mon compte a été compromis&nbsp;?</h2>
+
+            <p>Pour vérifier si votre adresse e-mail a été touchée par une fuite, rendez-vous sur <a href="https://haveibeenpwned.com"  target="_blank">HaveIBeenPwned.com</a>. En avril&nbsp;2025, ce site référençait plus de <strong>9&nbsp;milliards d’adresses e-mails uniques</strong>, issues de violations de données publiques.</p>
+
+            <h2>Caractéristiques d’un mot de passe sécurisé</h2>
+
+            <p>Un mot de passe robuste doit&nbsp;:</p>
+            <ul>
+                <li>Faire au minimum <strong>14&nbsp;caractères</strong></li>
+                <li>Mélanger <strong>majuscules, minuscules, chiffres et symboles</strong></li>
+                <li>Ne pas être basé sur des mots du dictionnaire ou des suites logiques</li>
+                <li>Être <strong>unique à chaque service</strong></li>
+            </ul>
+
+            <p><strong>Exemple amélioré&nbsp;:</strong> <code>CN{$fPq.^tx6pFPE13%x</code><br>
+            → 20&nbsp;caractères&nbsp;| Maj/min&nbsp;| Chiffres&nbsp;| Symboles&nbsp;| Aucune logique évidente</p>
+
+            <h2>Ne réutilisez jamais un mot de passe</h2>
+
+            <p>Même s’il est très fort, réutiliser un mot de passe partout est une faille critique. Si un seul site est piraté, tous vos autres comptes deviennent vulnérables.</p>
+
+            <h2>Le gestionnaire de mots de passe est votre meilleure arme</h2>
+
+            <p>Plutôt que de retenir des dizaines de mots de passe longs et complexes, laissez un gestionnaire s’en charger pour vous.</p>
+
+            <p>Commencez par créer un mot de passe maître ultra-solide et testez-le avec&nbsp;:</p>
+            <p><a href="https://bitwarden.com/password-strength/"  target="_blank">https://bitwarden.com/password-strength/</a></p> 
+
+            <p>Ensuite, utilisez un gestionnaire de mots de passe comme <strong>Bitwarden</strong>(gratuit et open source) ou d’autres solutions équivalentes. Ils génèrent automatiquement des mots de passe aléatoires et uniques pour chacun de vos comptes.</p>
+
+            <p><strong>Incroyable&nbsp;!</strong> Vous n’avez alors besoin de vous souvenir que d’un seul mot de passe et vous êtes protégé partout.</p>
+
+            <h2>Activez la double authentification (2FA)</h2>
+
+            <p>Pour ajouter une couche de sécurité supplémentaire, exigez un deuxième code de vérification (généralement envoyé sur votre téléphone ou via une application comme Google Authenticator). De cette manière, même si quelqu’un découvre votre mot de passe, il ne pourra pas se connecter sans ce code temporaire.</p>
+
+            <h2>Bonnes habitudes à adopter</h2>
+
+            <ul>
+                <li>Vérifiez régulièrement vos mots de passe stockés</li>
+                <li>Supprimez les doublons et identifiez les mots de passe faibles</li>
+                <li>Mettez à jour les anciens mots de passe</li>
+                <li>Activez la détection des fuites via Bitwarden ou HaveIBeenPwned</li>
+                <li>Utilisez des mots de passe temporaires ou jetons d’accès pour certains services</li>
+            </ul>
+
+            <h2>Tu veux aller encore plus loin&nbsp;?!</h2>
+
+            <ul>
+                <li>Utilisez une <strong>clé de sécurité physique</strong>(ex. YubiKey)</li>
+                <li>Activez<strong>FIDO2/WebAuthn</strong> pour une authentification sans mot de passe</li>
+                <li>Utilisez des comptes invités ou temporaires pour les services peu importants</li>
+                <li>Décuplez vos identités numériques (emails secondaires, pseudonymes)</li>
+            </ul>
+
+            <h2>En résumé</h2>
+
+            <p>Voici ce qu’il faut retenir&nbsp;:</p>
+            <ul>
+                <li>Votre mot de passe est peut-être déjà connu&nbsp;: <strong>vérifiez-le</strong>.</li>
+                <li>Un mot de passe fort=<strong>long, varié, sans logique évidente</strong></li>
+                <li><strong>Ne jamais réutiliser</strong>un mot de passe</li>
+                <li>Utilisez un gestionnaire de mots de passe pour simplifier la tâche</li>
+                <li>Activez la<strong>2FA</strong> quand c’est possible</li>
+                <li>Soyez proactif&nbsp;:<strong>vérifiez régulièrement</strong>vos mots de passe et surveillez les fuites</li>
+            </ul>
+
+            <p style="text-align:center; margin-top:2em; color:#3a0066; font-weight:bold;">
+                C’est moins dur que l’on pense d'avoir de bons mots de passe… et surtout, ça en vaut le prix.
+            </p>
+        </div>
+        <div class="side-column"></div>
+    </div>
+</body>
+</html>
