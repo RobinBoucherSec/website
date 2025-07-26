@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Hygiène PME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: #3a0066;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: #3a0066;
+        }
+        .side-column {
+            flex: 1;
+            background: linear-gradient(180deg, #6a1b9a 0%, #3a0066 100%);
+            min-width: 80px;
+            max-width: 200px;
+            height: 100vh;
+        }
+        .main-content {
+            flex: 2.5;
+            background: #fff;
+            color: #111 !important;
+            margin: 2em 0;
+            padding: 2em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3 {
+            color: #3a0066;
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 2em;
+            margin-bottom: 0.2em;
+            margin-top: 0.2em;
+            line-height: 1.1;
+        }
+        .main-content h2 {
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+            margin-top: 1.2em;
+        }
+        .main-content h3 {
+            font-size: 1.1em;
+            margin-bottom: 0.2em;
+            margin-top: 1em;
+        }
+        .main-content p, .main-content ul, .main-content ol, .main-content blockquote {
+            margin-top: 0.3em;
+            margin-bottom: 0.7em;
+            font-size: 1em;
+            color: #111 !important;
+        }
+        .main-content strong {
+            font-size: 1.05em;
+        }
+        .main-content p strong,
+        .main-content ul strong {
+            color: #111 !important;
+        }
+        .main-content .byline {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1em;
+            margin-top: 0.5em;
+            font-size: 1.1em;
+        }
+        .main-content a {
+            color: #6a1b9a;
+            text-decoration: none;
+        }
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+        .main-content ul {
+            margin-bottom: 1em;
+            padding-left: 1.2em;
+        }
+        .main-content code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #111 !important;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .side-column {
+                display: none;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="side-column"></div>
+        <div class="main-content" style="font-size:0.85em;">
+            <div style="text-align:center; margin-top:2.5em; margin-bottom:1.5em;">
+                <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right: 1.5em; color: #111; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="color: #0077b5; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <br>
+                <a href="https://robinboucher.tech/#welcome"
+                   style="display:inline-block; margin-top:1.2em; background:#741761; color:#fff; font-weight:bold; text-decoration:none; font-size:1.1em; padding:0.7em 1.6em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); transition:background 0.2s;">
+                    &larr; Retour à la page d'accueil
+                </a>
+            </div>
+            <div style="position:relative; width:100%; height:240px; margin-bottom:1.5em; display:flex; justify-content:center; align-items:center;">
+                <img src="../images/cyberhygene_PME.png" alt="Cyber Hygiène PME"
+                     style="position:static; max-width:320px; max-height:100%; width:auto; height:auto; opacity:1; box-shadow:0 4px 24px rgba(60,0,80,0.10); border-radius:12px;"/>
+            </div>
+            <div>
+                <h1>Cyber Hygiène PME</h1>
+                <h2>Sécuriser sa PME contre les cybermenaces</h2>
+                <div class="byline">
+                    Robin Boucher – Étudiant en cybersécurité<br>
+                    <em>juillet 2025</em>
+                </div>
+                <p>Ce guide en trois volets présente des conseils concrets pour naviguer en toute sécurité sur le web, que vous soyez un particulier, une PME ou une grande entreprise. Voici la deuxième partie, dédiée aux PME.</p>
+                <h2>Les cyberattaques sur les PME… Est-ce que c’est un réel danger?</h2>
+                <p>
+                    <em>"Selon un rapport produit en 2021 par la FCEI, 1 PME sur 6 au Canada a fait l’objet d’une cyberattaque (qui a échoué) et 1 sur 20 en a été victime."</em>
+                    Derrière ces chiffres se cachent des réalités dramatiques : perte de données, atteinte à la réputation, interruption d’activité, et parfois même fermeture prématurée.
+                </p>
+                <p>
+                    Pourtant, beaucoup de dirigeants de PME pensent encore que leur entreprise n’est pas une cible. Beaucoup pensent que les PME sont moins exposées que les grandes entreprises… C’est là un mythe dangereux. En réalité, les PME sont autant ciblées, voire davantage, car elles sont souvent plus vulnérables, en raison de :
+                </p>
+                <ul>
+                    <li>Un budget limité pour la cybersécurité.</li>
+                    <li>Un manque de sensibilisation ou de formation du personnel.</li>
+                    <li>Moins de ressources techniques et humaines dédiées à la sécurité.</li>
+                </ul>
+                <p>
+                    De plus, elles peuvent aussi servir de pont vers les réseaux des grandes entreprises avec lesquelles elles travaillent. Voici deux principales dangers:
+                </p>
+                <h3>Danger 1 : Phishing / Spear Phishing (hameçonnage)</h3>
+                <p><strong>Qu’est-ce que c’est ?</strong><br>
+                    Le phishing est une technique d’ingénierie sociale où un cybercriminel envoie des emails trompeurs, imitant des messages officiels (banque, service comptable, direction, fournisseur, etc.). L’objectif est de piéger les utilisateurs pour qu’ils communiquent des identifiants, des données sensibles ou cliquent sur un lien ou une pièce jointe malveillante.
+                </p>
+                <p><strong>Comment ça marche ?</strong></p>
+                <ul>
+                    <li>Un email semble provenir d’une source fiable (ex. : un chef, un fournisseur, une banque).</li>
+                    <li>Il incite à cliquer sur un lien ou à télécharger une pièce jointe.</li>
+                    <li>Ce lien ou fichier ouvre une porte au pirate, lui permettant d’installer un logiciel malveillant, d’accéder à des comptes internes et de récupérer des informations sensibles.</li>
+                </ul>
+                <p><strong>Pourquoi c’est dangereux pour une PME ?</strong></p>
+                <ul>
+                    <li>Les employés ne sont souvent pas formés à la reconnaissance de ces tentatives, et une seule erreur peut entraîner une compromission totale du système, menant aux:</li>
+                    <li>Vol d’identifiants et mots de passe.</li>
+                    <li>Virements frauduleux.</li>
+                    <li>Accès non autorisé au réseau interne.</li>
+                    <li>Perte ou compromission de données sensibles.</li>
+                    <li>Installation de malware ou ransomware.</li>
+                </ul>
+                <p>Souvent, le phishing est la première étape d’une attaque plus grave, comme un ransomware.</p>
+                <h3>Danger 2 : Ransomware</h3>
+                <p><strong>Qu’est-ce qu’un ransomware ?</strong><br>
+                    Un ransomware est un logiciel malveillant qui chiffre les données d’un système informatique et exige une rançon pour en restituer l’accès. Ces attaques peuvent être déclenchées par :
+                </p>
+                <ul>
+                    <li>Une pièce jointe infectée ouverte dans un email de phishing.</li>
+                    <li>Une vulnérabilité non corrigée dans un logiciel.</li>
+                    <li>Un site web malveillant.</li>
+                </ul>
+                <p><strong>Exemple concret :</strong><br>
+                    Un employé reçoit un email qui semble légitime. Il clique sur une pièce jointe, ce qui déclenche le téléchargement d’un logiciel malveillant. Le hacker utilise cette porte d’accès pour s’emparer du réseau de l’entreprise et chiffre les serveurs, les dossiers clients, les fichiers comptables, rendant l’ensemble du système inutilisable.
+                </p>
+                <p><strong>Conséquences :</strong></p>
+                <ul>
+                    <li>Blocage total ou partiel des données.</li>
+                    <li>Demande de rançon.</li>
+                    <li>Interruption d'activités pouvant durer plusieurs jours.</li>
+                    <li>Données sensibles et privées rendues publiques.</li>
+                    <li>Atteinte à la réputation de l’entreprise.</li>
+                    <li>Restauration à partir d’une sauvegarde ancienne, entraînant une perte certaine de données.</li>
+                </ul>
+                <h2>Menaces et solutions prioritaires pour une PME :</h2>
+                <ul>
+                    <li><strong>Malware/Ransomware :</strong> Pare-feu, antivirus, sauvegardes hors ligne.</li>
+                    <li><strong>Accès non autorisé :</strong> Gestion des droits, mots de passe forts.</li>
+                    <li><strong>Vulnérabilités :</strong> Mises à jour régulières.</li>
+                    <li><strong>Phishing :</strong> Formation, simulations.</li>
+                </ul>
+                <h2>En résumé pour les PME</h2>
+                <p>
+                    La cybersécurité, une responsabilité essentielle pour les PME. Comme pour les particuliers et les grandes entreprises, la sécurité numérique repose sur trois piliers dans cette ordre d’importance :
+                </p>
+                <ul>
+                    <li>Une sensibilisation et une formation régulières des équipes.</li>
+                    <li>La vigilance face aux menaces (phishing, ransomware, etc.).</li>
+                    <li>La mise en place de protections techniques adaptées.</li>
+                </ul>
+                <p>
+                    Face à des attaques de plus en plus fréquentes, il est crucial pour les PME de ne pas sous-estimer les risques. Activer des protections basiques — sauvegardes régulières, mots de passe renforcés, gestion stricte des accès et formation au phishing — réduit déjà considérablement les vulnérabilités. Toutefois, la sensibilisation du personnel reste le maillon faible à renforcer.
+                </p>
+                <p>
+                    Il n’existe pas de protection unique. C’est la combinaison de plusieurs mesures qui construit une défense solide.
+                </p>
+                <h3>Articles connexes :</h3>
+                <ul>
+                    <li>
+                        <a href="La_cyber_securité_et_les_mots_de_passe.html" target="_blank">
+                            La cybersécurité et les mots de passe – Guide pour renforcer votre sécurité en ligne
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cyberhygiene.personnel.html" target="_blank">
+                            Cyber Hygiène personnelle – Sécuriser sa navigation au quotidien
+                        </a>
+                    </li>
+                    <li>
+                        <span style="color:#888;">Cyber Hygiène – Protection des grandes entreprises (à venir)</span>
+                    </li>
+                </ul>
+                <p style="text-align:center; margin-top:2.5em; font-size:1.05em;">
+                    Cet article est aussi disponible sur&nbsp;:
+                    <a href="https://dev.to/robin_boucher_4a5559d1b96" target="_blank" style="color:#6a1b9a; font-weight:bold;">DEV Community</a>
+                    &nbsp;et&nbsp;
+                    <a href="https://medium.com/@robinboucher.tech" target="_blank" style="color:#6a1b9a; font-weight:bold;">Medium</a>
+                </p>
+                <p style="text-align:center; margin-top:1.5em; font-size:0.98em;">
+                    <strong>Article de référence :</strong><br>
+                    <a href="https://www.lapresse.ca/affaires/techno/2025-03-29/cyberattaques/votre-pme-est-elle-prete.php" target="_blank">
+                        https://www.lapresse.ca/affaires/techno/2025-03-29/cyberattaques/votre-pme-est-elle-prete.php
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="side-column"></div>
+    </div>
