@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chiffrement Asymétrique | Portfolio Cryptographie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1>Chiffrement Asymétrique</h1>
+            <h2>Projet RSA</h2>
+            <div class="byline" style="text-align:center; margin-bottom:1.5em;">
+                Robin Boucher – Étudiant en cybersécurité<br>
+                <em>Juillet 2025</em>
+            </div>
+            <div class="project-block">
+                <h3>RSA Implementation</h3>
+                <p><strong>Fichier :</strong> partie_4rsa.py</p>
+                <p>Algorithme RSA complet avec génération de clés, chiffrement et déchiffrement.</p>
+                <div class="toggle-btn" onclick="document.getElementById('rsa-code').classList.toggle('hidden')" style="cursor:pointer; margin-bottom:1em;">
+                    ▼ Voir un extrait de code
+                </div>
+                <div id="rsa-code" class="code-container hidden">
+                    <pre><code># RSA Implementation
+def pgdc(a, b):
+    while True:
+        temp = a % b
+        if temp == 0:
+            return b
+        a = b
+        b = temp
+
+def euclide(b, n):
+    n0, b0, t0, t = n, b, 0, 1
+    q, r = n0 // b0, n0 % b0
+    while r > 0:
+        temp = t0 - q*t
+        t0, t = t, temp % n
+        n0, b0 = b0, r
+        q, r = n0 // b0, n0 % b0
+    return t if b0 == 1 else None
+
+def crypter(message):
+    global e, n
+    return pow(message, e, n)
+
+def chiffrer(message, bloc):
+    if 10**bloc > n:
+        return None
+    liste = []
+    chiffres = "".join(f"{ord(c):03d}" for c in message)
+    while len(chiffres) % bloc != 0:
+        chiffres = "0" + chiffres
+    for i in range(0, len(chiffres), bloc):
+        liste.append(crypter(int(chiffres[i:i+bloc])))
+    return liste
+                    </code></pre>
+                </div>
+                <p><strong>Fonctionnalités principales :</strong></p>
+                <ul>
+                    <li>Implémentation complète de RSA</li>
+                    <li>Génération des clés (p, q, n, φ, e, d)</li>
+                    <li>Traitement des messages par blocs</li>
+                    <li>Exponentiation modulaire pour le chiffrement/déchiffrement</li>
+                </ul>
+                <a href="#" class="button-link">Voir le projet complet</a>
+            </div>
+            <div style="text-align:center; margin-top:2em;">
+                <a href="main_page_crypto.html" class="button-link" style="margin-right: 1.5em;">
+                    &larr; Retour à l'accueil crypto
+                </a>
+                <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right: 1.5em; color: #fff; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="color: #fff; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Optionally, you can keep the toggle code for code sample
+        // document.querySelector('.toggle-btn').onclick = function() {
+        //     document.getElementById('rsa-code').classList.toggle('hidden');
+        // };
+    </script>
+</body>
+</html>

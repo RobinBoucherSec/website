@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Classic Ciphers | Robin Boucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        .toggle-btn {
+            cursor: pointer;
+            color: #fff !important;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+        .code-container {
+            background: rgba(80,0,100,0.25);
+            border-radius: 12px;
+            padding: 1em;
+            margin-top: 1em;
+            color: #fff !important;
+        }
+        .hidden {
+            display: none;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1>Classic Cipher Projects</h1>
+            <p style="text-align: center;">Robin Boucher - Cryptography Portfolio</p>
+
+            <div class="project-block">
+                <!-- Caesar/Vigenère Project -->
+                <h2>Caesar & Vigenère Ciphers</h2>
+                <p><strong>Description chiffrement de César:</strong> Chaque lettre du message est décalée dans l’alphabet (ex. "A" → "D" avec un décalage de 3).</p>
+                <p>Implementation of Caesar cipher, Vigenère cipher, and substitution cipher with space encoding.</p>
+                <div class="toggle-btn" onclick="toggleCode('caesar-code')">▼ Show Code Sample</div>
+                <div id="caesar-code" class="hidden code-container">
+                    <pre><code># Caesar Cipher Implementation
+def caesar_encrypt(text, shift):
+    encrypted = ""
+    for char in text:
+        if char.isalpha():
+            base = ord('a') if char.islower() else ord('A')
+            encrypted += chr((ord(char) - base + shift) % 26 + base)
+        else:
+            encrypted += char
+    return encrypted
+
+# Vigenère Cipher Implementation
+def vigenere_encrypt(text, key):
+    result = ""
+    key = key.lower()
+    j = 0
+    for char in text:
+        if char.isalpha():
+            shift = ord(key[j % len(key)]) - ord('a')
+            result += caesar_encrypt(char, shift)
+            j += 1
+        else:
+            result += char
+    return result</code></pre>
+                </div>
+                <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li>Combines multiple classical cipher techniques</li>
+                    <li>Includes space encoding for better security</li>
+                    <li>Modular design for easy extension</li>
+                </ul>
+                <a href="#" class="button-link">View Full Project</a>
+            </div>
+
+            <div class="project-block">
+                <!-- Vigenère Advanced -->
+                <h2>Advanced Vigenère Cipher</h2>
+                <p><strong>Description du chiffrement de Vigenère: </strong> On utilise un mot-clé pour décaler les lettres de manière variable.</p>
+                <p>Enhanced Vigenère cipher with case preservation, coincidence index analysis, and interactive mode.</p>
+                <div class="toggle-btn" onclick="toggleCode('vigenere-code')">▼ Show Code Sample</div>
+                <div id="vigenere-code" class="hidden code-container">
+                    <pre><code># Advanced Vigenère Cipher
+def vigenere_chiffrement_avance(texte, cle):
+    resultat = ''
+    j = 0
+    for i in range(len(texte)):
+        if texte[i].isalpha():
+            base = 65 if texte[i].isupper() else 97
+            k = ord(cle[j % len(cle)].lower()) - 97
+            t = (ord(texte[i]) - base + k) % 26
+            resultat += chr(t + base)
+            j += 1
+        else:
+            resultat += texte[i]
+    return resultat
+
+# Coincidence Index Analysis
+def indice_coincidence(texte):
+    from collections import Counter
+    lettres = [c.lower() for c in texte if c.isalpha()]
+    N = len(lettres)
+    freqs = Counter(lettres)
+    ic = sum(f * (f - 1) for f in freqs.values()) / (N * (N - 1)) if N > 1 else 0
+    return ic</code></pre>
+                </div>
+                <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li>Preserves letter case during encryption</li>
+                    <li>Includes statistical analysis tools</li>
+                    <li>Interactive command-line interface</li>
+                </ul>
+                <a href="#" class="button-link">View Full Project</a>
+            </div>
+
+            <div class="project-block">
+                <!-- Iterated Caesar -->
+                <h2>Iterated Caesar Cipher</h2>
+                <p><strong>File:</strong> projet_session_part_2.py</p>
+                <p>Applies Caesar cipher multiple times for enhanced security through iteration.</p>
+                <div class="toggle-btn" onclick="toggleCode('iter-code')">▼ Show Code Sample</div>
+                <div id="iter-code" class="hidden code-container">
+                    <pre><code># Iterated Caesar Cipher
+def custom_caesar_encrypt(text, key, iterations):
+    print(f"Original text: {text}")
+    for i in range(iterations):
+        text = caesar_encrypt(text, key)
+        print(f"Iteration {i+1}: {text}")
+    return text
+
+def custom_caesar_decrypt(text, key, iterations):
+    print(f"Encrypted text: {text}")
+    for i in range(iterations):
+        text = caesar_decrypt(text, key)
+        print(f"Decryption {i+1}: {text}")
+    return text
+
+# Example Usage
+message = "Bonjour CyberTeam"
+cle_cesar = 8
+nb_iterations = 6
+chiffre = custom_caesar_encrypt(message, cle_cesar, nb_iterations)</code></pre>
+                </div>
+                <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li>Multiple encryption iterations for stronger security</li>
+                    <li>Step-by-step encryption/decryption visualization</li>
+                    <li>Educational tool for understanding cipher strength</li>
+                </ul>
+                <a href="#" class="button-link">View Full Project</a>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="main_page_crypto.html" class="button-link">&larr; Retour à l'accueil crypto</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleCode(id) {
+            const element = document.getElementById(id);
+            const btn = element.previousElementSibling;
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+                btn.textContent = '▲ Hide Code';
+            } else {
+                element.classList.add('hidden');
+                btn.textContent = '▼ Show Code';
+            }
+        }
+    </script>
+</body>
+</html>

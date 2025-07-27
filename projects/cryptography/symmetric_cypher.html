@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Symmetric Ciphers | Robin Boucher</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        .toggle-btn {
+            cursor: pointer;
+            color: #fff !important;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+        .code-container {
+            background: rgba(80,0,100,0.25);
+            border-radius: 12px;
+            padding: 1em;
+            margin-top: 1em;
+            color: #fff !important;
+        }
+        .hidden {
+            display: none;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1>Symmetric Encryption Projects</h1>
+            <p style="text-align: center;">Robin Boucher - Cryptography Portfolio</p>
+             <h3>Avec le chiffrement symétrique, on utilise une seule clé pour chiffrer et déchiffrer. Par exemple :</h3>
+
+            <div class="project-block">
+                <h2>DES Encryption</h2>
+                <p><strong>Description DES:</strong> Data Encryption Standard est un algorithme historique qui découpe le message en blocs et les mélange avec la clé.</p>
+                <p>Implementation of Data Encryption Standard (DES) in ECB mode using PyCryptodome.</p>
+                <div class="toggle-btn" onclick="toggleCode('des-code')">▼ Show Code Sample</div>
+                <div id="des-code" class="hidden code-container">
+                    <pre><code># DES Implementation
+from Crypto.Cipher import DES
+from Crypto.Util.Padding import pad, unpad
+
+# 64-bit key (8 bytes)
+cle = b'12345678'
+message = b'HELLO123'
+
+# ECB Mode
+cipher = DES.new(cle, DES.MODE_ECB)
+message_chiffre = cipher.encrypt(message)
+print("Encrypted (hex):", message_chiffre.hex())
+
+# Decryption
+cipher2 = DES.new(cle, DES.MODE_ECB)
+message_dechiffre = cipher2.decrypt(message_chiffre)
+print("Decrypted:", message_dechiffre.decode())</code></pre>
+                </div>
+                <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li>Standard DES implementation</li>
+                    <li>Uses PyCryptodome library</li>
+                    <li>ECB mode demonstration</li>
+                </ul>
+                <a href="#" class="button-link">View Full Project</a>
+            </div>
+
+            <div class="project-block">
+                <h2>Custom Block Cipher</h2>
+                <p><strong>Description AES:</strong> Advanced Encryption Standard est plus moderne et sécurisé, utilisé pour protéger les données bancaires ou les communications.</p>
+                <p>Pedagogical block cipher inspired by DES, using XOR and permutations.</p>
+                <div class="toggle-btn" onclick="toggleCode('custom-code')">▼ Show Code Sample</div>
+                <div id="custom-code" class="hidden code-container">
+                    <pre><code># Custom Block Cipher (excerpt)
+def encrypt_block(block, subkeys):
+    state = block
+    for subkey in subkeys:
+        state = permute_bits(state, permutation_table)  # Diffusion
+        state = xor_bits(state, subkey)                 # Confusion
+    return state
+
+def encrypt(plaintext, main_key):
+    plaintext_bin = text_to_bin(plaintext)
+    padded_binary = pad_binary(plaintext_bin, 64)
+    subkeys = expand_key(main_key)
+    
+    encrypted_blocks = []
+    for i in range(0, len(padded_binary), 64):
+        block = padded_binary[i:i+64]
+        encrypted_block = encrypt_block(block, subkeys)
+        encrypted_blocks.append(encrypted_block)
+    
+    return ''.join(encrypted_blocks)</code></pre>
+                </div>
+                <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li>Custom-designed symmetric cipher</li>
+                    <li>Uses XOR and bit permutations</li>
+                    <li>64-bit block processing</li>
+                    <li>Includes key expansion</li>
+                </ul>
+                <a href="#" class="button-link">View Full Project</a>
+            </div>
+
+            <div class="project-block">
+                <h2>Manual Encryption Comparison</h2>
+                <p><strong>File:</strong> chapitre_6_et_7.py</p>
+                <p>Demonstrates weak vs. strong encryption modes with custom and DES implementations.</p>
+                <div class="toggle-btn" onclick="toggleCode('manual-code')">▼ Show Code Sample</div>
+                <div id="manual-code" class="hidden code-container">
+                    <pre><code># Weak vs. Strong Encryption
+def manual_encrypt(plaintext, key_bytes, perm_func, block_size=8):
+    plain_bytes = plaintext.encode()
+    padding_len = block_size - (len(plain_bytes) % block_size)
+    plain_bytes += bytes([padding_len]) * padding_len
+    
+    blocks = [plain_bytes[i:i+block_size] for i in range(0, len(plain_bytes), block_size)]
+    
+    encrypted_blocks = []
+    for block in blocks:
+        transformed = xor_block(block, key_bytes)
+        permuted = perm_func(transformed)
+        encrypted_blocks.append(permuted)
+    
+    return b''.join(encrypted_blocks)
+
+# Strong CBC Mode Example
+key_secure = get_random_bytes(8)
+iv_secure = get_random_bytes(8)
+cipher_cbc = DES.new(key_secure, DES.MODE_CBC, iv_secure)
+ciphertext_secure = cipher_cbc.encrypt(pad(msg.encode(), DES.block_size))</code></pre>
+                </div>
+                <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li>Compares ECB vs. CBC modes</li>
+                    <li>Custom XOR-based encryption</li>
+                    <li>Random key/IV generation</li>
+                    <li>Padding implementation</li>
+                </ul>
+                <a href="#" class="button-link">View Full Project</a>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="main_page_crypto.html" class="button-link">&larr; Retour à l'accueil crypto</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleCode(id) {
+            const element = document.getElementById(id);
+            const btn = element.previousElementSibling;
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+                btn.textContent = '▲ Hide Code';
+            } else {
+                element.classList.add('hidden');
+                btn.textContent = '▼ Show Code';
+            }
+        }
+    </script>
+</body>
+</html>
