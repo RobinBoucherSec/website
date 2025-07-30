@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Cryptographie | Robin Boucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1 style="text-align:center;">Portfolio Cryptographie</h1>
+            <h2 style="text-align:center;">Accueil des catégories de projets</h2>
+            <div class="byline" style="text-align:center; margin-bottom:1.5em;">
+                Robin Boucher – Étudiant en cybersécurité<br>
+                <em>Juillet 2025</em>
+            </div>
+
+            <div class="project-block" style="text-align:center;">
+                <h3>Chiffrement César</h3>
+                <p>
+                    Basé sur une substitution simple : chaque lettre est remplacée par une autre selon un décalage fixe (monoalphabétique).<br>
+                    Par exemple, avec une clé de 3 : A → D, B → E, etc.
+                </p>
+                <p>DIAGRAMME EXPLICATIF CAESAR</p>
+                <a class="button-link" href="caesar.html">Voir le projet César</a>
+            </div>
+
+            <div class="project-block" style="text-align:center;">
+                <h3>Vigenère</h3>
+                <p>
+                    Basé sur une substitution variable : chaque lettre est décalée différemment selon une clé (polyalphabétique).<br>
+                    C’est une amélioration du chiffre de César, utilisant une clé textuelle pour décaler les lettres de manière variable.<br>
+                    Par exemple : "A" dans la clé représente le décalage de 0 (ou 65 selon l’encodage ASCII), "B" représente un décalage de 1 (ou 66), etc.<br>
+                    Plus robuste que le César, car il résiste mieux à l'analyse des fréquences des lettres.
+                </p>
+                <a class="button-link" href="vigenere.html">Voir le projet Vigenère</a>
+            </div>
+
+            <div class="project-block" style="text-align:center;">
+                <h3>Chiffrement Symétrique Moderne</h3>
+                <p>DES, chiffrement par blocs personnalisé, comparaisons ECB/CBC, etc.</p>
+                <a class="button-link" href="symmetric_cypher.html">Voir les projets symétriques</a>
+            </div>
+
+            <div class="project-block" style="text-align:center;">
+                <h3>Chiffrement Asymétrique</h3>
+                <p>Implémentation complète de RSA, génération de clés, chiffrement et déchiffrement.</p>
+                <a class="button-link" href="asymmetric_cypher.html">Voir le projet RSA</a>
+            </div>
+
+            <div style="text-align:center; margin-top:2em;">
+                <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right: 1.5em; color: #fff; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="color: #fff; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <br>
+                <a href="https://robinboucher.tech/#welcome"
+                   style="display:inline-block; margin-top:1.2em; background:#741761; color:#fff; font-weight:bold; text-decoration:none; font-size:1.1em; padding:0.7em 1.6em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); transition:background 0.2s;">
+                    &larr; Retour à la page d'accueil
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
