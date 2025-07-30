@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Hygiène</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <!-- Add this line for Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: #3a0066;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: #3a0066;
+        }
+        .side-column {
+            flex: 1;
+            background: linear-gradient(180deg, #6a1b9a 0%, #3a0066 100%);
+            min-width: 80px;
+            max-width: 200px;
+            height: 100vh;
+        }
+        .main-content {
+            flex: 2.5;
+            background: #fff;
+            color: #111 !important;
+            margin: 2em 0;
+            padding: 2em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3 {
+            color: #3a0066;
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 2em;
+            margin-bottom: 0.2em;
+            margin-top: 0.2em;
+            line-height: 1.1;
+        }
+        .main-content h2 {
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+            margin-top: 1.2em;
+        }
+        .main-content h3 {
+            font-size: 1.1em;
+            margin-bottom: 0.2em;
+            margin-top: 1em;
+        }
+        .main-content p, .main-content ul, .main-content ol, .main-content blockquote {
+            margin-top: 0.3em;
+            margin-bottom: 0.7em;
+            font-size: 1em;
+            color: #111 !important;
+        }
+        .main-content strong {
+            font-size: 1.05em;
+        }
+        .main-content p strong,
+        .main-content ul strong {
+            color: #111 !important;
+        }
+        .main-content .byline {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1em;
+            margin-top: 0.5em;
+            font-size: 1.1em;
+        }
+        .main-content a {
+            color: #6a1b9a;
+            text-decoration: none;
+        }
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+        .main-content ul {
+            margin-bottom: 1em;
+            padding-left: 1.2em;
+        }
+        .main-content code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #111 !important;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .side-column {
+                display: none;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="side-column"></div>
+        <div class="main-content" style="font-size:0.85em;">
+            <div style="text-align:center; margin-top:2.5em; margin-bottom:1.5em;">
+                <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right: 1.5em; color: #111; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="color: #0077b5; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <br>
+                <a href="https://robinboucher.tech/#welcome"
+                   style="display:inline-block; margin-top:1.2em; background:#741761; color:#fff; font-weight:bold; text-decoration:none; font-size:1.1em; padding:0.7em 1.6em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); transition:background 0.2s;">
+                    &larr; Back to welcome page
+                </a>
+            </div>
+            <div>
+    <h1>Cyber hygiène personnelle</h1>
+    <h2>Sécuriser sa navigation au quotidien</h2>
+    <div class="byline">
+        Robin Boucher – Étudiant en cybersécurité<br>
+        <em>15 juillet 2025</em>
+    </div>
+    <div style="position:relative; width:100%; height:240px; margin-bottom:1.5em; display:flex; justify-content:center; align-items:center;">
+                <img src="../images/image.cyberhygene.individuelle.png" alt="Verrou cybersécurité"
+                     style="position:static; max-width:320px; max-height:100%; width:auto; height:auto; opacity:1; box-shadow:0 4px 24px rgba(60,0,80,0.10); border-radius:12px;"/>
+            </div>
+
+
+    <p>Ce guide en trois volets présente des conseils concrets pour naviguer en toute sécurité sur le web, que vous soyez un particulier, une PME ou une grande entreprise. Voici la première partie, dédiée aux individus.</p>
+
+
+    <h2>Risques principaux pour les individus</h2>
+    <p>Comment se protéger personnellement quand on navigue sur le web, que ce soit chez soi, au café ou en déplacement ? Voici quelques exemples de danger et de solutions :</p>
+
+
+    <h3>Danger 1 : Attaques d'interception</h3>
+    <p>Un pirate peut intercepter les communications entre votre appareil et Internet — on appelle cela une attaque on-path (anciennement MITM, ou man-in-the-middle).</p>
+    <p>Un des moyens courants pour y parvenir est de mettre en place un faux réseau Wi-Fi imitant un réseau légitime : c’est une attaque dite Evil Twin.</p>
+    <p>Exemple : dans un café, un hacker crée un point d’accès nommé "Cafés Guest Wifi", très proche du vrai "Café Guest Wifi". Si vous vous connectez par erreur à ce faux réseau, l’attaquant peut espionner tout votre trafic.</p>
+    <p>Cela lui permet de mener une attaque d’interception passive (sniffing), en lisant discrètement les données qui transitent : mots de passe, identifiants bancaires, messages, etc., sans que vous ne vous en rendiez compte.</p>
+    <p>Solutions :</p>
+    <ul>
+        <li>Évitez d’accéder à des comptes sensibles (banque, e-mail) via un réseau public.</li>
+        <li>Utilisez un VPN fiable (comme ProtonVPN, Mozilla VPN…).</li>
+        <li>Activez toujours le HTTPS et vérifiez le cadenas dans la barre d’adresse.</li>
+        <li>Désactivez les connexions automatiques et les interfaces sans fil inutiles (Wi-Fi/Bluetooth/NFC).</li>
+        <li>Utilisez vos propres données mobiles pour la navigation web, plutôt que le Wi-Fi public.</li>
+    </ul>
+
+
+    <h3>Danger 2 : Phishing et logiciels malveillants</h3>
+    <p>Le phishing (hameçonnage) et les logiciels malveillants (malware) sont deux menaces courantes visant à voler vos données ou à infecter vos appareils.</p>
+    <p>Le phishing consiste à tromper l’utilisateur via un faux site web ou un e-mail frauduleux imitant une source de confiance (banque, service connu, etc.).</p>
+    <p>Les logiciels malveillants, eux, s’installent discrètement sur votre appareil pour voler des informations, surveiller vos actions ou bloquer l’accès à vos fichiers (ransomware).</p>
+    <p>Exemples :</p>
+    <ul>
+        <li>Un e-mail prétend venir de votre banque et vous incite à cliquer sur un lien frauduleux.</li>
+        <li>Un faux site de connexion ressemblant exactement au vrai.</li>
+        <li>Un fichier téléchargé contenant un virus ou un cheval de Troie.</li>
+    </ul>
+    <p>Pourquoi c’est dangereux ?</p>
+    <p>Ces attaques exploitent la confiance de l’utilisateur. Une fois victime, vous risquez de perdre vos identifiants personnels ou professionnels, vos appareils peuvent être contrôlés à distance ou vos données volées, des logiciels malveillants peuvent chiffrer vos fichiers et exiger une rançon.</p>
+    <p>Ces attaques surviennent principalement:</p>
+    <ul>
+        <li>Par e-mail ou messagerie instantanée.</li>
+        <li>Sur des sites web compromis ou falsifiés.</li>
+        <li>Via des fichiers téléchargés ou des publicités malveillantes (malvertising).</li>
+    </ul>
+    <p>Solutions :</p>
+    <ul>
+        <li>Ne cliquez jamais sur des liens suspects.</li>
+        <li>Vérifiez toujours l’expéditeur des e-mails.</li>
+        <li>La page de connexion semble inhabituelle ? Ouvrez un nouvel onglet pour vérifier que vous utilisez la vraie page de connexion.</li>
+        <li>Utilisez un antivirus performant (Bitdefender, Malwarebytes).</li>
+        <li>Activez la double authentification (2FA) dès que possible.</li>
+        <li>Évitez de télécharger des fichiers depuis des sources non vérifiées.</li>
+        <li>Utilisez une clé de sécurité physique pour vos comptes importants (YubiKey ou autre).</li>
+    </ul>
+
+
+    <h2>Pour encore plus de sécurité au quotidien</h2>
+    <ul>
+        <li>Activez le verrouillage biométrique ou par code sur votre téléphone.</li>
+        <li>Désactivez le Wi-Fi / Bluetooth / NFC / Localisation lorsque vous ne les utilisez pas.</li>
+        <li>Évitez les téléchargements inutiles et vérifiez toujours les permissions demandées par une application.</li>
+        <li>Utilisez un gestionnaire de mots de passe compatible mobile (Bitwarden, 1Password, etc.).</li>
+        <li>Mettez à jour régulièrement votre système d’exploitation et vos apps pour tous vos appareils.</li>
+        <li>Réduisez au minimum les applications qui utilisent votre localisation (elles peuvent révéler votre domicile et vos habitudes).</li>
+        <li>Supprimez les comptes inutilisés. Ils deviennent des points faibles s’ils sont piratés ou inclus dans des fuites de données.</li>
+        <li>Les réseaux sociaux collectent massivement vos données de navigation pour du ciblage publicitaire ou de la surveillance. Utilisez des bloqueurs de pistage comme uBlock Origin, Privacy Badger, le navigateur Brave ou Tor (peu intuitif mais très efficace mais destiné aux personnes souhaitant un niveau élevé d’anonymat).</li>
+    </ul>
+
+
+    <h2>En résumé</h2>
+    <p>La sécurité web, une responsabilité partagée. Que vous soyez un particulier, une PME ou une grande entreprise, la sécurité lors de la navigation web repose sur trois piliers :</p>
+    <ul>
+        <li>La vigilance face aux menaces.</li>
+        <li>La mise en œuvre de protections techniques.</li>
+        <li>La sensibilisation et la formation continue.</li>
+    </ul>
+    <p>En adoptant quelques gestes simples — comme activer le HTTPS, utiliser un VPN sur Wi-Fi public ou former les équipes — vous augmenterez considérablement votre niveau de sécurité.</p>
+    <p>Il n’existe pas de solution miracle. C’est la combinaison de plusieurs mesures qui construit une véritable défense.</p>
+    <p>Si vous souhaitez renforcer vos mots de passe, je vous recommande de lire mon article précédent :
+    <strong>
+        <a href="La_cyber_securité_et_les_mots_de_passe.html" target="_blank">
+            La cybersécurité et les mots de passe – Guide pour renforcer votre sécurité en ligne
+        </a>.
+    </strong>
+</p>
+    <p>Sachez que les techniques de navigation sécuritaire et les bons mots de passe ne sont que le début d’une bonne sécurité… La sécurité ne s’arrête pas là !</p>
+</div>
+       
+            <p style="text-align:center; margin-top:2.5em; font-size:1.05em;">
+                Cet article est aussi disponible sur&nbsp;:
+                <a href="https://dev.to/robin_boucher_4a5559d1b96" target="_blank" style="color:#6a1b9a; font-weight:bold;">DEV Community</a>
+                &nbsp;et&nbsp;
+                <a href="https://medium.com/@robinboucher.tech" target="_blank" style="color:#6a1b9a; font-weight:bold;">Medium</a>
+            </p>
+        </div>
+        <div class="side-column"></div>
+    </div>
+</body>
+</html>
+
