@@ -36,7 +36,7 @@
         .main-content a {
             font-weight: bold;
         }
-        .main-content a.button-link {
+        .main-content a.button-link, .btn {
             display: inline-block;
             margin-top: 1.2em;
             margin-bottom: 1.2em;
@@ -50,7 +50,7 @@
             box-shadow: 0 2px 8px rgba(60,0,80,0.10);
             transition: background 0.2s;
         }
-        .main-content a.button-link:hover {
+        .main-content a.button-link:hover, .btn:hover {
             background: #3a0066;
             color: #fff !important;
         }
@@ -78,27 +78,46 @@
 <body>
     <div class="centered-layout">
         <div class="main-content">
-            <h1>Portfolio Cryptographie</h1>
-            <h2>Accueil des catégories de projets</h2>
+            <h1 style="text-align:center;">Portfolio Cryptographie</h1>
+            <h2 style="text-align:center;">Accueil des catégories de projets</h2>
             <div class="byline" style="text-align:center; margin-bottom:1.5em;">
                 Robin Boucher – Étudiant en cybersécurité<br>
                 <em>Juillet 2025</em>
             </div>
+
+            <div class="project-block" style="text-align:center;">
+                <h3>Chiffrement César</h3>
+                <p>
+                    Basé sur une substitution simple : chaque lettre est remplacée par une autre selon un décalage fixe (monoalphabétique).<br>
+                    Par exemple, avec une clé de 3 : A → D, B → E, etc.
+                </p>
+                <p>DIAGRAMME EXPLICATIF CAESAR</p>
+                <a class="button-link" href="caesar.html">Voir le projet César</a>
+            </div>
+
+            <div class="project-block" style="text-align:center;">
+                <h3>Vigenère</h3>
+                <p>
+                    Basé sur une substitution variable : chaque lettre est décalée différemment selon une clé (polyalphabétique).<br>
+                    C’est une amélioration du chiffre de César, utilisant une clé textuelle pour décaler les lettres de manière variable.<br>
+                    Par exemple : "A" dans la clé représente le décalage de 0 (ou 65 selon l’encodage ASCII), "B" représente un décalage de 1 (ou 66), etc.<br>
+                    Plus robuste que le César, car il résiste mieux à l'analyse des fréquences des lettres.
+                </p>
+                <a class="button-link" href="vigenere.html">Voir le projet Vigenère</a>
+            </div>
+
             <div class="project-block" style="text-align:center;">
                 <h3>Chiffrement Symétrique Moderne</h3>
                 <p>DES, chiffrement par blocs personnalisé, comparaisons ECB/CBC, etc.</p>
                 <a class="button-link" href="symmetric_cypher.html">Voir les projets symétriques</a>
             </div>
-            <div class="project-block" style="text-align:center;">
-                <h3>Chiffrement Classique</h3>
-                <p>Caesar, Vigenère, substitution, itérations et outils d'analyse.</p>
-                <a class="button-link" href="classic_cypher.html">Voir les projets classiques</a>
-            </div>
+
             <div class="project-block" style="text-align:center;">
                 <h3>Chiffrement Asymétrique</h3>
                 <p>Implémentation complète de RSA, génération de clés, chiffrement et déchiffrement.</p>
                 <a class="button-link" href="asymmetric_cypher.html">Voir le projet RSA</a>
             </div>
+
             <div style="text-align:center; margin-top:2em;">
                 <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right: 1.5em; color: #fff; text-decoration: none; font-size: 1.5em;">
                     <i class="fab fa-github"></i> GitHub

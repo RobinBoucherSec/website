@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Symmetric Ciphers | Robin Boucher</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         body {
-            background: url('../images/pic02.jpg') center center/cover no-repeat fixed;
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -61,14 +60,8 @@
             margin-bottom: 2em;
             background: rgba(80,0,100,0.25);
         }
-        .toggle-btn {
-            cursor: pointer;
-            color: #fff !important;
-            font-weight: bold;
-            margin-bottom: 0.5em;
-        }
         .code-container {
-            background: rgba(80,0,100,0.25);
+            background: #111 !important; /* Black background */
             border-radius: 12px;
             padding: 1em;
             margin-top: 1em;
@@ -96,14 +89,13 @@
         <div class="main-content">
             <h1>Symmetric Encryption Projects</h1>
             <p style="text-align: center;">Robin Boucher - Cryptography Portfolio</p>
-             <h3>Avec le chiffrement symétrique, on utilise une seule clé pour chiffrer et déchiffrer. Par exemple :</h3>
+            <h3>Avec le chiffrement symétrique, on utilise une seule clé pour chiffrer et déchiffrer. Par exemple :</h3>
 
             <div class="project-block">
                 <h2>DES Encryption</h2>
                 <p><strong>Description DES:</strong> Data Encryption Standard est un algorithme historique qui découpe le message en blocs et les mélange avec la clé.</p>
                 <p>Implementation of Data Encryption Standard (DES) in ECB mode using PyCryptodome.</p>
-                <div class="toggle-btn" onclick="toggleCode('des-code')">▼ Show Code Sample</div>
-                <div id="des-code" class="hidden code-container">
+                <div id="des-code" class="code-container">
                     <pre><code># DES Implementation
 from Crypto.Cipher import DES
 from Crypto.Util.Padding import pad, unpad
@@ -135,8 +127,7 @@ print("Decrypted:", message_dechiffre.decode())</code></pre>
                 <h2>Custom Block Cipher</h2>
                 <p><strong>Description AES:</strong> Advanced Encryption Standard est plus moderne et sécurisé, utilisé pour protéger les données bancaires ou les communications.</p>
                 <p>Pedagogical block cipher inspired by DES, using XOR and permutations.</p>
-                <div class="toggle-btn" onclick="toggleCode('custom-code')">▼ Show Code Sample</div>
-                <div id="custom-code" class="hidden code-container">
+                <div id="custom-code" class="code-container">
                     <pre><code># Custom Block Cipher (excerpt)
 def encrypt_block(block, subkeys):
     state = block
@@ -172,8 +163,7 @@ def encrypt(plaintext, main_key):
                 <h2>Manual Encryption Comparison</h2>
                 <p><strong>File:</strong> chapitre_6_et_7.py</p>
                 <p>Demonstrates weak vs. strong encryption modes with custom and DES implementations.</p>
-                <div class="toggle-btn" onclick="toggleCode('manual-code')">▼ Show Code Sample</div>
-                <div id="manual-code" class="hidden code-container">
+                <div id="manual-code" class="code-container">
                     <pre><code># Weak vs. Strong Encryption
 def manual_encrypt(plaintext, key_bytes, perm_func, block_size=8):
     plain_bytes = plaintext.encode()

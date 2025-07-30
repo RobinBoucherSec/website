@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Classic Ciphers | Robin Boucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        .code-container {
+            background: #111 !important; /* Black background */
+            border-radius: 12px;
+            padding: 1em;
+            margin-top: 1em;
+            color: #fff !important;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1 style="text-align: center;">Classic Cipher Projects</h1>
+            <p style="text-align: center;">Robin Boucher - Cryptography Portfolio</p>
+
+            <div class="project-block">
+                <h2>Caesar Ciphers</h2>
+                <p><strong>Chiffrement de César:</strong> Chaque lettre du message est décalée dans l’alphabet (ex. "A" → "D" avec un décalage de 3).</p>
+                <div class="code-container">
+<pre><code>def caesar_cipher(text: str, shift: int, mode: str = 'encrypt') -> str:
+    """Chiffre ou déchiffre un texte avec l'algorithme César."""
+    # (Le code de la fonction reste inchangé)
+    ...
+
+# Exemple : Chiffrement simple
+original = "Bonjour le monde!"
+chiffre = caesar_cipher(original, 3)  # Décalage de 3 vers la droite
+print(f"Original: {original}")
+print(f"Chiffré (décalage +3): {chiffre}")  # Sortie : "Erqmrxu oh prqgh!"
+</code></pre>
+                </div>
+                <p><strong>Déchiffrement de César:</strong> Chaque lettre du message est décalée dans l’alphabet (ex. "A" → "D" avec un décalage de 3).</p>
+                <div class="code-container">
+<pre><code>def decrypt_ciphertext(ciphertext: str, shift: int = None) -> str:
+    # (Le code de la fonction reste inchangé)
+    ...
+
+# Exemple : Déchiffrement avec interface
+texte_chiffre = "Erqmrxu oh prqgh!"
+
+# Mode 1 - Décalage connu
+print("\nMode 1 - Avec décalage connu:")
+resultat = decrypt_ciphertext(texte_chiffre, 3)
+print(f"Résultat: {resultat}")  # Sortie : "Bonjour le monde!"
+</code></pre>
+                </div>
+                <h2>Comment briser le chiffrement Caesar:</h2>
+                <p>Attaque force brute et fréquentiel:</p>
+                <p>Le César n'a que 25 décalages possibles (pour un alphabet de 26 lettres). On teste toutes les combinaisons :</p>
+                <p><strong>Attaque force-brute César:</strong> Une méthode de cryptanalyse qui consiste à essayer toutes les combinaisons possibles de clés jusqu’à trouver celle qui déchiffre correctement le message.</p>
+                <div class="code-container">
+<pre><code># Brute Force Attack
+def brute_force_attack(ciphertext):
+    """Teste tous les décalages possibles (1 à 25)"""
+    print("\n=== Attaque par force brute ===")
+    for shift in range(26):
+        decrypted_message = caesar_cipher(ciphertext, shift, 'dechiffrer')
+        print(f"Décalage {shift:2d}: {decrypted_message}")
+</code></pre>
+                </div>
+                <p><strong>Attaque fréquentiel César:</strong> Une méthode de cryptanalyse qui exploite les fréquences d’apparition des lettres ou des bigrammes dans un texte chiffré pour deviner le message original ou la clé utilisée.</p>
+                <div class="code-container">
+<pre><code>FREQUENCY_TABLES = {
+    'en': 'etaoinshrdlcumwfgypbvkjxqz',
+    'fr': 'easnrtoulidcmpévqfbghjàxèyêzwk'
+}
+
+def frequency_attack(ciphertext: str, lang: str = 'fr') -> str:
+    """
+    Déchiffre par analyse des fréquences linguistiques.
+    """
+    letters = [c.lower() for c in ciphertext if c.isalpha()]
+    if not letters:
+        return "Erreur : Aucune lettre à analyser"
+
+    most_common = Counter(letters).most_common(1)[0][0]
+    expected_char = FREQUENCY_TABLES.get(lang, 'fr')[0]
+    shift = (ord(most_common) - ord(expected_char)) % 26
+</code></pre>
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher Toolkit</title>
+    <style>
+        .toggle-container {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .toggle-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #000000;
+            border-radius: 5px;
+            user-select: none;
+        }
+        .toggle-icon {
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        .toggle-content {
+            display: none;
+            padding: 15px;
+            background-color: #000000;
+            border: 1px solid #000000;
+            border-radius: 0 0 5px 5px;
+            overflow-x: auto;
+            white-space: pre;
+            font-family: monospace;
+        }
+        .toggle-content.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-container">
+        <div class="toggle-header" onclick="toggleContent()">
+            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span>Ici pour voir le fichier caesar.py complet</span>
+        </div>
+        <div class="toggle-content" id="content">
+# -*- coding: utf-8 -*-
+"""
+CAESAR CIPHER TOOLKIT
+=====================
+Un outil complet de chiffrement/déchiffrement César avec :
+- Fonctions de base
+- Interface de déchiffrement
+- Méthodes d'attaque (force brute et analyse fréquentielle)
+- Support français/anglais
+"""
+
+from collections import Counter
+
+
+# =============================================================================
+# SECTION 1 : FONCTION DE BASE
+# =============================================================================
+def caesar_cipher(text: str, shift: int, mode: str = 'encrypt') -> str:
+    """
+    Chiffre ou déchiffre un texte avec l'algorithme César.
+
+    Paramètres :
+        text (str): Texte à transformer
+        shift (int): Décalage (1-25)
+        mode (str): 'encrypt' ou 'decrypt' (par défaut: 'encrypt')
+
+    Retourne :
+        str: Texte transformé
+    """
+    if not text:
+        return ""
+
+    effective_shift = shift if mode == 'encrypt' else -shift
+    result = []
+
+    for char in text:
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            new_pos = (ord(char) - base + effective_shift) % 26
+            result.append(chr(base + new_pos))
+        else:
+            result.append(char)
+
+    return ''.join(result)
+
+
+# =============================================================================
+# SECTION 2 : INTERFACE DE DÉCHIFFREMENT
+# =============================================================================
+def decrypt_ciphertext(ciphertext: str, shift: int = None) -> str:
+    """
+    Interface simplifiée pour le déchiffrement.
+
+    Paramètres :
+        ciphertext (str): Texte chiffré
+        shift (int): Décalage connu (optionnel)
+
+    Retourne :
+        str: Texte déchiffré ou message d'erreur
+    """
+    if not ciphertext:
+        return "Erreur : Texte vide"
+
+    if shift is not None:
+        return caesar_cipher(ciphertext, shift, 'decrypt')
+    else:
+        print("\nOptions de déchiffrement :")
+        print("1. Entrer un décalage connu")
+        print("2. Utiliser l'analyse fréquentielle")
+        print("3. Essayer la force brute")
+
+        choice = input("\nVotre choix (1-3): ")
+
+        if choice == '1':
+            try:
+                shift = int(input("Décalage connu (1-25): "))
+                return caesar_cipher(ciphertext, shift, 'decrypt')
+            except ValueError:
+                return "Erreur : Décalage invalide"
+
+        elif choice == '2':
+            lang = input("Langue (fr/en): ").lower()
+            return frequency_attack(ciphertext, lang if lang in ['fr', 'en'] else 'fr')
+
+        elif choice == '3':
+            return brute_force_attack(ciphertext)  # Retourne directement les résultats
+
+        return "Option invalide"
+
+
+# =============================================================================
+# SECTION 3 : MÉTHODES D'ATTAQUE
+# =============================================================================
+# Brute Force Attack
+def brute_force_attack(ciphertext):
+    """Teste tous les décalages possibles (1 à 25)"""
+    print("\n=== Attaque par force brute ===")
+    for shift in range(26):
+        decrypted_message = caesar_cipher(ciphertext, shift, 'dechiffrer')
+        print(f"Décalage {shift:2d}: {decrypted_message}")
+
+
+FREQUENCY_TABLES = {
+    'en': 'etaoinshrdlcumwfgypbvkjxqz',
+    'fr': 'easnrtoulidcmpévqfbghjàxèyêzwk'
+}
+
+
+def frequency_attack(ciphertext: str, lang: str = 'fr') -> str:
+    """
+    Déchiffre par analyse des fréquences linguistiques.
+    """
+    letters = [c.lower() for c in ciphertext if c.isalpha()]
+    if not letters:
+        return "Erreur : Aucune lettre à analyser"
+
+    most_common = Counter(letters).most_common(1)[0][0]
+    expected_char = FREQUENCY_TABLES.get(lang, 'fr')[0]
+    shift = (ord(most_common) - ord(expected_char)) % 26
+
+    print("\nRAPPORT D'ANALYSE")
+    print("=" * 40)
+    print(f"Langue: {lang.upper()}")
+    print(f"Lettre la plus fréquente: '{most_common}'")
+    print(f"Supposée représenter: '{expected_char}'")
+    print(f"Décalage calculé: {shift}")
+    print("-" * 40)
+
+    return caesar_cipher(ciphertext, shift, 'decrypt')
+
+
+# =============================================================================
+# SECTION 4 : DÉMONSTRATION
+# =============================================================================
+if __name__ == '__main__':
+    # Configuration
+    TEXTE_FR = "Bonjour le monde, ceci est un test!"
+    DECALAGE = 3
+
+    # Démonstration
+    print("\n" + "=" * 50)
+    print("DÉMONSTRATION DU CHIFFREMENT CÉSAR".center(50))
+    print("=" * 50)
+
+    # Chiffrement
+    chiffre = caesar_cipher(TEXTE_FR, DECALAGE)
+    print(f"\nOriginal: {TEXTE_FR}")
+    print(f"Chiffré (décalage {DECALAGE}): {chiffre}")
+
+    # Déchiffrement avec décalage connu
+    print("\nDéchiffrement direct:")
+    print(decrypt_ciphertext(chiffre, DECALAGE))
+
+    # Demonstrate the attacks
+    brute_force_attack(chiffre)
+
+    # Déchiffrement automatique
+    print("\nDéchiffrement par analyse:")
+    print(frequency_attack(chiffre))
+
+    # Menu interactif
+    print("\nMode interactif (tapez 'quit' pour sortir)")
+    while True:
+        texte = input("\nEntrez un texte chiffré: ")
+        if texte.lower() == 'quit':
+            break
+        print(decrypt_ciphertext(texte))
+        </div>
+    </div>
+
+    <script>
+        function toggleContent() {
+            const content = document.getElementById('content');
+            const icon = document.querySelector('.toggle-icon');
+            
+            content.classList.toggle('show');
+            icon.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
+  <div class="project-block" style="text-align:center; padding:0;">
+                <img src="gif/caesar.gif" alt="Démonstration du chiffrement César" 
+                     style="width:100%; max-width:100%; border-radius:12px; display:block; margin:0 auto; background:rgba(80,0,100,0.25);" />
+                <p class="gif-caption" style="color:#fff; margin:0.7em 0 0.7em 0;"></p>
+            </div>
+               
+                <div class="security-improvements">
+    <h2>Trucs pour renforcer le chiffrement César</h2>
+    
+    <div class="improvement-card">
+        <h3> Double Chiffrement</h3>
+        <p>Appliquer deux décalages successifs (ex: +3 puis +5).</p>
+        <div class="example">
+            <strong>→ Effet :</strong> Équivalent à un décalage de +8, mais obscurcit la logique.
+        </div>
+    </div>
+
+    <div class="improvement-card">
+        <h3> Masquage des motifs</h3>
+        <p>Remplacer les espaces/ponctuation par des codes (ex: " " → #SP#).</p>
+        <div class="example">
+            <strong>→ Avantage :</strong> Cache la structure des mots et phrases.
+        </div>
+    </div>
+
+    <div class="improvement-card">
+        <h3> Inversion du texte</h3>
+        <p>Inverser le texte avant chiffrement ("HELLO" → "OLLEH").</p>
+        <div class="example">
+            <strong>→ Résultat :</strong> "HELLO" (+3) → "ROOMI" (au lieu de "KHOOR").
+        </div>
+    </div>
+
+    <div class="improvement-card">
+        <h3> Lettres fantômes</h3>
+        <p>Ajouter des caractères aléatoires ("A" → "AX").</p>
+        <div class="example">
+            <strong>→ Impact :</strong> Fausse les statistiques mais allonge le message.
+        </div>
+    </div>
+
+    <div class="improvement-card">
+        <h3> Alphabet custom</h3>
+        <p>Utiliser un alphabet mélangé (A=Z, B=Y...).</p>
+        <div class="example">
+            <strong>→ Protection :</strong> Rend le brute-force moins évident.
+        </div>
+    </div>
+
+    <div class="key-takeaway">
+        <h1> À retenir</h1>
+        <p>Ces techniques complexifient l'attaque mais ne garantissent pas la sécurité. Pour une vraie protection :</p>
+        <ul>
+            <li>Le César reste uniquement pédagogique</li>
+            <li>Vigenère offre un bon compromis simplicité/sécurité</li>
+            <li>AES/RSA sont indispensables pour des données sensibles</li>
+        </ul>
+    </div>
+</div>
+
+           
