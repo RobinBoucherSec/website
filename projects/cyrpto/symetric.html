@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Symétrique Cipher | Robin Boucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        .code-container {
+            background: #111 !important; /* Black background */
+            border-radius: 12px;
+            padding: 1em;
+            margin-top: 1em;
+            color: #fff !important;
+            overflow-x: auto;
+        }
+        .explanation-block {
+            background: rgba(80,0,100,0.18);
+            border-radius: 12px;
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            color: #fff;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+        /* Styles for toggle containers */
+        .toggle-container {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .toggle-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #000000;
+            border-radius: 5px;
+            user-select: none;
+        }
+        .toggle-icon {
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        .toggle-content {
+            display: none;
+            padding: 15px;
+            background-color: #000000;
+            border: 1px solid #000000;
+            border-radius: 0 0 5px 5px;
+            overflow-x: auto;
+            white-space: pre;
+            font-family: monospace;
+        }
+        .toggle-content.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1 style="text-align: center;">Chiffrement symetric AES</h1>
+            <p style="text-align: center;">Robin Boucher - Cryptography Portfolio</p>
+
+<section>
+    <h2 style="text-align: center;">1. Fonctions de Base du Chiffrement Symétrique</h2>
+    <p>
+        Le chiffrement symétrique utilise une seule clé pour chiffrer et déchiffrer les données.
+        Un exemple moderne populaire est l'AES (Advanced Encryption Standard).
+    </p>
+    <h3>Démonstration simplifiée de S-AES</h3>
+    <p>
+       S-AES (Simplified AES) en est une version allégée pour l'apprentissage :
+
+       <li>S-AES ne devrait jamais être utilisé en production.</li>
+
+<li>Blocs/clés de 16 bits (vs 128+ bits pour AES)</li>
+
+<li>2 tours seulement (vs 10+)</li>
+
+<li>Opérations simplifiées (S-Box 4 bits, calcul de clés réduit)</li>
+
+<li>S-AES est utilisé afin de comprendre la structure des tours, la confusion/diffusion et les opérations en corps fini sans la complexité d'AES.
+   </li> </p>
+
+    <div class="toggle-container" id="toggle1">
+        <div class="toggle-header" onclick="toggleContent('toggle1')">
+            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span>Ici pour voir le fichier S-AES.py complet</span>
+        </div>
+        <div class="toggle-content">
+# S-AES simplifié - version pédagogique sur 16 bits
+
+# S-Box et inverse (nibbles 4 bits)
+SBOX = [
+    0x9, 0x4, 0xA, 0xB,
+    0xD, 0x1, 0x8, 0x5,
+    0x6, 0x2, 0x0, 0x3,
+    0xC, 0xE, 0xF, 0x7
+]
+
+INV_SBOX = [
+    0xA, 0x5, 0x9, 0xB,
+    0x1, 0x7, 0x8, 0xF,
+    0x6, 0x0, 0x2, 0x3,
+    0xC, 0x4, 0xD, 0xE
+]
+
+def nibble_substitution(nibble, sbox):
+    return sbox[nibble]
+
+def s_aes_subnibbles(state, inverse=False):
+    sbox = INV_SBOX if inverse else SBOX
+    return [nibble_substitution(b, sbox) for b in state]
+
+def s_aes_shiftrows(state):
+    # 16-bit state: [w0, w1, w2, w3] → w0,w1,w2,w3
+    # Shiftrows: w0,w1,w2,w3 → w0,w1,w3,w2
+    return [state[0], state[1], state[3], state[2]]
+
+def s_aes_mixcolumns(state, inverse=False):
+    # Matrice : [[1, 4], [4, 1]] dans GF(16)
+    # Polynôme irréductible : x^4 + x + 1 → 0x13
+    def gf_mult(a, b):
+        p = 0
+        while b:
+            if b & 1:
+                p ^= a
+            a <<= 1
+            if a & 0x10:
+                a ^= 0x13  # x^4 + x + 1
+            b >>= 1
+        return p & 0xF
+
+    if not inverse:
+        a = gf_mult(4, state[1]) ^ state[0]
+        b = gf_mult(4, state[0]) ^ state[1]
+        c = gf_mult(4, state[3]) ^ state[2]
+        d = gf_mult(4, state[2]) ^ state[3]
+    else:
+        # Matrice inverse : [[9, 2], [2, 9]]
+        a = (gf_mult(9, state[0]) ^ gf_mult(2, state[1]))
+        b = (gf_mult(2, state[0]) ^ gf_mult(9, state[1]))
+        c = (gf_mult(9, state[2]) ^ gf_mult(2, state[3]))
+        d = (gf_mult(2, state[2]) ^ gf_mult(9, state[3]))
+    return [a, b, c, d]
+
+def int_to_state(x):
+    # 16-bit → [nibble0, nibble1, nibble2, nibble3]
+    return [
+        (x >> 12) & 0xF,
+        (x >> 8) & 0xF,
+        (x >> 4) & 0xF,
+        x & 0xF
+    ]
+
+def state_to_int(state):
+    return (state[0] << 12) | (state[1] << 8) | (state[2] << 4) | state[3]
+
+def key_expansion(key16):
+    # key16: int 16 bits
+    w = [0] * 6
+    w[0] = (key16 >> 8) & 0xFF
+    w[1] = key16 & 0xFF
+
+    RCON = {2: 0x80, 4: 0x30}
+
+    for i in range(2, 6):
+        temp = w[i-1]
+        if i % 2 == 0:
+            # SubWord + RotWord + Rcon
+            temp = ((temp & 0x0F) << 4) | ((temp & 0xF0) >> 4)  # RotWord
+            temp = (nibble_substitution(temp >> 4, SBOX) << 4) | (nibble_substitution(temp & 0x0F, SBOX))
+            temp ^= RCON[i]
+
+        w[i] = w[i-2] ^ temp
+
+    key0 = (w[0] << 8) | w[1]
+    key1 = (w[2] << 8) | w[3]
+    key2 = (w[4] << 8) | w[5]
+    return key0, key1, key2
+
+def s_aes_encrypt_block(plaintext, key16):
+    # plaintext, key16: int (16 bits)
+    keys = key_expansion(key16)
+    state = int_to_state(plaintext)
+
+    # Round 0: AddRoundKey
+    state = [state[i] ^ ((keys[0] >> (4*(3-i))) & 0xF) for i in range(4)]
+
+    # Round 1
+    state = s_aes_subnibbles(state)
+    state = s_aes_shiftrows(state)
+    state = s_aes_mixcolumns(state)
+    state = [state[i] ^ ((keys[1] >> (4*(3-i))) & 0xF) for i in range(4)]
+
+    # Round 2
+    state = s_aes_subnibbles(state)
+    state = s_aes_shiftrows(state)
+    state = [state[i] ^ ((keys[2] >> (4*(3-i))) & 0xF) for i in range(4)]
+
+    return state_to_int(state)
+
+def s_aes_decrypt_block(ciphertext, key16):
+    keys = key_expansion(key16)
+    state = int_to_state(ciphertext)
+
+    # Round 2 inverse
+    state = [state[i] ^ ((keys[2] >> (4*(3-i))) & 0xF) for i in range(4)]
+    state = s_aes_shiftrows(state)
+    state = s_aes_subnibbles(state, inverse=True)
+
+    # Round 1 inverse
+    state = [state[i] ^ ((keys[1] >> (4*(3-i))) & 0xF) for i in range(4)]
+    state = s_aes_mixcolumns(state, inverse=True)
+    state = s_aes_shiftrows(state)
+    state = s_aes_subnibbles(state, inverse=True)
+
+    # Round 0
+    state = [state[i] ^ ((keys[0] >> (4*(3-i))) & 0xF) for i in range(4)]
+
+    return state_to_int(state)
+
+
+# ========================
+# EXEMPLE D'UTILISATION
+# ========================
+if __name__ == "__main__":
+    # Clé S-AES : 16 bits (ex: 0b1010001110110100 = 0xA3B4)
+    KEY_16BIT = 0xA3B4  # Tu peux changer cette clé
+
+    # Message : b'hi' → 'h' = 0x68, 'i' = 0x69 → 0x6869
+    message = b'hi'
+    plaintext_int = (message[0] << 8) | message[1]  # 0x6869
+    print(f"Message clair : {message}")
+    print(f"En hexa      : 0x{plaintext_int:04X}")
+
+    # Chiffrement
+    ciphertext = s_aes_encrypt_block(plaintext_int, KEY_16BIT)
+    print(f"Chiffré      : 0x{ciphertext:04X} (hex)")
+
+    # Déchiffrement
+    decrypted_int = s_aes_decrypt_block(ciphertext, KEY_16BIT)
+    decrypted_bytes = bytes([(decrypted_int >> 8) & 0xFF, decrypted_int & 0xFF])
+    print(f"Déchiffré    : {decrypted_bytes}")
+
+    # Vérification
+    if decrypted_bytes == message:
+        print("✅ Succès : le déchiffrement a bien retrouvé le message d'origine !")
+    else:
+        print("❌ Échec du déchiffrement.")
+
+        Message clair : b'hi'
+        En hexa      : 0x6869
+        Chiffré      : 0x650C (hex)
+        Déchiffré    : b'hi'
+        </div>
+    </div>
+
+<section>
+    <h2 style="text-align: center;">2. Attaques sur S-AES</h2>
+    <p>
+        Attaques sur S-AES
+Deux attaques concrètes sur un chiffrement simplifié :
+
+
+ </p>
+    <ul>
+        <li>Attaque par dictionnaire : exploitation de clés faibles ou prévisibles pour retrouver la clé secrète à partir d'un morceau connu du message.</li>
+        <li>
+Analyse de motifs : détection de blocs répétés dans le chiffré, révélant des structures du message d'origine.</li>
+      
+    </ul>
+    <p>
+        Ces attaques montrent que même un bon algorithme devient vulnérable avec une mauvaise clé ou un mauvais mode d'usage — une leçon clé en sécurité réelle.
+  
+    </p>
+</section>
+
+    <div class="toggle-container" id="toggle2">
+        <div class="toggle-header" onclick="toggleContent('toggle2')">
+            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span>Ici pour voir le fichier S-AES_attaques.py complet</span>
+        </div>
+        <div class="toggle-content">
+# -*- coding: utf-8 -*-
+"""
+S-AES Simplifié - avec attaques
+==============================================
+Version autonome avec toutes les fonctions nécessaires intégrées
+"""
+
+# ======================
+# IMPORTS ET CONFIGURATION
+# ======================
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+import os
+
+# ======================
+# FONCTIONS S-AES CORE
+# ======================
+# S-Box et inverse
+SBOX = [
+    0x9, 0x4, 0xA, 0xB,
+    0xD, 0x1, 0x8, 0x5,
+    0x6, 0x2, 0x0, 0x3,
+    0xC, 0xE, 0xF, 0x7
+]
+
+INV_SBOX = [
+    0xA, 0x5, 0x9, 0xB,
+    0x1, 0x7, 0x8, 0xF,
+    0x6, 0x0, 0x2, 0x3,
+    0xC, 0x4, 0xD, 0xE
+]
+
+
+def nibble_substitution(nibble, sbox):
+    return sbox[nibble]
+
+
+def s_aes_subnibbles(state, inverse=False):
+    sbox = INV_SBOX if inverse else SBOX
+    return [nibble_substitution(b, sbox) for b in state]
+
+
+def s_aes_shiftrows(state):
+    return [state[0], state[1], state[3], state[2]]
+
+
+def gf_mult(a, b):
+    """Multiplication dans GF(2^4)"""
+    p = 0
+    while b:
+        if b & 1:
+            p ^= a
+        a <<= 1
+        if a & 0x10:
+            a ^= 0x13
+        b >>= 1
+    return p & 0xF
+
+
+def s_aes_mixcolumns(state, inverse=False):
+    if not inverse:
+        return [
+            gf_mult(4, state[1]) ^ state[0],
+            gf_mult(4, state[0]) ^ state[1],
+            gf_mult(4, state[3]) ^ state[2],
+            gf_mult(4, state[2]) ^ state[3]
+        ]
+    else:
+        return [
+            gf_mult(9, state[0]) ^ gf_mult(2, state[1]),
+            gf_mult(2, state[0]) ^ gf_mult(9, state[1]),
+            gf_mult(9, state[2]) ^ gf_mult(2, state[3]),
+            gf_mult(2, state[2]) ^ gf_mult(9, state[3])
+        ]
+
+
+def int_to_state(x):
+    return [(x >> 12) & 0xF, (x >> 8) & 0xF, (x >> 4) & 0xF, x & 0xF]
+
+
+def state_to_int(state):
+    return (state[0] << 12) | (state[1] << 8) | (state[2] << 4) | state[3]
+
+
+def key_expansion(key16):
+    w = [0] * 6
+    w[0] = (key16 >> 8) & 0xFF
+    w[1] = key16 & 0xFF
+    RCON = {2: 0x80, 4: 0x30}
+
+    for i in range(2, 6):
+        temp = w[i - 1]
+        if i % 2 == 0:
+            temp = ((temp & 0x0F) << 4) | ((temp & 0xF0) >> 4)
+            temp = (SBOX[temp >> 4] << 4) | SBOX[temp & 0x0F]
+            temp ^= RCON[i]
+        w[i] = w[i - 2] ^ temp
+
+    return [(w[0] << 8) | w[1], (w[2] << 8) | w[3], (w[4] << 8) | w[5]]
+
+
+def s_aes_encrypt_block(plaintext, key16):
+    keys = key_expansion(key16)
+    state = int_to_state(plaintext)
+
+    # Round 0
+    state = [state[i] ^ ((keys[0] >> (4 * (3 - i))) & 0xF) for i in range(4)]
+
+    # Round 1
+    state = s_aes_subnibbles(state)
+    state = s_aes_shiftrows(state)
+    state = s_aes_mixcolumns(state)
+    state = [state[i] ^ ((keys[1] >> (4 * (3 - i))) & 0xF) for i in range(4)]
+
+    # Round 2
+    state = s_aes_subnibbles(state)
+    state = s_aes_shiftrows(state)
+    state = [state[i] ^ ((keys[2] >> (4 * (3 - i))) & 0xF) for i in range(4)]
+
+    return state_to_int(state)
+
+
+def s_aes_decrypt_block(ciphertext, key16):
+    keys = key_expansion(key16)
+    state = int_to_state(ciphertext)
+
+    # Round 2 inverse
+    state = [state[i] ^ ((keys[2] >> (4 * (3 - i))) & 0xF) for i in range(4)]
+    state = s_aes_shiftrows(state)
+    state = s_aes_subnibbles(state, inverse=True)
+
+    # Round 1 inverse
+    state = [state[i] ^ ((keys[1] >> (4 * (3 - i))) & 0xF) for i in range(4)]
+    state = s_aes_mixcolumns(state, inverse=True)
+    state = s_aes_shiftrows(state)
+    state = s_aes_subnibbles(state, inverse=True)
+
+    # Round 0
+    state = [state[i] ^ ((keys[0] >> (4 * (3 - i))) & 0xF) for i in range(4)]
+
+    return state_to_int(state)
+
+
+# ======================
+# FONCTIONS POUR MESSAGES LONGS
+# ======================
+def preparer_message(message):
+    """Ajoute un padding si nécessaire pour un nombre pair d'octets"""
+    return message if len(message) % 2 == 0 else message + b'\x00'
+
+
+def chiffrer_message(message, cle):
+    """Chiffre un message de taille quelconque"""
+    message = preparer_message(message)
+    texte_chiffre = b''
+
+    for i in range(0, len(message), 2):
+        bloc = message[i:i + 2]
+        bloc_entier = (bloc[0] << 8) | bloc[1]
+        bloc_chiffre = s_aes_encrypt_block(bloc_entier, cle)
+        texte_chiffre += bytes([(bloc_chiffre >> 8) & 0xFF, bloc_chiffre & 0xFF])
+
+    return texte_chiffre
+
+
+def dechiffrer_message(texte_chiffre, cle):
+    """Déchiffre un message de taille quelconque"""
+    message = b''
+
+    for i in range(0, len(texte_chiffre), 2):
+        bloc = texte_chiffre[i:i + 2]
+        bloc_entier = (bloc[0] << 8) | bloc[1]
+        bloc_dechiffre = s_aes_decrypt_block(bloc_entier, cle)
+        message += bytes([(bloc_dechiffre >> 8) & 0xFF, bloc_dechiffre & 0xFF])
+
+    # Retire le padding final si présent
+    return message[:-1] if message[-1:] == b'\x00' else message
+
+
+# ======================
+# ATTAQUES CRYPTOGRAPHIQUES
+# ======================
+def attaque_par_dictionnaire(texte_chiffre, texte_clair_connu):
+    """Tente de retrouver la clé par force brute"""
+    print("\n🔎 Attaque par dictionnaire en cours...")
+    cles_possibles = [0x0000, 0xFFFF, 0x1234, 0xA3B4, 0x4242]
+
+    for cle in cles_possibles:
+        resultat = s_aes_encrypt_block(texte_clair_connu, cle)
+        if resultat == texte_chiffre:
+            print(f"✅ Clé trouvée: 0x{cle:04X}")
+            return cle
+
+    print("❌ Aucune clé valide trouvée")
+    return None
+
+
+def analyser_motifs(texte_chiffre):
+    """Détecte les répétitions dans le texte chiffré"""
+    print("\n🔍 Analyse des motifs...")
+    blocs = [texte_chiffre[i:i + 2] for i in range(0, len(texte_chiffre), 2)]
+
+    for i in range(len(blocs)):
+        for j in range(i + 1, len(blocs)):
+            if blocs[i] == blocs[j]:
+                print(f"Motif répété détecté: bloc {i} et {j} identiques")
+
+
+# ======================
+# DÉMONSTRATION PRINCIPALE
+# ======================
+if __name__ == "__main__":
+    # Configuration
+    CLE_SECRETE = 0xA3B4
+    MESSAGE = b"Bonjour le monde !"
+
+    print("\n" + "=" * 50)
+    print(" DÉMONSTRATION S-AES - MESSAGES LONGS ")
+    print("=" * 50)
+
+    # 1. Chiffrement
+    print(f"\n🔒 Message original: {MESSAGE.decode()}")
+    message_chiffre = chiffrer_message(MESSAGE, CLE_SECRETE)
+    print(f"Texte chiffré ({len(message_chiffre)} octets):")
+    print(" ".join(f"{b:02X}" for b in message_chiffre))
+
+    # 2. Déchiffrement normal
+    print("\n=== DÉCHIFFREMENT LÉGITIME ===")
+    message_dechiffre = dechiffrer_message(message_chiffre, CLE_SECRETE)
+    print(f"Résultat: {message_dechiffre.decode()}")
+    print(f"Correspondance: {message_dechiffre == MESSAGE}")
+
+    # 3. Attaques
+    print("\n=== ANALYSE CRYPTANALYTIQUE ===")
+
+    # Attaque sur le premier bloc (supposant qu'on connaît "Bo")
+    premier_bloc = (message_chiffre[0] << 8) | message_chiffre[1]
+    cle_trouvee = attaque_par_dictionnaire(premier_bloc, 0x426F)  # 0x426F = "Bo"
+
+    # Analyse des motifs
+    analyser_motifs(message_chiffre)
+
+    # 4. Déchiffrement avec clé trouvée
+    if cle_trouvee:
+        print("\n=== DÉCHIFFREMENT AVEC CLÉ TROUVÉE ===")
+        texte_pirate = dechiffrer_message(message_chiffre, cle_trouvee)
+        print(f"Message déchiffré: {texte_pirate.decode()}")
+
+        if texte_pirate == MESSAGE:
+            print("\n💥 ATTAQUE RÉUSSIE! La clé était correcte.")
+        else:
+            print("\n⚠️ Attention: le déchiffrement est incorrect!")
+
+            RÉSULTAT:
+
+            ==================================================
+ DÉMONSTRATION S-AES - MESSAGES LONGS 
+==================================================
+
+🔒 Message original: Bonjour le monde !
+Texte chiffré (18 octets):
+A3 D9 EE E1 9F 68 BF 0D D7 77 A4 FA 9F 5B C4 77 A4 F7
+
+=== DÉCHIFFREMENT LÉGITIME ===
+Résultat: Bonjour le monde !
+Correspondance: True
+
+=== ANALYSE CRYPTANALYTIQUE ===
+
+🔎 Attaque par dictionnaire en cours...
+✅ Clé trouvée: 0xA3B4
+
+🔍 Analyse des motifs...
+
+=== DÉCHIFFREMENT AVEC CLÉ TROUVÉE ===
+Message déchiffré: Bonjour le monde !
+
+💥 ATTAQUE RÉUSSIE! La clé était correcte.
+
+Process finished with exit code 0
+
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(toggleId) {
+            const container = document.getElementById(toggleId);
+            const content = container.querySelector('.toggle-content');
+            const icon = container.querySelector('.toggle-icon');
+            
+            content.classList.toggle('show');
+            icon.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
+ 
+<body>
+<h1 style="text-align: center;">3. Points Forts de AES</h1>    
+    <div class="feature-box">
+        <h2>Gestion des Clés</h2>
+        <ul>
+            <li>Génération aléatoire sécurisée (get_random_bytes)</li>
+            <li>Renforcement PBKDF2-HMAC-SHA512 (100k itérations)</li>
+            <li>Support clés externes et gestion du sel</li>
+        </ul>
+    </div>
+
+    <div class="feature-box">
+        <h2>Chiffrement</h2>
+        <ul>
+            <li>Mode GCM authentifié (confidentialité + intégrité)</li>
+            <li>Nonce aléatoire 12 octets (standard NIST)</li>
+        </ul>
+    </div>
+
+    <div class="feature-box">
+        <h2>Bonnes Pratiques</h2>
+        <ul>
+            <li>Structure claire (Nonce+Tag+Ciphertext)</li>
+            <li>Vérification MAC avant déchiffrement</li>
+            <li>Gestion d'erreurs sécurisée</li>
+        </ul>
+    </div>
+
+    <div class="feature-box">
+        <h2>API Documentée</h2>
+        <ul>
+            <li>Docstrings complets</li>
+            <li>Exemple d'utilisation inclus</li>
+            <li>Méthode get_salt() utilitaire</li>
+        </ul>
+    </div>
+
+    <div class="feature-box">
+        <h2>Sécurité</h2>
+        <ul>
+            <li>Protection contre attaques (force brute, rainbow tables)</li>
+            <li>Validation stricte des entrées</li>
+        </ul>
+    </div>
+
+    <div class="feature-box">
+        <h2>Flexibilité</h2>
+        <ul>
+            <li>Configuration adaptable (taille clé, itérations)</li>
+            <li>Supporte clés aléatoires et dérivées</li>
+        </ul>
+    </div>
+</body>
+
+<div class="toggle-container" id="toggle3">
+        <div class="toggle-header" onclick="toggleContent('toggle3')">
+            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span>Ici pour voir le fichier AES.py complet</span>
+        </div>
+        <div class="toggle-content">
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+import hashlib
+import os
+
+class EnhancedAES:
+    def __init__(self, key=None, key_size=256, iterations=100000, salt=None):
+        self.iterations = iterations
+        if key is None:
+            self.key = get_random_bytes(key_size // 8)
+            self.salt = None  # Pas de sel nécessaire pour les clés aléatoires
+        else:
+            # Génère et stocke le sel pour pouvoir reproduire la clé
+            if salt is None:
+                self.salt = get_random_bytes(16)
+            else:
+                self.salt = salt
+            self.key = self._strengthen_key(key, key_size)
+
+        self.block_size = AES.block_size
+        self.mode = AES.MODE_GCM
+        self.nonce_size = 12  # Taille recommandée pour GCM
+
+    def _strengthen_key(self, key, key_size):
+        """Renforce la clé avec PBKDF2 et salage"""
+        strengthened_key = hashlib.pbkdf2_hmac(
+            'sha512',
+            key.encode(),
+            self.salt,
+            self.iterations,
+            key_size // 8
+        )
+        return strengthened_key
+
+    def encrypt(self, plaintext):
+        """Chiffrement avec authentification"""
+        cipher = AES.new(self.key, AES.MODE_GCM, nonce=get_random_bytes(self.nonce_size))
+        ciphertext, tag = cipher.encrypt_and_digest(plaintext.encode())
+        # Retourne nonce + tag + ciphertext (et salt si utilisé)
+        return cipher.nonce + tag + ciphertext
+
+    def decrypt(self, ciphertext):
+        """Déchiffrement avec vérification d'authenticité"""
+        if self.salt is None:
+             raise ValueError("Salt is required for decryption when a key was provided during initialization.")
+
+        nonce = ciphertext[:self.nonce_size]
+        tag = ciphertext[self.nonce_size:self.nonce_size+16]
+        ciphertext = ciphertext[self.nonce_size+16:]
+
+        cipher = AES.new(self.key, AES.MODE_GCM, nonce=nonce)
+        try:
+            plaintext = cipher.decrypt_and_verify(ciphertext, tag)
+            return plaintext.decode()
+        except ValueError as e:
+            # Catch the specific MAC error and re-raise with a more informative message
+            if "MAC check failed" in str(e):
+                 raise ValueError("Authentification failed - incorrect key or data corrupted.") from e
+            else:
+                 raise ValueError("Decryption failed.") from e
+
+
+    def get_salt(self):
+        """Retourne le sel utilisé pour le KDF"""
+        return self.salt
+
+# Exemple d'utilisation avec un message spécifique
+if __name__ == "__main__":
+    # Message à chiffrer
+    message = "Ceci est un message très secret qui doit être protégé!"
+
+    # Clé secrète (dans un cas réel, il faudrait la stocker de manière sécurisée)
+    secret_key = "MaSuperCleSecrete123!"
+
+    print(f"Message original: {message}")
+
+    # Initialisation du chiffreur
+    aes = EnhancedAES(key=secret_key)
+
+    # Chiffrement du message
+    encrypted_data = aes.encrypt(message)
+    salt_used = aes.get_salt()
+    print(f"Message chiffré (en hex): {encrypted_data.hex()}")
+
+    # Pour déchiffrer, on recrée une instance avec la même clé et le même sel
+    # Pass the salt obtained from the encryptor to the decryptor
+    aes_decryptor = EnhancedAES(key=secret_key, salt=salt_used)
+    decrypted_message = aes_decryptor.decrypt(encrypted_data)
+    print(f"Message déchiffré: {decrypted_message}")
+
+    RÉSULTAT
+
+    Message original: Ceci est un message très secret qui doit être protégé!
+Message chiffré (en hex): 23d5006e0bff3891189e2a4bdf63f71f494877729b832a0d156702932adc6d277611c080f0b010bc5b5dd8b4773fed8df43cf0996a4c508f74dbbc6d974e348a3148d6bcee8838ee69e551aa7be330d2c6749c27b39b
+Message déchiffré: Ceci est un message très secret qui doit être protégé!
+
+Process finished with exit code 0
+
+        </div>
+    </div>
+
+
+<section>
+   <h2 style="text-align: center;">4. Pour aller plus loin avec AES</h2>
+
+<div class="improvements">
+    <div class="improvement">
+        <h3>Argon2 au lieu de PBKDF2</h3>
+        <ul>
+            <li> <strong>Plus résistant aux attaques matérielles</strong> (GPU/ASIC)</li>
+            <li> <strong>Recommandé par l'OWASP</strong> comme standard actuel</li>
+            <li> <strong>Adaptatif en mémoire</strong> (résiste mieux aux attaques par rainbow tables)</li>
+            <li> Nécessite d'installer <code>argon2-cffi</code> (dépendance supplémentaire)</li>
+        </ul>
+        
+        <div class="toggle-container" id="toggle4">
+        <div class="toggle-header" onclick="toggleContent('toggle4')">
+            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span>Ici pour voir le fichier Argon2 au lieu de PBKDF2-AES.py complet</span>
+        </div>
+        <div class="toggle-content">
+        <pre><code class="language-python"># Exemple d'implémentation
+import argon2
+
+def _strengthen_key(self, key):
+    return argon2.low_level.hash_secret(
+        secret=key.encode(),
+        salt=self.salt,
+        time_cost=3,
+        memory_cost=65536,
+        parallelism=4,
+        hash_len=32,
+        type=argon2.low_level.Type.ID
+    )</code></pre>
+    </div>
+
+    <div class="improvement">
+        <h3>Chiffrement de Fichiers</h3>
+        <ul>
+            <li> <strong>Cas d'usage réel</strong> (stockage cloud, sauvegardes)</li>
+            <li> <strong>Gestion des gros volumes</strong> (streaming avec buffers)</li>
+            <li> <strong>Structure professionnelle</strong> (en-têtes custom)</li>
+        </ul>
+
+        <div class="toggle-container" id="toggle5">
+        <div class="toggle-header" onclick="toggleContent('toggle5')">
+            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span>Ici pour voir le fichier Chiffrement de Fichiers-AES.py complet</span>
+        </div>
+        <div class="toggle-content">
+        <pre><code class="language-python">def encrypt_file(self, input_path, output_path):
+    with open(input_path, 'rb') as f_in, open(output_path, 'wb') as f_out:
+        # Écriture du sel et nonce en header
+        f_out.write(self.salt + get_random_bytes(12))
+        # Chiffrement par blocs de 4KB
+        while chunk := f_in.read(4096):
+            f_out.write(self.encrypt(chunk))</code></pre>
+    </div>
+
+    <div class="improvement">
+        <h3>Vérification Taille Clé/Sel</h3>
+        <ul>
+            <li> <strong>Prévient les erreurs silencieuses</strong></li>
+            <li> <strong>Garantit la sécurité cryptographique</strong></li>
+            <li> <strong>Meilleure expérience développeur</strong> (erreurs explicites)</li>
+        </ul>
+
+        <div class="toggle-container" id="toggle6">
+        <div class="toggle-header" onclick="toggleContent('toggle6')">
+            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span>Ici pour voir le fichier Vérification Taille Clé/Sel-AES.py complet</span>
+        </div>
+        <div class="toggle-content">
+        <pre><code class="language-python">def __init__(self, key=None, salt=None):
+    if salt and len(salt) != 16:
+        raise ValueError("Salt must be 16 bytes")
+    if key and len(key.encode()) not in [16, 24, 32]:
+        raise ValueError("Key must be 128/192/256 bits")
+    # ...</code></pre>
+    </div>
+</div>
+   
+</section>
+
+<section>
+    <h2>À retenir</h2>
+    <p>
+        Bien que les chiffres classiques soient pédagogiques, ils ne sont pas sécuritaires.
+    </p>
+    <ul>
+        <li>Le chiffrement AES est largement utilisé et considéré comme sécurisé.</li>
+        <li>Les clés doivent être longues, aléatoires, et correctement gérées.</li>
+        <li>Pour des données sensibles, toujours utiliser des standards éprouvés.</li>
+    </ul>
+</section>
+
+<footer>
+    &copy; 2025 Robin Boucher - Tous droits réservés.
+</footer>
+
+</body>
+</html>

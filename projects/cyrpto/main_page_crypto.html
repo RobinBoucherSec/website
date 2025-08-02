@@ -84,38 +84,111 @@
                 Robin Boucher – Étudiant en cybersécurité<br>
                 <em>Juillet 2025</em>
             </div>
-
             <div class="project-block" style="text-align:center;">
-                <h3>Chiffrement César</h3>
+                <h2>Introduction</h2>
+                <p>
+                    <div style="display: inline-block; text-align: left; margin: 10px 0;">
+                        <li>1. Chiffres manuels / historiques → César, Vigenère  
+     <br><em> Bases du chiffrement symétrique, substitution et clé simple</em></li>
+     </p>
+ <p>
+<li>2. Diffie-Hellman, échange de clés sécurisé (1976)  
+     <br><em> Génération de clé partagée sur un canal non sécurisé</em></li>
+     </p>
+ <p>
+<li>3. Chiffrement à clé publique → RSA (1977)  
+     <br><em> Introduction de la cryptographie asymétrique : clé publique / privée</em></li>
+     </p>
+ <p>
+<li>4. Premier standard symétrique moderne → DES (1977)  
+     <br><em> Symétrique, standardisé mais aujourd’hui obsolète</em></li>
+     </p>
+ <p>
+<li>5. Standard actuel → AES (2001)  
+     <br><em> Symétrique, rapide, utilisé dans les communications sécurisées (HTTPS)</em></li>
+     </p></div>
+
+                    
+                </p>
+            <div class="project-block" style="text-align:center;">
+                <h2>Chiffrement César</h2>
                 <p>
                     Basé sur une substitution simple : chaque lettre est remplacée par une autre selon un décalage fixe (monoalphabétique).<br>
                     Par exemple, avec une clé de 3 : A → D, B → E, etc.
                 </p>
-                <p>DIAGRAMME EXPLICATIF CAESAR</p>
+               
                 <a class="button-link" href="caesar.html">Voir le projet César</a>
             </div>
 
             <div class="project-block" style="text-align:center;">
-                <h3>Vigenère</h3>
+                <h2>Vigenère</h2>
                 <p>
-                    Basé sur une substitution variable : chaque lettre est décalée différemment selon une clé (polyalphabétique).<br>
-                    C’est une amélioration du chiffre de César, utilisant une clé textuelle pour décaler les lettres de manière variable.<br>
-                    Par exemple : "A" dans la clé représente le décalage de 0 (ou 65 selon l’encodage ASCII), "B" représente un décalage de 1 (ou 66), etc.<br>
-                    Plus robuste que le César, car il résiste mieux à l'analyse des fréquences des lettres.
+                Le chiffrement de Vigenère est une méthode classique de chiffrement par substitution polyalphabétique, qui améliore le chiffrement de César en utilisant un mot-clé pour déterminer des décalages variables. Bien qu’il ait été historiquement considéré comme "indéchiffrable" pendant longtemps (d'où son surnom de "le chiffrage indéchiffrable"), il n'est pas sécurisé par les standards modernes. Cependant, on peut quand même tenter d'améliorer sa sécurité ou ses performances selon le contexte. 
                 </p>
                 <a class="button-link" href="vigenere.html">Voir le projet Vigenère</a>
             </div>
+ <div class="project-block" style="text-align:center;">
+                <h2>Relation entre : Diffie-Hellman, RSA asymétrique et AES symétrique</h2>
+<p>
+    Dans les communications sécurisées (comme HTTPS), on combine plusieurs algorithmes pour allier sécurité, performance et authentification :
+</p>         <div style="display: inline-block; text-align: left; margin: 10px 0;">
+<ul>
+    <li><strong>Diffie-Hellman</strong> permet un <em>échange de clés sécurisé</em> : deux parties peuvent générer une clé secrète commune sans jamais la transmettre sur le réseau.</li>
+    <li><strong>RSA</strong> assure l'<em>authentification</em> : via un certificat, on vérifie l’identité du serveur (ou de l’interlocuteur).</li>
+    <li><strong>AES</strong> prend ensuite le relais pour <em>chiffrer efficacement les données</em>, qu’il s’agisse de fichiers volumineux ou de messages en temps réel.</li>
+</ul>
+<p>
+    Cette combinaison est au cœur des protocoles modernes comme TLS : elle offre à la fois <strong>sécurité</strong>, <strong>performance</strong> et <strong>confiance</strong>.
+</p>
+                </div>
+         
+             
 
-            <div class="project-block" style="text-align:center;">
-                <h3>Chiffrement Symétrique Moderne</h3>
-                <p>DES, chiffrement par blocs personnalisé, comparaisons ECB/CBC, etc.</p>
-                <a class="button-link" href="symmetric_cypher.html">Voir les projets symétriques</a>
+           <div class="project-block" style="text-align:center;">
+    <h2>Chiffrement Asymétrique RSA</h2>
+    <p>RSA est l'algorithme asymétrique le plus répandu. Plus lent que AES mais indispensable pour :</p>
+    
+    <div style="display: inline-block; text-align: left; margin: 10px 0;">
+        <ul>
+            <li><strong>Authentification</strong> : Vérifier l'identité via des signatures numériques</li>
+            <li><strong>Non-répudiation</strong> : Preuve d'origine incontestable des messages</li>
+            <li><strong>Échange sécurisé</strong> : Transmettre les clés AES confidentiellement</li>
+        </ul>
+    </div>
+
+    <p>RSA comporte une paire de clés inséparables :</p>
+    
+    <div style="background: rgba(120,0,180,0.2); border-radius: 10px; padding: 10px; display: inline-block; margin: 10px 0;">
+        <div style="display: flex; justify-content: center; gap: 15px; text-align: left;">
+            <div>
+                <strong>Clé publique</strong><br>
+                • Partageable à tous<br>
+                • Chiffre les données
             </div>
+            <div>
+                <strong>Clé privée</strong><br>
+                • Gardée secrète<br>
+                • Déchiffre et signe
+            </div>
+        </div>
+    </div>
+
+    <p>Une fois la connexion établie, AES prend le relais pour chiffrer rapidement les échanges.</p>
+    
+    <div style="font-size: 0.9em; margin-top: 10px;">
+        <em>Bonnes pratiques : RSA clés ≥2048 bits •   Ne jamais réutiliser les clés</em>
+    </div>
+
+    <a class="button-link" href="asymetric.html">Voir le projet complet RSA</a>
+</div>
 
             <div class="project-block" style="text-align:center;">
-                <h3>Chiffrement Asymétrique</h3>
-                <p>Implémentation complète de RSA, génération de clés, chiffrement et déchiffrement.</p>
-                <a class="button-link" href="asymmetric_cypher.html">Voir le projet RSA</a>
+                <h2>Chiffrement Symétrique AES</h2>
+                <p>AES (Advanced Encryption Standard) est utilisé pour chiffrer des fichiers volumineux 
+et ainsi se parler en secret. 
+<li>Mais avant il faut avoir échangé des clés avec Diffie-Hellman. C'est un algorithme de chiffrement symétrique qui traite des blocs de 128 bits via plusieurs tours (10, 12 ou 14) en appliquant des opérations mathématiques complexes (SubBytes, ShiftRows, MixColumns, AddRoundKey).</li>
+</p>
+                <a class="button-link" href="symetric.html">Voir les projets symétriques</a>
             </div>
 
             <div style="text-align:center; margin-top:2em;">

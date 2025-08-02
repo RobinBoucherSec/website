@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Asymmetric Cipher RSA | Robin Boucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        .code-container {
+            background: #111 !important;
+            border-radius: 12px;
+            padding: 1em;
+            margin-top: 1em;
+            color: #fff !important;
+            overflow-x: auto;
+        }
+        .explanation-block {
+            background: rgba(80,0,100,0.18);
+            border-radius: 12px;
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            color: #fff;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+        .toggle-container {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .toggle-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #000000;
+            border-radius: 5px;
+            user-select: none;
+        }
+        .toggle-icon {
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        .toggle-content {
+            display: none;
+            padding: 15px;
+            background-color: #000000;
+            border: 1px solid #000000;
+            border-radius: 0 0 5px 5px;
+            overflow-x: auto;
+            white-space: pre;
+            font-family: monospace;
+        }
+        .toggle-content.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1 style="text-align: center;">Chiffrement asymétrique RSA</h1>
+            <p style="text-align: center;">Robin Boucher - Cryptography Portfolio</p>
+
+            <section>
+                <h2 style="text-align: center;">1. Principes de base du RSA</h2>
+                <p>
+                    RSA est un algorithme de chiffrement asymétrique qui utilise une paire de clés : une publique pour chiffrer et une privée pour déchiffrer.
+                    Il repose sur la difficulté de factoriser de grands nombres entiers.
+                </p>
+                
+                <h3>Fonctionnement mathématique</h3>
+                <ul>
+                    <li><strong>Génération des clés</strong> : Choix de deux nombres premiers p et q, calcul de n = p*q et φ(n) = (p-1)*(q-1)</li>
+                    <li><strong>Clé publique</strong> : (n, e) où e est premier avec φ(n)</li>
+                    <li><strong>Clé privée</strong> : (n, d) où d est l'inverse modulaire de e modulo φ(n)</li>
+                    <li><strong>Chiffrement</strong> : c = m<sup>e</sup> mod n</li>
+                    <li><strong>Déchiffrement</strong> : m = c<sup>d</sup> mod n</li>
+                </ul>
+
+                <div class="toggle-container" id="toggle1">
+                    <div class="toggle-header" onclick="toggleContent('toggle1')">
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        <span>Implémentation pédagogique de RSA (Python)</span>
+                    </div>
+                    <div class="toggle-content">
+# RSA simplifié - version pédagogique
+
+import random
+import math
+
+def is_prime(n, k=5):
+    """Test de primalité de Miller-Rabin"""
+    if n <= 1:
+        return False
+    elif n <= 3:
+        return True
+    elif n % 2 == 0:
+        return False
+    
+    # Écrire n-1 comme d*2^s
+    d = n - 1
+    s = 0
+    while d % 2 == 0:
+        d //= 2
+        s += 1
+    
+    for _ in range(k):
+        a = random.randint(2, n-2)
+        x = pow(a, d, n)
+        if x == 1 or x == n-1:
+            continue
+        for __ in range(s-1):
+            x = pow(x, 2, n)
+            if x == n-1:
+                break
+        else:
+            return False
+    return True
+
+def generate_prime(bits):
+    """Génère un nombre premier de taille donnée"""
+    while True:
+        p = random.getrandbits(bits)
+        p |= (1 << bits-1) | 1  # Assure que le nombre a la bonne taille et est impair
+        if is_prime(p):
+            return p
+
+def extended_gcd(a, b):
+    """Algorithme d'Euclide étendu"""
+    if a == 0:
+        return (b, 0, 1)
+    else:
+        g, y, x = extended_gcd(b % a, a)
+        return (g, x - (b // a) * y, y)
+
+def modinv(a, m):
+    """Calcul de l'inverse modulaire"""
+    g, x, y = extended_gcd(a, m)
+    if g != 1:
+        raise Exception('Pas d\'inverse modulaire')
+    else:
+        return x % m
+
+def generate_keys(bits=32):
+    """Génère une paire de clés RSA"""
+    p = generate_prime(bits//2)
+    q = generate_prime(bits//2)
+    while q == p:
+        q = generate_prime(bits//2)
+    
+    n = p * q
+    phi = (p-1)*(q-1)
+    
+    # Choix de e premier avec phi
+    e = 65537
+    while math.gcd(e, phi) != 1:
+        e = random.randint(2, phi-1)
+    
+    d = modinv(e, phi)
+    
+    return ((n, e), (n, d))
+
+def encrypt(public_key, plaintext):
+    """Chiffrement RSA"""
+    n, e = public_key
+    m = int.from_bytes(plaintext.encode(), 'big')
+    if m >= n:
+        raise ValueError("Message trop long pour la taille de la clé")
+    c = pow(m, e, n)
+    return c
+
+def decrypt(private_key, ciphertext):
+    """Déchiffrement RSA"""
+    n, d = private_key
+    m = pow(ciphertext, d, n)
+    plaintext = m.to_bytes((m.bit_length() + 7) // 8, 'big').decode()
+    return plaintext
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    print("Génération des clés RSA...")
+    public_key, private_key = generate_keys(32)  # 32 bits pour la démo (trop faible en pratique)
+    
+    message = "Hello RSA"
+    print(f"Message original: {message}")
+    
+    # Chiffrement
+    ciphertext = encrypt(public_key, message)
+    print(f"Message chiffré: {ciphertext}")
+    
+    # Déchiffrement
+    decrypted = decrypt(private_key, ciphertext)
+    print(f"Message déchiffré: {decrypted}")
+    
+    # Vérification
+    if decrypted == message:
+        print("✅ Succès : le déchiffrement a bien retrouvé le message d'origine !")
+    else:
+        print("❌ Échec du déchiffrement.")
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="text-align: center;">2. Attaques sur RSA</h2>
+                <p>
+                    RSA peut être vulnérable à plusieurs types d'attaques si mal implémenté ou mal utilisé :
+                </p>
+                <ul>
+                    <li><strong>Factorisation</strong> : Si n est trop petit ou si p et q sont trop proches</li>
+                    <li><strong>Attaque par texte clair connu</strong> : Si le même message est envoyé à plusieurs destinataires avec le même e</li>
+                    <li><strong>Timing attack</strong> : Si l'implémentation n'est pas à temps constant</li>
+                    <li><strong>Padding oracle</strong> : Si le padding est mal géré (ex: PKCS#1 v1.5)</li>
+                </ul>
+
+                <div class="toggle-container" id="toggle2">
+                    <div class="toggle-header" onclick="toggleContent('toggle2')">
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        <span>Exemple d'attaque par factorisation</span>
+                    </div>
+                    <div class="toggle-content">
+# Attaque par factorisation sur RSA faible
+
+from math import gcd, isqrt
+import random
+
+def pollards_rho(n):
+    """Algorithme de Pollard's Rho pour la factorisation"""
+    if n % 2 == 0:
+        return 2
+    if n % 3 == 0:
+        return 3
+    if n % 5 == 0:
+        return 5
+
+    while True:
+        c = random.randint(1, n-1)
+        f = lambda x: (pow(x, 2, n) + c) % n
+        x, y, d = 2, 2, 1
+        
+        while d == 1:
+            x = f(x)
+            y = f(f(y))
+            d = gcd((x - y) % n, n)
+        
+        if d != n:
+            return d
+
+def factor(n):
+    """Factorisation d'un nombre n (méthode naïve + Pollard's Rho)"""
+    factors = []
+    
+    # Test des petits facteurs premiers
+    for p in [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]:
+        while n % p == 0:
+            factors.append(p)
+            n = n // p
+        if n == 1:
+            return factors
+    
+    # Algorithme plus sophistiqué pour les grands nombres
+    if n > 1:
+        d = pollards_rho(n)
+        factors += factor(d)
+        factors += factor(n // d)
+    
+    return factors
+
+def crack_rsa(public_key):
+    """Tente de casser RSA en factorisant n"""
+    n, e = public_key
+    print(f"Tentative de factorisation de n = {n}...")
+    
+    factors = factor(n)
+    if len(factors) != 2:
+        raise ValueError("n n'est pas le produit de deux nombres premiers")
+    
+    p, q = factors[0], factors[1]
+    print(f"Facteurs trouvés: p = {p}, q = {q}")
+    
+    phi = (p-1)*(q-1)
+    d = modinv(e, phi)
+    
+    return (n, d)
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    # Génération d'une clé faible pour la démo
+    public_key, private_key = generate_keys(32)  # 32 bits seulement!
+    print(f"Clé publique: (n={public_key[0]}, e={public_key[1]})")
+    
+    # Attaque
+    cracked_private_key = crack_rsa(public_key)
+    print(f"Clé privée trouvée: (n={cracked_private_key[0]}, d={cracked_private_key[1]})")
+    
+    # Vérification
+    if cracked_private_key == private_key:
+        print("✅ Attaque réussie! La clé privée a été retrouvée.")
+    else:
+        print("❌ Échec de l'attaque.")
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="text-align: center;">3. RSA sécurisé en pratique</h2>
+                <p>
+                    Pour une utilisation réelle, plusieurs précautions sont nécessaires :
+                </p>
+                
+                <div class="feature-box">
+                    <h3>Bonnes pratiques</h3>
+                    <ul>
+                        <li><strong>Taille des clés</strong> : Au moins 2048 bits (3072 ou 4096 recommandé)</li>
+                        <li><strong>Padding</strong> : Utiliser OAEP plutôt que PKCS#1 v1.5</li>
+                        <li><strong>Génération des nombres premiers</strong> : Méthodes cryptographiquement sûres</li>
+                        <li><strong>Protection des clés</strong> : Stockage sécurisé (HSM, TPM)</li>
+                    </ul>
+                </div>
+
+                <div class="toggle-container" id="toggle3">
+                    <div class="toggle-header" onclick="toggleContent('toggle3')">
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        <span>Implémentation sécurisée avec PyCryptodome</span>
+                    </div>
+                    <div class="toggle-content">
+# RSA sécurisé avec PyCryptodome
+
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Hash import SHA256
+from Crypto import Random
+
+def generate_secure_keys(bits=2048):
+    """Génère une paire de clés RSA sécurisée"""
+    key = RSA.generate(bits)
+    private_key = key.export_key()
+    public_key = key.publickey().export_key()
+    return public_key, private_key
+
+def encrypt_message(public_key, message):
+    """Chiffrement RSA avec OAEP padding"""
+    rsa_key = RSA.import_key(public_key)
+    cipher = PKCS1_OAEP.new(rsa_key, hashAlgo=SHA256)
+    ciphertext = cipher.encrypt(message.encode())
+    return ciphertext
+
+def decrypt_message(private_key, ciphertext):
+    """Déchiffrement RSA avec OAEP padding"""
+    rsa_key = RSA.import_key(private_key)
+    cipher = PKCS1_OAEP.new(rsa_key, hashAlgo=SHA256)
+    try:
+        plaintext = cipher.decrypt(ciphertext).decode()
+        return plaintext
+    except ValueError as e:
+        raise ValueError("Échec du déchiffrement - clé invalide ou message corrompu") from e
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    print("Génération de clés RSA 2048 bits...")
+    public_key, private_key = generate_secure_keys()
+    
+    message = "Message secret à protéger"
+    print(f"Message original: {message}")
+    
+    # Chiffrement
+    ciphertext = encrypt_message(public_key, message)
+    print(f"Message chiffré (hex): {ciphertext.hex()}")
+    
+    # Déchiffrement
+    decrypted = decrypt_message(private_key, ciphertext)
+    print(f"Message déchiffré: {decrypted}")
+    
+    # Vérification
+    if decrypted == message:
+        print("✅ Succès : le déchiffrement a bien retrouvé le message d'origine !")
+    else:
+        print("❌ Échec du déchiffrement.")
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="text-align: center;">4. Applications pratiques de RSA</h2>
+                <p>
+                    RSA est utilisé dans de nombreux protocoles et applications :
+                </p>
+                
+                <div class="feature-box">
+                    <h3>Cas d'utilisation</h3>
+                    <ul>
+                        <li><strong>Échange de clés</strong> : TLS, SSH</li>
+                        <li><strong>Signature numérique</strong> : Authentification de documents</li>
+                        <li><strong>Chiffrement de petites données</strong> : Clés symétriques, mots de passe</li>
+                        <li><strong>Systèmes de vote électronique</strong> : Confidentialité et vérifiabilité</li>
+                    </ul>
+                </div>
+
+                <div class="toggle-container" id="toggle4">
+                    <div class="toggle-header" onclick="toggleContent('toggle4')">
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        <span>Exemple : Signature numérique avec RSA</span>
+                    </div>
+                    <div class="toggle-content">
+# Signature numérique avec RSA
+
+from Crypto.PublicKey import RSA
+from Crypto.Signature import pkcs1_15
+from Crypto.Hash import SHA256
+from Crypto import Random
+
+def generate_key_pair():
+    """Génère une paire de clés RSA"""
+    key = RSA.generate(2048)
+    return key
+
+def sign_message(private_key, message):
+    """Signe un message avec la clé privée"""
+    h = SHA256.new(message.encode())
+    signature = pkcs1_15.new(private_key).sign(h)
+    return signature
+
+def verify_signature(public_key, message, signature):
+    """Vérifie une signature avec la clé publique"""
+    h = SHA256.new(message.encode())
+    try:
+        pkcs1_15.new(public_key).verify(h, signature)
+        return True
+    except (ValueError, TypeError):
+        return False
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    # Génération des clés
+    key = generate_key_pair()
+    
+    # Message à signer
+    message = "Ceci est un message important à signer"
+    print(f"Message original: {message}")
+    
+    # Signature
+    signature = sign_message(key, message)
+    print(f"Signature (hex): {signature.hex()}")
+    
+    # Vérification (cas valide)
+    is_valid = verify_signature(key.publickey(), message, signature)
+    print(f"Signature valide? {is_valid}")
+    
+    # Vérification (cas invalide - message altéré)
+    is_valid = verify_signature(key.publickey(), message + "!", signature)
+    print(f"Signature valide après altération? {is_valid}")
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>À retenir sur RSA</h2>
+                <ul>
+                    <li>RSA est un algorithme asymétrique basé sur la difficulté de factorisation</li>
+                    <li>Les clés doivent être suffisamment grandes (≥2048 bits)</li>
+                    <li>Toujours utiliser des schémas de padding sécurisés (OAEP)</li>
+                    <li>En pratique, préférer des bibliothèques cryptographiques éprouvées</li>
+                    <li>RSA est lent - ne pas l'utiliser pour chiffrer de gros volumes de données</li>
+                </ul>
+            </section>
+
+            <footer>
+                &copy; 2025 Robin Boucher - Tous droits réservés.
+            </footer>
+
+            <script>
+                function toggleContent(toggleId) {
+                    const container = document.getElementById(toggleId);
+                    const content = container.querySelector('.toggle-content');
+                    const icon = container.querySelector('.toggle-icon');
+                    
+                    content.classList.toggle('show');
+                    icon.classList.toggle('collapsed');
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

@@ -98,45 +98,62 @@
             <!-- Section 1: Fonctions de Base du Chiffrement -->
             <div class="project-block">
                 <h2>1. Fonctions de Base du Chiffrement</h2>
-                <p><strong>Le Codeur et Décodeur</strong></p>
-                <p>
-                    <strong>vigenere_encrypt</strong> : Transforme un message normal en code secret avec un mot-clé (ex : "BONJOUR" + "CLE" → "DSPLYXZ").<br>
-                    <strong>vigenere_decrypt</strong> : Retrouve le message original si on a le bon mot-clé.
-                </p>
-                <p>
-                    <em>Analogie :</em> Imaginez un cadran alphabétique qui tourne différemment pour chaque lettre en fonction du mot-clé – c'est comme ça que le message est brouillé !
-                </p>
+                <p>Le chiffrement de Vigenère est une méthode classique de chiffrement par substitution polyalphabétique. Contrairement au chiffre de César, il utilise un mot-clé pour appliquer des décalages variables sur chaque lettre du message.</p>
+                <li>Principe de base :
+Chaque lettre du message clair est décalée dans l’alphabet selon la valeur correspondante de la clé. Par exemple, si la clé est "CLE", alors :
+La première lettre du message est décalée selon "C" (2),
+La deuxième selon "L" (11),
+La troisième selon "E" (4), etc.</li>
+                 <h3>Démonstration:</h3>
+               
                 <div class="code-container">
 <pre><code>def vigenere_chiffrer(texte_clair: str, cle: str, conserver_casse: bool = True) -> str:
     texte_chiffre = []
+    ## Répète la clé pour qu'elle ait la même longueur que le message
     cle_repetee = (cle * (len(texte_clair) // len(cle) + 1)).lower()
     index_cle = 0
+
     for caractere in texte_clair:
         if caractere.isalpha():
+            ## Détermine la base ASCII selon la casse (majuscule ou minuscule)
             base = ord('A') if caractere.isupper() else ord('a')
+            ## Récupère la lettre correspondante dans la clé répétée
             caractere_cle = cle_repetee[index_cle]
+            ## Calcul du décalage en ASCII
             decalage = ord(caractere_cle) - ord('a')
+            ## Applique le décalage au caractère
             caractere_chiffre = chr((ord(caractere.lower()) - ord('a') + decalage) % 26 + base)
             texte_chiffre.append(caractere_chiffre if conserver_casse else caractere_chiffre.upper())
             index_cle += 1
         else:
+            ## Conserve les caractères non alphabétiques tels quels
             texte_chiffre.append(caractere)
+
     return ''.join(texte_chiffre)
+
 
 def vigenere_dechiffrer(texte_chiffre: str, cle: str, conserver_casse: bool = True) -> str:
     texte_clair = []
+    ## Répète la clé pour qu'elle ait la même longueur que le message chiffré
     cle_repetee = (cle * (len(texte_chiffre) // len(cle) + 1)).lower()
     index_cle = 0
+
     for caractere in texte_chiffre:
         if caractere.isalpha():
+            ## Détermine la base ASCII selon la casse (majuscule ou minuscule)
             base = ord('A') if caractere.isupper() else ord('a')
+            ## Récupère la lettre correspondante dans la clé répétée
             caractere_cle = cle_repetee[index_cle]
+            ## Calcul du décalage en ASCII
             decalage = ord(caractere_cle) - ord('a')
+            ## Retire le décalage pour obtenir le caractère original
             caractere_dechiffre = chr((ord(caractere.lower()) - ord('a') - decalage) % 26 + base)
             texte_clair.append(caractere_dechiffre if conserver_casse else caractere_dechiffre.upper())
             index_cle += 1
         else:
+            ## Conserve les caractères non alphabétiques tels quels
             texte_clair.append(caractere)
+
     return ''.join(texte_clair)
 </code></pre>
                 </div>
@@ -144,29 +161,50 @@ def vigenere_dechiffrer(texte_chiffre: str, cle: str, conserver_casse: bool = Tr
 
             <!-- Section 2: Outils de Cryptanalyse -->
             <div class="project-block">
-                <h2>2. Outils de Cryptanalyse</h2>
-                <p><strong>Le Kit du Détective de Codes</strong></p>
-                <p>
-                    <strong>Indice de Coïncidence</strong> : Mesure à quel point le code semble aléatoire (pour deviner le type de chiffrement).<br>
-                    <strong>Examen de Kasiski</strong> : Repère des motifs répétés pour estimer la longueur du mot-clé (ex : "ABC" apparaît tous les 5 caractères).<br>
-                    <strong>Attaque par Fréquence</strong> : Utilise la fréquence des lettres (ex : "E" est la plus courante en français) pour deviner le mot-clé.
-                </p>
-                <p>
-                    <em>Utilité :</em> Ce sont les mêmes techniques que les vrais cryptanalystes utilisent pour casser des codes sans connaître la clé !
-                </p>
+                <h2>2. Limites du chiffre de Vigenère</h2>
+              <div class="improvement-card">
+        <h3> La clé est répétée </h3>
+        <p>Attaque possible via la méthode de répétitions de séquences ou indice de coïncidence, ce qui permet d’identifier la longueur de la clé.</p>
+        <div class="example">
+          
+        </div>
+    </div>
+     <div class="improvement-card">
+       
+        <p>Une fois la longueur de la clé connue, on peut découper le texte en sous-textes et utiliser l’analyse fréquentielle pour retrouver la clé, rendant le message facile à déchiffrer.</p>
+        <div class="example">
+             <h3>Démonstration:</h3>
+            
                 <div class="code-container">
-<pre><code>def calculer_indice_coincidence(texte: str) -> float:
+<pre><code>import re
+from collections import Counter
+
+def calculer_indice_coincidence(texte: str) -> float:
+
+    ## Supprime tous les caractères non alphabétiques et passe en minuscules
+
     texte = re.sub(r'[^a-zA-Z]', '', texte).lower()
     if len(texte) < 2:
         return 0.0
     freq = Counter(texte)
     total = len(texte)
+
+    ## Calcul de l'indice de coïncidence : somme des fréquences combinatoires divisée par le 
+    nombre total de combinaisons possibles
+
     ic = sum(count * (count - 1) for count in freq.values()) / (total * (total - 1))
     return ic
 
+
 def examen_kasiski(texte_chiffre: str, longueur_cle_max: int = 10) -> list:
+
+    ## Nettoyage du texte : uniquement lettres, majuscules
+
     texte_chiffre = re.sub(r'[^a-zA-Z]', '', texte_chiffre).upper()
     sequences = {}
+
+    ## On cherche toutes les séquences de 3 à 5 lettres dans le texte chiffré
+
     for longueur in range(3, 6):
         for i in range(len(texte_chiffre) - longueur):
             seq = texte_chiffre[i:i + longueur]
@@ -175,17 +213,27 @@ def examen_kasiski(texte_chiffre: str, longueur_cle_max: int = 10) -> list:
             else:
                 sequences[seq] = [i]
     distances = []
+
+    ## Pour chaque séquence répétée, on calcule la distance entre ses positions
+
     for seq, positions in sequences.items():
         if len(positions) > 1:
             for i in range(len(positions)):
                 for j in range(i + 1, len(positions)):
                     distances.append(positions[j] - positions[i])
     facteurs = Counter()
+
+    ## On compte combien de fois chaque longueur possible divise les distances trouvées
+
     for distance in distances:
         for longueur_possible in range(2, min(distance, longueur_cle_max) + 1):
             if distance % longueur_possible == 0:
                 facteurs[longueur_possible] += 1
+
+    ## On retourne les longueurs les plus probables de la clé
+
     return [longueur for longueur, _ in facteurs.most_common()]
+
 
 def attaque_frequence(texte_chiffre: str, longueur_cle_probable: int = None, langue: str = 'fr') -> str:
     tables_freq = {
@@ -194,178 +242,314 @@ def attaque_frequence(texte_chiffre: str, longueur_cle_probable: int = None, lan
     }
     texte_chiffre_propre = re.sub(r'[^a-zA-Z]', '', texte_chiffre).upper()
     if longueur_cle_probable is None:
+
+        ## Si aucune longueur n’est fournie, on utilise l’examen de Kasiski
+
         longueur_cle_probable = examen_kasiski(texte_chiffre)[0] if len(texte_chiffre) > 50 else 1
     groupes = [''] * longueur_cle_probable
+
+    ## On divise le texte chiffré en sous-groupes selon la longueur probable de la clé
+
     for i, caractere in enumerate(texte_chiffre_propre):
         groupes[i % longueur_cle_probable] += caractere
     cle_devinee = []
     for groupe in groupes:
         freq = Counter(groupe.lower())
+
+        ## La lettre la plus fréquente dans le groupe est supposée correspondre à la lettre la plus 
+        fréquente dans la langue
+
         plus_frequent = freq.most_common(1)[0][0]
         decalage_devine = (ord(plus_frequent) - ord(tables_freq[langue][0])) % 26
         cle_devinee.append(chr(decalage_devine + ord('a')))
     cle_devinee = ''.join(cle_devinee)
+
+    ## On déchiffre le message avec la clé devinée
+    
     return vigenere_dechiffrer(texte_chiffre, cle_devinee)
 </code></pre>
                 </div>
             </div>
 
-            <!-- Section 3: Améliorations de Sécurité -->
+            <!-- Section 3: Améliorations possibles -->
             <div class="project-block">
-                <h2>3. Améliorations de Sécurité</h2>
-                <p><strong>Comment Rendre le Code Plus Dur à Casser</strong></p>
-                <p>
-                    <strong>Niveau 1</strong> : Chiffrement de base.<br>
-                    <strong>Niveau 2</strong> : Ajoute des symboles aléatoires et inverse le message (pour tromper les attaques simples).<br>
-                    <strong>Niveau 3</strong> : Chiffre deux fois avec une clé modifiée (comme un double verrou).
-                </p>
-                <p>
-                    <em>Comparaison réelle :</em> C'est comme passer d’un cadenas simple (Niveau 1) à un coffre-fort (Niveau 3) pour vos messages.
-                </p>
-                <div class="code-container">
-<pre><code>def vigenere_ameliorer_chiffrement(texte_clair: str, cle: str, niveau_securite: int = 1) -> str:
+                <h2>3. Améliorations possibles</h2>
+                
+  <h3> Niveau 1 : Inversion du texte</h3>
+ <div class="improvement-card">
+       
+        <li>
+Principe : Inverser le texte clair avant de lancer le chiffrement.
+Avantage : Perturbe la structure linguistique et rend plus difficile l’analyse fréquentielle.</li>
+        <div class="example">
+ <h3>Niveau 2 : Padding aléatoire</h3>
+           <div class="improvement-card">
+       
+        <li> 
+Principe : Diviser le texte chiffré en blocs et ajouter entre eux des caractères de bruit aléatoires.
+Avantage : Rend le texte chiffré moins exploitable statistiquement.</li>
+        <div class="example">
+ <h3>Niveau 3 : Double chiffrement avec clé transformée</h3>
+             <div class="improvement-card">
+       
+        <li> 
+Principe : Chiffrer deux fois, avec une clé inversée et décalée.
+Avantage : Augmente la complexité du système sans nécessiter une clé très longue.</li>
+        <div class="example">
+        </div>
+
+    </div>
+    <h3>Autres améliorations possible:</h3>
+     <div class="improvement-card">               
+ <div class="improvement-card">
+       
+        <li>Utiliser une clé aléatoire et non répétée → One-Time Pad (théoriquement inviolable).</li>
+        <li>Combiner avec d’autres méthodes (permutation, codage ASCII étendu).</li>
+        <li>Utiliser une clé auto-générée à partir du message (Autokey Cipher).</li>
+        <div class="example">
+          
+         <h2>4. Démonstration</h2>
+   
+
+           <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher Toolkit</title>
+    <style>
+        .toggle-container {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .toggle-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #000000;
+            border-radius: 5px;
+            user-select: none;
+        }
+        .toggle-icon {
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        .toggle-content {
+            display: none;
+            padding: 15px;
+            background-color: #000000;
+            border: 1px solid #000000;
+            border-radius: 0 0 5px 5px;
+            overflow-x: auto;
+            white-space: pre;
+            font-family: monospace;
+        }
+        .toggle-content.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-container">
+        <div class="toggle-header" onclick="toggleContent()">
+            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span>Ici pour voir le fichier vigenere.py complet</span>
+        </div>
+        <div class="toggle-content" id="content">
+# -*- coding: utf-8 -*-
+"""
+Outil de chiffrement Vigenère - Version avec améliorations
+=========================================================
+Fonctionnalités :
+- Chiffrement Vigenère classique
+- Amélioration Niveau 1 : Inversion du texte
+- Amélioration Niveau 2 : Ajout de padding aléatoire
+- Amélioration Niveau 3 : Double chiffrement avec clé transformée
+"""
+import re
+import random
+
+def vigenere_chiffrer(texte_clair: str, cle: str) -> str:
+    """
+    Chiffre un texte avec le chiffrement de Vigenère.
+    ## Version classique utilisant une clé répétée.
+    """
+    ciphertext = []
+    cle_repetee = (cle * (len(texte_clair) // len(cle) + 1)).lower()
+    idx_cle = 0
+    for char in texte_clair:
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            shift = ord(cle_repetee[idx_cle]) - ord('a')
+            chiffrer_char = chr((ord(char.lower()) - ord('a') + shift) % 26 + base)
+            ciphertext.append(chiffrer_char.upper())
+            idx_cle += 1
+        else:
+            ciphertext.append(char)
+    return ''.join(ciphertext)
+
+def vigenere_dechiffrer(texte_chiffre: str, cle: str) -> str:
+    """
+    Déchiffre un texte chiffré par Vigenère.
+    ## Fonction symétrique à `vigenere_chiffrer`.
+    """
+    plaintext = []
+    cle_repetee = (cle * (len(texte_chiffre) // len(cle) + 1)).lower()
+    idx_cle = 0
+    for char in texte_chiffre:
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            shift = ord(cle_repetee[idx_cle]) - ord('a')
+            decodage_char = chr((ord(char.lower()) - ord('a') - shift) % 26 + base)
+            plaintext.append(decodage_char.upper())
+            idx_cle += 1
+        else:
+            plaintext.append(char)
+    return ''.join(plaintext)
+
+def vigenere_ameliorer_chiffrement(texte_clair: str, cle: str, niveau_securite: int = 1) -> str:
+    """
+    Chiffre avec des améliorations de sécurité selon le niveau choisi.
+    ## Options :
+    - Niveau 1 : Inversion du texte
+    - Niveau 2 : Padding aléatoire
+    - Niveau 3 : Double chiffrement avec clé transformée
+    """
+
+    ### AMÉLIORATION NIVEAU 1 : INVERSION DU TEXTE AVANT CHIFFREMENT
     if niveau_securite == 1:
-        return vigenere_chiffrer(texte_clair, cle)
+        texte_inverse = texte_clair[::-1]  # Inverser le message
+        return vigenere_chiffrer(texte_inverse, cle)
+
+    ### AMÉLIORATION NIVEAU 2 : AJOUT DE CARACTÈRES DE PADDING ALÉATOIRES
     elif niveau_securite == 2:
         texte_inverse = texte_clair[::-1]
         texte_chiffre = vigenere_chiffrer(texte_inverse, cle)
-        import random
+
+        chars_padding = '!@#$%^&*()_+-=[]{}|;:,.<>?'
         resultat = []
-        caracteres_bruit = '!@#$%^&*()_+-=[]{}|;:,.<>?'
         i = 0
         while i < len(texte_chiffre):
-            taille_bloc = random.randint(3, 5)
-            bloc = texte_chiffre[i:i + taille_bloc]
-            resultat.append(bloc)
-            if i + taille_bloc < len(texte_chiffre):
-                resultat.append(random.choice(caracteres_bruit))
-            i += taille_bloc
+            taille_chunk = random.randint(3, 5)
+            chunk = texte_chiffre[i:i+taille_chunk]
+            resultat.append(chunk)
+            if i + taille_chunk < len(texte_chiffre):
+                resultat.append(random.choice(chars_padding))
+            i += taille_chunk
         return ''.join(resultat)
+
+    ### AMÉLIORATION NIVEAU 3 : DOUBLE CHIFFREMENT AVEC CLÉ TRANSFORMÉE
     elif niveau_securite == 3:
         premier_passage = vigenere_chiffrer(texte_clair, cle)
+
+        # Transformation de la clé : inversion + décalage de +1 sur chaque caractère
         cle_transformee = ''.join(
             chr((ord(c.lower()) - ord('a') + 1) % 26 + ord('a'))
             for c in cle[::-1]
         )
+
+        # Deuxième passage de chiffrement avec la clé modifiée
         return vigenere_chiffrer(premier_passage, cle_transformee)
-</code></pre>
-                </div>
-            </div>
 
-            <!-- Section 4: Mode Interactif -->
-            <div class="project-block">
-                <h2>4. Mode Interactif</h2>
-                <p><strong>Un Bac à Sable pour Jouer avec les Codes</strong></p>
-                <p>
-                    Permet de :<br>
-                    - Chiffrer/Déchiffrer des messages en temps réel.<br>
-                    - Tester les outils de cryptanalyse.<br>
-                    - Comparer les niveaux de sécurité.
-                </p>
-                <p>
-                    <em>Idéal pour :</em> Expérimenter comme un espion, sans avoir besoin de programmer !
-                </p>
-                <div class="code-container">
-<pre><code>def mode_interactif():
-    print("Outil de chiffrement de Vigenère - Mode interactif")
-    print("Commandes : chiffrer, dechiffrer, analyser, ameliorer, quitter")
-    while True:
-        commande = input("\n> ").strip().lower()
-        if commande in ('quitter', 'exit'):
-            break
-        elif commande == 'chiffrer':
-            texte = input("Entrez le texte à chiffrer : ")
-            cle = input("Entrez la clé de chiffrement : ")
-            print("Texte chiffré :", vigenere_chiffrer(texte, cle))
-        elif commande == 'dechiffrer':
-            texte = input("Entrez le texte à déchiffrer : ")
-            cle = input("Entrez la clé de déchiffrement : ")
-            print("Texte déchiffré :", vigenere_dechiffrer(texte, cle))
-        elif commande == 'analyser':
-            texte = input("Entrez le texte chiffré à analyser : ")
-            print("\nIndice de coïncidence :", calculer_indice_coincidence(texte))
-            print("\nRésultats de l'examen de Kasiski :")
-            longueurs_cles = examen_kasiski(texte)
-            if longueurs_cles:
-                print("Longueurs de clé probables :", ', '.join(map(str, longueurs_cles)))
-                print("\nTentative d'attaque par fréquence...")
-                texte_dechiffre = attaque_frequence(texte, longueurs_cles[0])
-                print("\nMeilleure estimation du texte déchiffré :")
-                print(texte_dechiffre)
-            else:
-                print("Pas assez de données pour l'examen de Kasiski")
-        elif commande == 'ameliorer':
-            texte = input("Entrez le texte à chiffrer avec améliorations : ")
-            cle = input("Entrez la clé de chiffrement : ")
-            niveau = input("Niveau de sécurité (1-3) : ")
-            try:
-                niveau = int(niveau)
-                if 1 <= niveau <= 3:
-                    print("Texte chiffré amélioré :",
-                          vigenere_ameliorer_chiffrement(texte, cle, niveau))
-                else:
-                    print("Veuillez entrer un niveau entre 1 et 3")
-            except ValueError:
-                print("Niveau de sécurité invalide")
-        else:
-            print("Commande inconnue. Essayer : chiffrer, dechiffrer, analyser, ameliorer, quitter")
-</code></pre>
-                </div>
-            </div>
+    else:
+        raise ValueError("Niveau de sécurité invalide. Utiliser 1, 2 ou 3.")
 
-            <!-- Section 5: Démonstration -->
-            <div class="project-block">
-                <h2>5. Démonstration</h2>
-                <p><strong>Un Aperçu Rapide</strong></p>
-                <p>
-                    Montre automatiquement :<br>
-                    - Un exemple de message chiffré.<br>
-                    - Les outils de cassage de code en action.<br>
-                    - Comment les niveaux de sécurité changent le résultat.
-                </p>
-                <p>
-                    <em>Pour les débutants :</em> Lancez cette fonction pour voir tout ce que le toolkit peut faire en quelques secondes !
-                </p>
-                <div class="code-container">
-<pre><code>def demontrer():
-    print("=" * 60)
-    print("DÉMONSTRATION DE L'OUTIL DE CHIFFREMENT DE VIGENÈRE".center(60))
-    print("=" * 60)
-    texte_clair = "Le chiffre de Vigenère est une méthode de chiffrement qui utilise une série de différentes transformations par substitution."
-    cle = "clef"
-    print("\n1. CHIFFREMENT/DÉCHIFFREMENT DE BASE")
-    print("-" * 60)
-    texte_chiffre = vigenere_chiffrer(texte_clair, cle)
-    print(f"Original : {texte_clair[:50]}...")
-    print(f"Chiffré : {texte_chiffre[:50]}...")
-    texte_dechiffre = vigenere_dechiffrer(texte_chiffre, cle)
-    print(f"Déchiffré : {texte_dechiffre[:50]}...")
-    print("\n2. OUTILS DE CRYPTANALYSE")
-    print("-" * 60)
-    print(f"Indice de coïncidence : {calculer_indice_coincidence(texte_chiffre):.4f}")
-    print("Examen de Kasiski (longueurs de clé probables) :",
-          examen_kasiski(texte_chiffre))
-    print("\n3. AMÉLIORATIONS DE SÉCURITÉ")
-    print("-" * 60)
-    print("Niveau 1 (basique) :", vigenere_chiffrer("Message secret", "cle")[:30] + "...")
-    print("Niveau 2 (bruit) :", vigenere_ameliorer_chiffrement("Message secret", "cle", 2)[:30] + "...")
-    print("Niveau 3 (double) :", vigenere_ameliorer_chiffrement("Message secret", "cle", 3)[:30] + "...")
-    print("\n" + "=" * 60)
-    print("Essayez le mode interactif pour plus de fonctionnalités !".center(60))
-    print("=" * 60)
+def vigenere_ameliorer_dechiffrement(texte_chiffre: str, cle: str, niveau_securite: int = 1) -> str:
+    """
+    Déchiffre un texte selon le niveau d'amélioration utilisé.
+    ## Options :
+    - Niveau 1 : Inversion du texte
+    - Niveau 2 : Padding aléatoire
+    - Niveau 3 : Double chiffrement avec clé transformée
+    """
 
-if __name__ == '__main__':
-    demontrer()
-    # Décommenter pour lancer le mode interactif par défaut :
-    # mode_interactif()
-</code></pre>
-                </div>
-            </div>
+    ### AMÉLIORATION NIVEAU 1 : INVERSION DU TEXTE APRÈS DÉCHIFFREMENT
+    if niveau_securite == 1:
+        texte_dechiffre = vigenere_dechiffrer(texte_chiffre, cle)
+        return texte_dechiffre[::-1]
 
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="main_page_crypto.html" class="button-link">&larr; Retour à l'accueil crypto</a>
-            </div>
+    ### AMÉLIORATION NIVEAU 2 : SUPPRESSION DES CARACTÈRES DE PADDING
+    elif niveau_securite == 2:
+        # Supprimer les caractères de padding
+        texte_nettoyé = re.sub(r'[!@#$%^&*()_+\-=$\[\]{}|;:,.<>?]', '', texte_chiffre)
+        # Déchiffrer le texte nettoyé
+        texte_dechiffre = vigenere_dechiffrer(texte_nettoyé, cle)
+        # Inverser le résultat final
+        return texte_dechiffre[::-1]
+
+    ### AMÉLIORATION NIVEAU 3 : DÉCHIFFREMENT DOUBLE AVEC CLÉ TRANSFORMÉE
+    elif niveau_securite == 3:
+        # Première déchiffrement avec la clé transformée
+        cle_transformee = ''.join(
+            chr((ord(c.lower()) - ord('a') + 1) % 26 + ord('a'))
+            for c in cle[::-1]
+        )
+        premier_passage = vigenere_dechiffrer(texte_chiffre, cle_transformee)
+        # Deuxième déchiffrement avec la clé originale
+        return vigenere_dechiffrer(premier_passage, cle)
+
+    else:
+        raise ValueError("Niveau de sécurité invalide. Utiliser 1, 2 ou 3.")
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    texte = "Le chiffrement de Vigenère est une méthode polyalphabétique."
+    cle = "securite"
+
+    print("=== CHIFFREMENT CLASSIQUE ===")
+    print(vigenere_chiffrer(texte, cle))
+
+    print("\n=== AMÉLIORATION NIVEAU 1 (INVERSION) ===")
+    chiffré_niv1 = vigenere_ameliorer_chiffrement(texte, cle, 1)
+    print("Chiffré:", chiffré_niv1)
+    print("Déchiffré:", vigenere_ameliorer_dechiffrement(chiffré_niv1, cle, 1))
+
+    print("\n=== AMÉLIORATION NIVEAU 2 (PADDING ALÉATOIRE) ===")
+    chiffré_niv2 = vigenere_ameliorer_chiffrement(texte, cle, 2)
+    print("Chiffré:", chiffré_niv2)
+    print("Déchiffré:", vigenere_ameliorer_dechiffrement(chiffré_niv2, cle, 2))
+
+    print("\n=== AMÉLIORATION NIVEAU 3 (DOUBLE CHIFFREMENT) ===")
+    chiffré_niv3 = vigenere_ameliorer_chiffrement(texte, cle, 3)
+    print("Chiffré:", chiffré_niv3)
+    print("Déchiffré:", vigenere_ameliorer_dechiffrement(chiffré_niv3, cle, 3))
         </div>
     </div>
+
+    <script>
+        function toggleContent() {
+            const content = document.getElementById('content');
+            const icon = document.querySelector('.toggle-icon');
+            
+            content.classList.toggle('show');
+            icon.classList.toggle('collapsed');
+        }
+    </script>
 </body>
 </html>
+  <div class="project-block" style="text-align:center; padding:0;">
+                <img src="vigenere.gif" alt="Démonstration du chiffrement César" 
+                     style="width:100%; max-width:100%; border-radius:12px; display:block; margin:0 auto; background:rgba(80,0,100,0.25);" />
+                <p class="gif-caption" style="color:#fff; margin:0.7em 0 0.7em 0;"></p>
+            </div>
+
+            
+
+    <div class="key-takeaway">
+        <h1> À retenir</h1>
+        <p>Ces techniques complexifient l'attaque mais ne garantissent pas la sécurité. Pour une vraie protection :</p>
+        <ul>
+            <li>Vigenère reste également uniquement pédagogique</li>
+            <li>Vigenère offre un niveau supérieur de sécurité</li>
+            <li>AES/RSA sont indispensables pour des données sensibles</li>
+        </ul>
+    </div>
+</div>
+
+           
