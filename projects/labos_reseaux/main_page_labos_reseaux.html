@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Cryptographie | Robin Boucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1 style="text-align:center;">Portfolio Cryptographie</h1>
+            <h2 style="text-align:center;">Accueil des catégories de projets</h2>
+            <div class="byline" style="text-align:center; margin-bottom:1.5em;">
+                Robin Boucher – Étudiant en cybersécurité<br>
+                <em>Juillet 2025</em>
+            </div>
+
+            <!-- Projets Réseau -->
+            <div class="project-block" style="text-align:center;">
+                <h2>Projets Réseau</h2>
+                
+                <div style="margin-bottom: 2em;">
+                    <h3>Active Directory DS</h3>
+                    <p>Mise en place d'un domaine Active Directory avec gestion des utilisateurs, des stratégies de groupe et des permissions.</p>
+                    <a class="button-link" href="active_directory.html">Voir le projet Active Directory</a>
+                </div>
+                
+                <div style="margin-bottom: 2em;">
+                    <h3>Cisco PKT</h3>
+                    <p>Simulation de réseaux complexes avec Cisco Packet Tracer, incluant routage, VLANs et sécurisation des infrastructures.</p>
+                    <a class="button-link" href="cisco_pkt.html">Voir les projets Cisco</a>
+                </div>
+                
+                <div>
+                    <h3>PfSense Lab</h3>
+                    <p>Configuration d'un firewall PfSense avec règles de filtrage, VPN et surveillance du trafic réseau.</p>
+                    <a class="button-link" href="pfsense.html">Voir le lab PfSense</a>
+                </div>
+            </div>
+
+          
+</html>
