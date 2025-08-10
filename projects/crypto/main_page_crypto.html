@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Cryptographie | Robin Boucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 1400px;
+            font-size: 1.08em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5em;
+            justify-content: center;
+            margin-bottom: 2em;
+        }
+        .project-block {
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(60,0,80,0.13);
+            padding: 2.2em 2em 2em 2em;
+            background: rgba(80,0,100,0.32);
+            flex: 1 1 420px;
+            min-width: 390px;
+            max-width: 480px;
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .project-block:hover {
+            box-shadow: 0 8px 32px rgba(120,0,180,0.18);
+            transform: translateY(-4px) scale(1.015);
+        }
+        .project-block h2 {
+            font-size: 1.45em;
+            margin-bottom: 0.5em;
+            letter-spacing: 0.01em;
+        }
+        .project-block p, .project-block ul {
+            font-size: 1.08em;
+            line-height: 1.6;
+            margin-bottom: 0.7em;
+        }
+        .project-block img {
+            width: 100%;
+            max-width: 340px;
+            border-radius: 12px;
+            margin-bottom: 1.1em;
+            background: rgba(80,0,100,0.25);
+            box-shadow: 0 2px 12px rgba(60,0,80,0.10);
+        }
+        .more-content {
+            display: none;
+            margin-top: 1em;
+            text-align: left;
+            font-size: 1em;
+            background: rgba(80,0,100,0.18);
+            border-radius: 10px;
+            padding: 0.8em 1em;
+        }
+        .show-more-btn {
+            background: #3a0066;
+            color: #fff;
+            border: none;
+            border-radius: 1em;
+            padding: 0.4em 1.2em;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 0.7em;
+            margin-bottom: 0.5em;
+            transition: background 0.2s;
+        }
+        .show-more-btn:hover {
+            background: #741761;
+        }
+        @media (max-width: 1500px) {
+            .main-content {
+                max-width: 1200px;
+            }
+            .project-block {
+                max-width: 420px;
+            }
+        }
+        @media (max-width: 1200px) {
+            .main-content {
+                max-width: 1000px;
+            }
+            .project-block {
+                max-width: 370px;
+                min-width: 320px;
+            }
+        }
+        @media (max-width: 1000px) {
+            .project-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .project-block {
+                width: 95%;
+                max-width: 600px;
+                min-width: unset;
+            }
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 1em 0.5em;
+                max-width: unset;
+            }
+            .project-block {
+                min-width: unset;
+                max-width: unset;
+                width: 100%;
+                padding: 1.2em 0.7em 1em 0.7em;
+            }
+        }
+    </style>
+    <script>
+        function toggleMoreContent(id, btn) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.innerText = "Plus";
+            } else {
+                content.style.display = "block";
+                btn.innerText = "Moins";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1 style="text-align:center; font-size:2.2em; letter-spacing:0.01em;">Portfolio Cryptographie</h1>
+            <div class="byline" style="text-align:center; margin-bottom:1.5em; font-size:1.08em;">
+                Robin Boucher – Étudiant en cybersécurité<br>
+                <em>Juillet 2025</em>
+            </div>
+
+            <!-- Project grid: 3 per row, scrolls if more -->
+            <div class="project-grid">
+                <!-- Introduction as a project -->
+                <div class="project-block">
+                    <h2>Introduction</h2>
+                  
+                    <div 
+                        <ul style="text-align:left; margin:0;">
+                            <li>Chiffres manuels / historiques : César, Vigenère
+Bases du chiffrement symétrique, substitution et clé simple</li>
+                            <li>Diffie-Hellman : échange de clés sécurisé (1976)</li>
+                            <li>Chiffrement à clé publique : RSA (1977) </li>
+                            <li>Standard actuel : AES (2001)</li>
+                        </ul>
+                        Plus sur les bases de la cryptographie et sur les hashes :
+                        <a class="button-link" href="https://bold-top-b0e.notion.site/Basics-of-Cryptography-Info-1e2d8ff66ad2805abf35ef3d1d38a8bf" target="_blank">
+                            Intro crypto/hashes sur Notion
+                        </a>
+                    </div>
+                </div>
+                <div class="project-block">
+                    <h2>Chiffrement César</h2>
+                    <img src="/projects/crypto/caesar.png" alt="Visualization of Caesar cipher">
+                    <p>
+                        Substitution simple : chaque lettre est remplacée par une autre selon un décalage fixe.<br>
+                        Exemple : clé de 3 → A → D, B → E, etc.
+                    </p>
+                    <a class="button-link" href="caesar.html">Voir le projet César</a>
+                </div>
+                <div class="project-block">
+                    <h2>Vigenère</h2>
+                    <img src="/projects/crypto/vigenere.png" alt="Démonstration du chiffrement Vigenère" />
+                    <p>
+                        Substitution polyalphabétique : chaque lettre est décalée différemment selon un mot-clé.<br>
+                        Plus robuste que César, mais cassable par analyse de fréquence.
+                    </p>
+                    <a class="button-link" href="vigenere.html">Voir le projet Vigenère</a>
+                </div>
+                <div class="project-block">
+                    <h2>Chiffrement Symétrique AES</h2>
+                    <img src="/projects/crypto/aes.png" alt="Démonstration du chiffrement AES" />
+                    <p>
+                        AES chiffre des blocs de 128 bits via plusieurs tours.<br>
+                        Utilisé partout (HTTPS, VPN, fichiers).
+                    </p>
+                    <a class="button-link" href="symetric.html">Voir les projets symétriques</a>
+                </div>
+                <div class="project-block">
+                    <h2>Chiffrement Asymétrique RSA</h2>
+                    <img src="rsa.png" alt="Démonstration du chiffrement RSA" />
+                    <p>
+                        RSA permet l'échange sécurisé de clés et la signature numérique.<br>
+                        Utilisé pour l'authentification et la confidentialité.
+                    </p>
+                    <a class="button-link" href="asymetric.html">Voir le projet complet RSA</a>
+                </div>
+                <div class="project-block">
+                    <h2>Relation entre : Diffie-Hellman, RSA asymétrique et AES symétrique</h2>
+                    <img src="DiffieHellman.png" alt="Schéma TLS" />
+                    <p>
+                        Dans les communications sécurisées (comme HTTPS), on combine plusieurs algorithmes pour allier sécurité, performance et authentification :
+                    </p>
+                    <ul style="text-align:left; margin:0;">
+                        
+                            <button class="show-more-btn" onclick="toggleMoreContent('dh-more', this)">Plus</button>
+                            <div class="more-content" id="dh-more">
+                                <strong>Diffie-Hellman</strong> permet à deux parties de générer une clé secrète commune sans jamais la transmettre sur le réseau.<br>
+                                
+                                  Dans les communications sécurisées (comme HTTPS), on combine plusieurs algorithmes pour allier sécurité, performance et authentification :
+                        <li>Diffie-Hellman permet un échange de clés sécurisé : deux parties peuvent générer une clé secrète commune sans jamais la transmettre sur le réseau.</li>
+                            <li>RSA assure l'authentification : via un certificat, on vérifie l’identité du serveur (ou de l’interlocuteur).</li>
+                                <li>AES prend ensuite le relais pour chiffrer efficacement les données, qu’il s’agisse de fichiers volumineux ou de messages en temps réel.</li>
+                 
+                                
+                            </div>
+                        
+                       
+                    </ul>
+                </div>
+                <div class="project-block">
+                    <h2>Attaque sur Hashes</h2>
+                    
+                    <p>
+                       <li>Analyse de la sécurité des mots de passe et attaques sur les hachages (MD5, SHA, bcrypt) avec Hashcat.</li>
+                       <li>Utilisation de Hashcat pour attaques par dictionnaire</li>
+                       <li>Compréhension du rôle des sels (salts) dans la protection des mots de passe</li>
+                    </p>
+                    <a class="button-link" href="https://github.com/RobinBoucherSec/Cracking-hashes/tree/main/Generating%20Hashes">Projet GitHub GÉNÉRER des Hashes</a>
+                    <a class="button-link" href="https://github.com/RobinBoucherSec/Cracking-hashes/tree/main/Hashcat%20cracking">Projet GitHub CRAQUER des Hashes</a>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:2em;">
+                <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right: 1.5em; color: #fff; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="color: #fff; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <br>
+                <a href="https://robinboucher.tech/#welcome"
+                   style="display:inline-block; margin-top:1.2em; background:#741761; color:#fff; font-weight:bold; text-decoration:none; font-size:1.1em; padding:0.7em 1.6em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); transition:background 0.2s;">
+                    &larr; Retour à la page d'accueil
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
