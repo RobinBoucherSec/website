@@ -11,8 +11,10 @@
     </head>
     <body class="is-preload">
 
+       
+
         <!-- Social Links Bar -->
-        <div style="width:100%;background:#222;padding:0.5em 0;text-align:center;position:fixed;top:0;left:0;z-index:1000;">
+        <div style="width:100%;background:#000000;padding:0.5em 0;text-align:center;position:fixed;top:0;left:0;z-index:1000;display:flex;justify-content:center;align-items:center;">
             <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin:0 1em;color:#fff;text-decoration:none;font-size:1.5em;">
                 <i class="fab fa-github" aria-hidden="true"></i>
                 <span style="font-size:0.9em;vertical-align:middle;">GitHub</span>
@@ -21,23 +23,27 @@
                 <i class="fab fa-linkedin" aria-hidden="true"></i>
                 <span style="font-size:0.9em;vertical-align:middle;">LinkedIn</span>
             </a>
+            <!-- Language Switch Text (top right, beside LinkedIn) -->
+            <span id="lang-btn"
+                style="background:none;color:#fff;border-radius:14px;padding:3px 12px;font-weight:bold;box-shadow:none;border:none;cursor:pointer;font-size:0.92em;margin-left:1.2em;user-select:none;">
+                Traduction Français / English
+            </span>
         </div>
 
-        <!-- Add this style to push the rest of the content down so it doesn't hide under the bar -->
-        <div style="height:2.8em;"></div>
+       
 
         <!-- Sidebar -->
         <section id="sidebar">
             <div class="inner">
                 <nav>
                     <ul>
-                        <li><a href="#welcome"><i class="fa fa-house"></i> Welcome Page</a></li>
-                        <li><a href="#labs-ctfs"><i class="fa fa-flask"></i> Labs & CTFs</a></li>
-                        <li><a href="#articles"><i class="fa fa-newspaper"></i> Articles</a></li>
-                        <li><a href="#education"><i class="fa fa-graduation-cap"></i> Education</a></li>
-                        <li><a href="#whoiam"><i class="fa fa-user"></i> Who I Am</a></li>
-                        <li><a href="#workexperience"><i class="fa fa-briefcase"></i> Work Experience</a></li>
-                        <li><a href="#contact"><i class="fa fa-envelope"></i> Contact</a></li>
+                        <li><a href="#welcome"><i class="fa fa-house"></i> <span class="tr-en">Welcome Page</span><span class="tr-fr" style="display:none;">Page d'accueil</span></a></li>
+                        <li><a href="#labs-ctfs"><i class="fa fa-flask"></i> <span class="tr-en">Labs & CTFs</span><span class="tr-fr" style="display:none;">Labos & CTFs</span></a></li>
+                        <li><a href="#articles"><i class="fa fa-newspaper"></i> <span class="tr-en">Articles</span><span class="tr-fr" style="display:none;">Articles</span></a></li>
+                        <li><a href="#education"><i class="fa fa-graduation-cap"></i> <span class="tr-en">Education</span><span class="tr-fr" style="display:none;">Éducation</span></a></li>
+                        <li><a href="#whoiam"><i class="fa fa-user"></i> <span class="tr-en">Who I Am</span><span class="tr-fr" style="display:none;">Qui suis-je</span></a></li>
+                        <li><a href="#workexperience"><i class="fa fa-briefcase"></i> <span class="tr-en">Work Experience</span><span class="tr-fr" style="display:none;">Expérience professionnelle</span></a></li>
+                        <li><a href="#contact"><i class="fa fa-envelope"></i> <span class="tr-en">Contact</span><span class="tr-fr" style="display:none;">Contact</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -49,54 +55,60 @@
             <!-- Welcome Page -->
             <section id="welcome" class="wrapper style1 fullscreen fade-up">
                 <div class="inner">
-                    <!-- Place this just above <h1>My Digital Playground — or portfolio</h1> -->
                     <div style="text-align:center; margin-bottom:1.5em;">
                         <img 
-                            src="images\photorpfessionnal.png" 
+                            src="images/photorpfessionnal.png" 
                             alt="Robin Boucher portrait" 
                             style="width:300px; height:300px; object-fit:cover; border-radius:50%;  box-shadow:0 4px 24px rgba(60,0,80,0.13);"
                         />
                     </div>
-                    <h1>My Digital Playground — or portfolio</h1>
-                    <p>I'm Robin Boucher, a persevering student in Cybersecurity, turning complex challenges into clear, secure solutions. Here I share only secure samples of my work as a way to grow and be recognized in the world of CyberSecurity.</p>
-                    <p>Please, enjoy exploring my work!</p>
+                    <h1>
+                        <span class="tr-en">My Digital Playground — or portfolio</span>
+                        <span class="tr-fr" style="display:none;">Mon terrain de jeu numérique — ou portfolio</span>
+                    </h1>
+                    <p class="tr-en">I'm Robin Boucher, a persevering student in Cybersecurity, turning complex challenges into clear, secure solutions. Here I share only secure samples of my work as a way to grow and be recognized in the world of CyberSecurity.</p>
+                    <p class="tr-fr" style="display:none;">Je suis Robin Boucher, étudiant persévérant en cybersécurité, transformant des défis complexes en solutions claires et sécurisées. Ici, je partage uniquement des exemples sûrs de mon travail pour progresser et être reconnu dans le monde de la cybersécurité.</p>
+                    <p class="tr-en">Please, enjoy exploring my work!</p>
+                    <p class="tr-fr" style="display:none;">Bonne visite et bonne exploration de mon travail&nbsp;!</p>
                 </div>
             </section>
 
             <!-- Labs & CTFs -->
             <section id="labs-ctfs" class="wrapper style1 fullscreen fade-up" style="background-color: #74176181;">
                 <div class="inner">
-                    <h2>Labs & CTFs</h2>
-                    <p>Preview of recent Labs and CTF write-ups. Click on a title to see more details.</p>
+                    <h2>
+                        <span class="tr-en">Labs & CTFs</span>
+                        <span class="tr-fr" style="display:none;">Labos & CTFs</span>
+                    </h2>
+                    <p class="tr-en">Preview of recent Labs and CTF write-ups. Click on a title to see more details.</p>
+                    <p class="tr-fr" style="display:none;">Aperçu des derniers labos et write-ups CTF. Cliquez sur un titre pour voir plus de détails.</p>
                     <div style="display: flex; gap: 2em; flex-wrap: wrap;">
                         <!-- Labs Column -->
                         <div style="flex:1; min-width:220px;">
-                            <h3>Labs</h3>
+                            <h3 class="tr-en">Labs</h3>
+                            <h3 class="tr-fr" style="display:none;">Labos</h3>
                             <ul>
                                 <li>
-                                    <a href="projects\labos_reseaux\main_page_labos_reseaux.html" target="_blank">
-                                        <i class=></i> Labos réseaux
+                                    <a href="projects/labos_reseaux/main_page_labos_reseaux.html" target="_blank">
+                                        <i class=></i> <span class="tr-en">Network Labs</span><span class="tr-fr" style="display:none;">Labos réseaux</span>
                                     </a>
                                 </li>
                                 <li>
-                                <a href="projects/crypto/main_page_crypto.html" target="_blank">   
-                                        <i class=></i> Projets cryptographie
-                                        </a>
-                                    </span>
+                                    <a href="projects/crypto/main_page_crypto.html" target="_blank">   
+                                        <i class=></i> <span class="tr-en">Cryptography Projects</span><span class="tr-fr" style="display:none;">Projets cryptographie</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                         <!-- CTF Column -->
                         <div style="flex:1; min-width:220px;">
-                            <h3>CTF Write-ups</h3>
+                            <h3 class="tr-en">CTF Write-ups</h3>
+                            <h3 class="tr-fr" style="display:none;">Write-ups CTF</h3>
                             <ul>
                                 <li>
-                                   
                                     <span class="preview">
-                                      
-                                        
                                         <a href="https://github.com/RobinBoucherSec/OverTheWire-Bandit-WriteUp" target="_blank" style="font-size:0.95em;">
-                                            <i class="fab fa-github"></i> Bandit CTF GitHub Repo
+                                            <i class="fab fa-github"></i> <span class="tr-en">Bandit CTF GitHub Repo</span><span class="tr-fr" style="display:none;">Dépôt GitHub Bandit CTF</span>
                                         </a>
                                     </span>
                                 </li>
@@ -127,7 +139,10 @@
             <!-- Articles -->
             <section id="articles" class="wrapper style2 fade-up">
                 <div class="inner">
-                    <h2>Articles</h2>
+                    <h2>
+                        <span class="tr-en">Articles</span>
+                        <span class="tr-fr" style="display:none;">Articles</span>
+                    </h2>
                     <ul>
                         <li>
                             <a href="articles/La_cyber_securité_et_les_mots_de_passe.html" target="_blank">
@@ -156,19 +171,28 @@
             <!-- Education -->
             <section id="education" class="wrapper style1 fade-up">
                 <div class="inner">
-                    <h2>Education</h2>
+                    <h2>
+                        <span class="tr-en">Education</span>
+                        <span class="tr-fr" style="display:none;">Éducation</span>
+                    </h2>
                     <div style="display: flex; gap: 2em; flex-wrap: wrap;">
                         <div style="flex:1; min-width:200px;">
-                            <h3>School</h3>
-                            <p>Cybersecurty at Cumberland College</p>
+                            <h3 class="tr-en">School</h3>
+                            <h3 class="tr-fr" style="display:none;">École</h3>
+                            <p class="tr-en">Cybersecurity at Cumberland College</p>
+                            <p class="tr-fr" style="display:none;">Cybersécurité au Cumberland College</p>
                         </div>
                         <div style="flex:1; min-width:200px;">
-                            <h3>Certifications</h3>
-                            <p>Google Cybersecurity Certification</p>
+                            <h3 class="tr-en">Certifications</h3>
+                            <h3 class="tr-fr" style="display:none;">Certifications</h3>
+                            <p class="tr-en">Google Cybersecurity Certification</p>
+                            <p class="tr-fr" style="display:none;">Certification Google Cybersecurity</p>
                         </div>
                         <div style="flex:1; min-width:200px;">
-                            <h3>Events & Conferences</h3>
-                            <p>Attended Hackerfest 2024</p>
+                            <h3 class="tr-en">Events & Conferences</h3>
+                            <h3 class="tr-fr" style="display:none;">Événements & Conférences</h3>
+                            <p class="tr-en">Attended Hackerfest 2024</p>
+                            <p class="tr-fr" style="display:none;">Participation à Hackerfest 2024</p>
                         </div>
                     </div>
                 </div>
@@ -177,16 +201,29 @@
             <!-- Who I Am -->
             <section id="whoiam" class="wrapper style1 fullscreen fade-up" style="background-color: #74176181;">
                 <div class="inner">
-                    <h2>Who I Am</h2>
-                    <p>
+                    <h2>
+                        <span class="tr-en">Who I Am</span>
+                        <span class="tr-fr" style="display:none;">Qui suis-je</span>
+                    </h2>
+                    <p class="tr-en">
                         <strong>Robin Boucher • Cybersecurity Student</strong><br>
                         I'm a bilingual French Canadian. My insane curiosity led me to the field of cybersecurity — the infinite hole to dig. Currently studying at Cumberland College, I’m diving deep into the world of digital security with dedication, curiosity, and a hands-on approach.
                     </p>
-                    <p>
+                    <p class="tr-fr" style="display:none;">
+                        <strong>Robin Boucher • Étudiant en cybersécurité</strong><br>
+                        Je suis un Canadien français bilingue. Ma curiosité sans limite m'a mené vers la cybersécurité — un domaine où il y a toujours à creuser. Actuellement étudiant au Cumberland College, je plonge à fond dans la sécurité numérique avec passion, curiosité et pratique.
+                    </p>
+                    <p class="tr-en">
                         As you can see this is my digital playground where I document my learning journey, share projects, and showcase only what can safely be shared. My goal is to grow as a future cybersecurity professional while learning from every challenge and always trying harder.
                     </p>
-                    <p>
+                    <p class="tr-fr" style="display:none;">
+                        Comme vous pouvez le voir, ceci est mon terrain de jeu numérique où je documente mon parcours, partage des projets et ne montre que ce qui peut l'être en toute sécurité. Mon objectif est de progresser comme futur professionnel de la cybersécurité en apprenant de chaque défi et en essayant toujours plus.
+                    </p>
+                    <p class="tr-en">
                         Whether you're here to explore my work, learn alongside me, or just say hello — thank you for visiting. Let’s connect and build a secure world together!
+                    </p>
+                    <p class="tr-fr" style="display:none;">
+                        Que vous soyez ici pour explorer mon travail, apprendre avec moi ou simplement dire bonjour — merci de votre visite. Connectons-nous et bâtissons ensemble un monde plus sûr&nbsp;!
                     </p>
                 </div>
             </section>
@@ -194,14 +231,22 @@
             <!-- Work Experience -->
             <section id="workexperience" class="wrapper fade-up" style="background-color: #4B3A8C;">
                 <div class="inner">
-                    <h2>Work Experience</h2>
+                    <h2>
+                        <span class="tr-en">Work Experience</span>
+                        <span class="tr-fr" style="display:none;">Expérience professionnelle</span>
+                    </h2>
                     <ul>
                         <li>
-                            <strong>(exemple) Cybersecurity Intern</strong> – Example Company<br>
-                            <span style="font-size:0.95em;">Date</span>
+                            <strong class="tr-en">(example) Cybersecurity Intern</strong>
+                            <strong class="tr-fr" style="display:none;">(exemple) Stagiaire en cybersécurité</strong>
+                            – <span class="tr-en">Example Company</span><span class="tr-fr" style="display:none;">Entreprise Exemple</span><br>
+                            <span style="font-size:0.95em;" class="tr-en">Date</span>
+                            <span style="font-size:0.95em;display:none;" class="tr-fr">Date</span>
                             <ul>
-                                <li>Details</li>
-                                <li>Details</li>
+                                <li class="tr-en">Details</li>
+                                <li class="tr-en">Details</li>
+                                <li class="tr-fr" style="display:none;">Détails</li>
+                                <li class="tr-fr" style="display:none;">Détails</li>
                             </ul>
                         </li>
                         <!-- Add more work experiences as needed -->
@@ -212,7 +257,10 @@
             <!-- Contact -->
             <section id="contact" class="wrapper style1 fade-up" style="background-color: #74176181;">
                 <div class="inner">
-                    <h2>Contact</h2>
+                    <h2>
+                        <span class="tr-en">Contact</span>
+                        <span class="tr-fr" style="display:none;">Contact</span>
+                    </h2>
                     <ul style="list-style: none; padding: 0; font-size: 1.2em;">
                         <li>
                             <i class="fa fa-envelope"></i>
@@ -239,7 +287,6 @@
             <div class="inner" style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5em; padding-bottom: 0.5em;">
                 <ul class="menu" style="margin: 0;">
                     <li>&copy; Robin Boucher. All rights reserved.</li>
-                  
                 </ul>
                 <img 
                     src="assets/css/images/QR_code.png" 
@@ -258,6 +305,16 @@
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script>
+            // Language switcher
+            document.addEventListener('DOMContentLoaded', function() {
+                const langSelect = document.getElementById('language-select');
+                langSelect.addEventListener('change', function() {
+                    const lang = langSelect.value;
+                    document.querySelectorAll('.tr-en').forEach(el => el.style.display = (lang === 'en') ? '' : 'none');
+                    document.querySelectorAll('.tr-fr').forEach(el => el.style.display = (lang === 'fr') ? '' : 'none');
+                });
+            });
+
             // Simple show/hide for CTF details
             document.addEventListener('DOMContentLoaded', function() {
                 const ctfLinks = document.querySelectorAll('.ctf-link');
@@ -282,6 +339,17 @@
                         const labs = document.getElementById('labs-ctfs');
                         if(labs) labs.scrollIntoView({behavior: "smooth"});
                     });
+                });
+            });
+
+            // Language switcher text (clickable)
+            document.addEventListener('DOMContentLoaded', function() {
+                const btn = document.getElementById('lang-btn');
+                let lang = 'en';
+                btn.addEventListener('click', function() {
+                    lang = (lang === 'en') ? 'fr' : 'en';
+                    document.querySelectorAll('.tr-en').forEach(el => el.style.display = (lang === 'en') ? '' : 'none');
+                    document.querySelectorAll('.tr-fr').forEach(el => el.style.display = (lang === 'fr') ? '' : 'none');
                 });
             });
         </script>
