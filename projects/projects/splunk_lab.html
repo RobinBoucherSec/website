@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SIEM & SOAR – Rapport d’Analyse | Robin Boucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../../images/pic02.jpg') center center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .main-content {
+            background: rgba(40,0,60,0.92);
+            color: #fff !important;
+            margin: 2em 0;
+            padding: 2em 2.5em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 900px;
+            font-size: 1.05em;
+        }
+        .main-content h1, .main-content h2, .main-content h3, .main-content strong, .main-content em, .main-content code, .main-content a {
+            color: #fff !important;
+        }
+        .main-content a {
+            font-weight: bold;
+        }
+        .main-content a.button-link, .btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            background: #741761;
+            color: #fff !important;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.7em 1.6em;
+            border-radius: 1.2em;
+            box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+            transition: background 0.2s;
+        }
+        .main-content a.button-link:hover, .btn:hover {
+            background: #3a0066;
+            color: #fff !important;
+        }
+        .project-block {
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(60,0,80,0.07);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            background: rgba(80,0,100,0.25);
+        }
+        .code-container {
+            background: #111 !important;
+            border-radius: 12px;
+            padding: 1em;
+            margin-top: 1em;
+            color: #fff !important;
+            font-family: monospace;
+            font-size: 0.98em;
+            overflow-x: auto;
+        }
+        .section-title {
+            margin-top: 2em;
+            margin-bottom: 0.7em;
+            font-size: 1.3em;
+            color: #fff;
+            border-bottom: 1px solid #fff2;
+            padding-bottom: 0.2em;
+        }
+        .key-takeaway {
+            background: rgba(120,0,180,0.18);
+            border-radius: 12px;
+            padding: 1.2em 1.5em;
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+        ul, ol {
+            margin-left: 1.2em;
+            margin-bottom: 1em;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+                padding: 1em 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="main-content">
+            <h1 style="text-align: center;">SIEM & SOAR – Rapport d’Analyse</h1>
+            <p style="text-align: center;">Robin Boucher</p>
+
+            <div class="project-block">
+                <h2 class="section-title">1. Définir les concepts</h2>
+                <strong>Qu’est-ce qu’un système SIEM et quel est son rôle principal dans la sécurité informatique ?</strong>
+                <p>
+                    Un système <strong>SIEM</strong> (Security Information and Event Management) est une solution technologique qui collecte, normalise, corrèle et analyse en temps réel les journaux de sécurité provenant de divers systèmes du réseau (serveurs, pare-feux, postes clients, applications). Son rôle principal est de détecter les activités suspectes ou malveillantes, d’alerter les équipes de sécurité, et de fournir une vue centralisée pour l’investigation forensique et la conformité réglementaire (lois 25, ISO 27001, etc.).
+                </p>
+                <strong>Qu’est-ce qu’un système SOAR et comment complète-t-il un système SIEM ?</strong>
+                <p>
+                    Un système <strong>SOAR</strong> (Security Orchestration, Automation, and Response) est une plateforme qui automatise et orchestre les processus de réponse aux incidents détectés par le SIEM. Il complète le SIEM en transformant les alertes en actions concrètes : blocage d’IP, isolation d’hôte, notification d’équipe, ouverture de ticket. Le SIEM détecte, le SOAR réagit.
+                </p>
+            </div>
+
+            <div class="project-block">
+                <h2 class="section-title">2. Fonctionnalités principales</h2>
+                <strong>Trois fonctionnalités principales du SIEM :</strong>
+                <ul>
+                    <li>Collecte centralisée des journaux : Rassemble les logs de toutes les sources du réseau.</li>
+                    <li>Corrélation d’événements en temps réel : Identifie des schémas d’attaque complexes (ex. : plusieurs échecs SSH suivis d’une connexion réussie).</li>
+                    <li>Visualisation et reporting : Fournit des tableaux de bord et rapports pour l’analyse et la conformité.</li>
+                </ul>
+                <strong>Trois fonctionnalités principales du SOAR :</strong>
+                <ul>
+                    <li>Automatisation des playbooks : Exécution automatique d’actions pré-définies en réponse à une alerte.</li>
+                    <li>Intégration avec les outils de sécurité : Connexion aux pare-feux, EDR, SIEM, outils de ticketing (Jira, ServiceNow).</li>
+                    <li>Gestion des cas (Case Management) : Suivi complet d’un incident de sa détection à sa résolution.</li>
+                </ul>
+            </div>
+
+            <div class="project-block">
+                <h2 class="section-title">3. Intégration et avantages</h2>
+                <strong>Comment SIEM et SOAR peuvent-ils être intégrés pour améliorer la gestion des incidents de sécurité ?</strong>
+                <p>
+                    Le SIEM détecte une anomalie (ex. : 5 échecs de connexion SSH en 2 minutes) et envoie une alerte au SOAR. Ce dernier enrichit l’alerte avec des données de menace externe (threat intelligence), puis déclenche un playbook automatisé : blocage de l’IP au firewall, notification par email, ouverture d’un ticket dans Jira. Ainsi, la réponse passe de manuelle (minutes/heures) à automatisée (secondes).
+                </p>
+                <strong>Quels sont les avantages de cette intégration pour une entreprise ?</strong>
+                <ul>
+                    <li>Réduction du temps de réponse (de heures à secondes)</li>
+                    <li>Diminution des erreurs humaines</li>
+                    <li>Meilleure scalabilité face à un volume élevé d’incidents</li>
+                    <li>Traçabilité complète des actions, conformité renforcée</li>
+                    <li>Libération des analystes pour des tâches à plus forte valeur ajoutée</li>
+                </ul>
+            </div>
+
+            <div class="project-block">
+                <h2 class="section-title">Détection et Réponse à une Tentative de Compromission</h2>
+                <p><strong>Objectif :</strong> Utiliser Splunk (SIEM) pour analyser les logs, détecter une activité suspecte, et créer une alerte déclenchable par le SOAR.</p>
+                <h3>1. Analyse des Journaux avec le SIEM (Splunk)</h3>
+                <strong>Journaux examinés</strong>
+                <ul>
+                    <li><code>/var/log/auth.log</code> : Contient les tentatives de connexion SSH (réussies ou échouées).</li>
+                    <li><code>sourcetype=secure</code> : Filtre Splunk pour les logs d’authentification système.</li>
+                    <li><code>index=main</code> : Index par défaut où Splunk stocke les événements.</li>
+                </ul>
+                <div class="code-container">
+index=main sourcetype=secure "authentication failure"
+                </div>
+                <strong>Comportement anormal détecté</strong>
+                <div class="code-container">
+Sep 16 15:34:43 kali sshd[1234]: Failed password for kali from ::1 port 57010 ssh2
+Sep 16 15:34:45 kali sshd[1235]: Failed password for kali from ::1 port 57012 ssh2
+Sep 16 15:34:47 kali sshd[1236]: Failed password for kali from ::1 port 57014 ssh2
+                </div>
+                <ul>
+                    <li>Plusieurs tentatives en moins de 5 secondes → signe de force brute automatisée.</li>
+                    <li>Origine : <code>::1</code> (localhost) → soit un script malveillant local, soit un test interne non autorisé.</li>
+                    <li>Cible : le compte utilisateur <code>kali</code>.</li>
+                </ul>
+                <p>Il s’agit d’une tentative de compromission active par force brute SSH.</p>
+                <h3>2. Création d’une Alerte dans Splunk (SIEM)</h3>
+
+                <p>Il s’agit d’une tentative de compromission active par force brute SSH :</p>
+                <div style="display: flex; justify-content: center; margin: 1.2em 0;">
+    <img src="../../images/splunkcompromission.png" alt="Tentative de compromission Splunk" style="width: 100%; max-width: 700px; max-height: 440px; border-radius: 12px; box-shadow: 0 2px 12px rgba(60,0,80,0.13); background: #222; padding: 8px;">
+</div>
+                <p>Des tentatives de connexion SSH échouées via la commande :</p>
+                <div style="display: flex; justify-content: center; margin: 1.2em 0;">
+                    <img src="../../images/splunkSSHechoue.png" alt="SSH échoué Splunk" style="max-width: 90%; max-height: 340px; border-radius: 12px; box-shadow: 0 2px 12px rgba(60,0,80,0.13); background: #222; padding: 8px;">
+                </div>
+                <p>Les logs correspondants dans /var/log/auth.log avec :</p>
+                <div style="display: flex; justify-content: center; margin: 1.2em 0;">
+                    <img src="../../images/splunkauth.log.png" alt="auth.log Splunk" style="max-width: 90%; max-height: 340px; border-radius: 12px; box-shadow: 0 2px 12px rgba(60,0,80,0.13); background: #222; padding: 8px;">
+                </div>
+
+                <p>J’ai créé une alerte dans Splunk pour détecter automatiquement ce genre d’attaque à l’avenir.</p>
+                <ul>
+                    <li><strong>Nom de l’alerte :</strong> SSH Brute Force Detection - Kali Host</li>
+                    <li><strong>Requête d’alerte :</strong></li>
+                </ul>
+                <div class="code-container">
+index=main sourcetype=secure "Failed password" | stats count by src_ip, user | where count &gt; 3
+                </div>
+                <ul>
+                    <li><strong>Fréquence :</strong> Toutes les heures</li>
+                    <li><strong>Action déclenchée :</strong> Envoyer un email</li>
+                </ul>
+                <div style="display: flex; justify-content: center; margin: 1.2em 0;">
+                    <img src="../../images/splunkActiondéclenchée.png" alt="Action déclenchée Splunk" style="max-width: 90%; max-height: 340px; border-radius: 12px; box-shadow: 0 2px 12px rgba(60,0,80,0.13); background: #222; padding: 8px;">
+                </div>
+            </div>
+
+            <div class="project-block">
+                <h2 class="section-title">Playbook SOAR : Réponse à une tentative de force brute SSH</h2>
+                <ol>
+                    <li><strong>Confirmation de la menace :</strong> L’alerte Splunk indique 4 tentatives d’authentification échouées en moins de 5 secondes depuis <code>::1</code> (localhost) pour le compte kali. Ce comportement est caractéristique d’une attaque automatisée → menace confirmée.</li>
+                    <li><strong>Action corrective :</strong> Blocage temporaire des connexions SSH pour le compte kali via modification de <code>/etc/ssh/sshd_config</code> (DenyUsers) + rechargement du service SSH.</li>
+                    <li><strong>Notification :</strong> Email envoyé à l’équipe sécurité + ticket créé dans Jira avec les détails de l’incident.</li>
+                    <li><strong>Post-action :</strong>
+                        <ul>
+                            <li>Le SOAR exécute automatiquement le blocage de l’IP.</li>
+                            <li>Le compte compromis est désactivé.</li>
+                            <li>L’équipe SOC est notifiée immédiatement.</li>
+                            <li>L’incident est documenté dans un rapport.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="project-block">
+                <h2 class="section-title">Réflexion Critique</h2>
+                <strong>Ce que j’ai trouvé le plus utile :</strong>
+                <ul>
+                    <li>Le SIEM m’a permis de voir clairement ce qui se passait sur le serveur. Sans lui, j’aurais dû fouiller manuellement dans les logs.</li>
+                    <li>Grâce à la requête et à l’alerte, j’ai détecté l’attaque en quelques secondes.</li>
+                </ul>
+                <strong>Le SOAR (Playbook) :</strong>
+                <ul>
+                    <li>Le SOAR permet d’automatiser la réponse, ce qui réduit le stress et le temps de réaction lors d’un incident. Il garantit aussi la cohérence des actions et la traçabilité pour l’audit.</li>
+                </ul>
+                <strong>Je pourrais faire ces améliorations :</strong>
+                <ul>
+                    <li>Ajouter une étape de vérification humaine pour les actions importantes (ex: bloquer un compte), demander une validation à un analyste avant d’exécuter pour éviter les erreurs si c’est juste un utilisateur qui a oublié son mot de passe.</li>
+                    <li>Surveiller plus de sources : Ajouter les logs de cron, .bash_history ou les connexions réseau pour détecter d’autres signes de compromission (ex: un script malveillant qui tourne en arrière-plan).</li>
+                    <li>Améliorer l’alerte : Passer de “toutes les heures” à “toutes les 5 minutes” pour réagir plus vite. Et ajouter un webhook vers le SOAR pour montrer l’intégration complète.</li>
+                </ul>
+            </div>
+
+            <div class="key-takeaway">
+                <h2 style="margin-top:0;">Conclusion</h2>
+                <p>
+                    <strong>Le SIEM détecte,<br>
+                    Le SOAR réagit,<br>
+                    Et l’humain supervise.</strong><br>
+                    C’est beaucoup plus efficace, surtout quand les attaques vont vite.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
