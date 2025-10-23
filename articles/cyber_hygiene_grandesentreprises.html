@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         body {
-            background: #3a0066;
+            background: #FFD54F;
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -18,11 +18,11 @@
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
-            background: #3a0066;
+            background: #FFD54F;
         }
         .side-column {
             flex: 1;
-            background: linear-gradient(180deg, #6a1b9a 0%, #3a0066 100%);
+            background: linear-gradient(180deg, #FFD54F 0%, #FFC107 100%);
             min-width: 80px;
             max-width: 200px;
             height: 100vh;
@@ -168,72 +168,174 @@
 
                 <h3>Danger 2 : Attaque de la chaîne d’approvisionnement (Supply Chain Attack)</h3>
                 <p><strong>Qu’est-ce que c’est ?</strong><br>
-                    Supply Chain Attack consiste à pirater un logiciel ou service approuvé à la source, permettant d’infecter toute une chaîne client sans que personne ne s’en aperçoive immédiatement. Aussi, ça peut être une cyberattaque indirecte, où l’ennemi compromet un fournisseur ou un logiciel tiers pour atteindre ses véritables cibles.
-                </p>
-                <p><strong>Comment ça marche ?</strong></p>
-                <ul>
-                    <li>Un logiciel légitime est infecté avec un code malveillant avant son déploiement. Des milliers d’utilisateurs l'installent et croient manipuler un produit fiable.</li>
-                    <li>L’attaque peut toucher simultanément des centaines d’entreprises clientes.</li>
-                </ul>
-                <p><strong>Pourquoi c’est dangereux pour une grande entreprise ?</strong></p>
-                <ul>
-                    <li>C’est une infection massive ayant un impact étendu via un logiciel de confiance.</li>
-                    <li>Difficile à détecter car le code malveillant peut passer inaperçu pendant longtemps et perturbation de systèmes essentiels causant des pertes de données, atteinte à la réputation.</li>
-                </ul>
-                <p><strong>Exemple concret :</strong><br>
-                    Un patch logiciel officiel d’un outil IT contenant un code malveillant injecté par les hackers à la source. Ce patch est ensuite utilisé par des milliers d’entreprises, dont certaines subissent des chutes de serveurs ou des vols de données.
-                </p>
-
-                <h3>Danger 3 : Menace interne (Insider Threat)</h3>
-                <p><strong>Qu’est-ce que c’est ?</strong><br>
-                    Une menace interne provient d’un salarié, prestataire ou ancien collaborateur mal intentionné. Ils exploitent leurs accès internes, cette confiance, pour nuire délibérément ou par négligence, en volant des données, en sabotant des systèmes ou en facilitant une attaque.
-                </p>
-                <p><strong>Pourquoi c’est dangereux pour une grande entreprise ?</strong></p>
-                <ul>
-                    <li>Un insider threat peut entraîner un sabotage par la destruction de données critiques ou de systèmes, une fuite de données impliquant le vol de secrets commerciaux ou d’informations clients, ou encore une perturbation d’activités causée par l’arrêt brutal de services essentiels.</li>
-                </ul>
-                <p><strong>Exemple concret :</strong><br>
-                    Un administrateur système licencié et fâché décide d’effacer des bases de données critiques quelques heures après son départ, causant un arrêt total des opérations de l’entreprise pendant plusieurs jours.
-                </p>
-
-                <h2>Solutions concrètes pour les grandes entreprises</h2>
-                <ul>
-                    <li><strong>Advanced persistent threat :</strong> Mise en place d’un SOC (Security Operation Center), utilisation de systèmes UEBA (User and Entity Behavior Analytics), audits réguliers des fournisseurs.</li>
-                    <li><strong>Supply chain attack :</strong> Contrôle rigoureux des fournisseurs, signature numérique des logiciels, segmentation stricte des réseaux.</li>
-                    <li><strong>Insider threat :</strong> Gestion stricte des accès, journalisation complète, formation continue du personnel.</li>
-                </ul>
-
-                <h2>En résumé</h2>
-<p>
-    Pour les grandes entreprises, la cybersécurité est une responsabilité essentielle qui ne repose pas sur un seul modèle, mais sur l'alignement stratégique de frameworks complémentaires selon trois niveaux d'importance :
-</p>
-<ol>
-    <li><strong style="color:#111;">Gouvernance Stratégique</strong> – Le NIST CSF guide l'action organisationnelle. L'ISO 27001 assure la conformité réglementaire. Ces frameworks établissent la stratégie globale de sécurité.</li>
-    <li><strong style="color:#111;">Protection Fondamentale</strong> – La triade CIA définit les objectifs de sécurité essentiels. Les contrôles techniques universels protègent tous les actifs. Cette base couvre les besoins de sécurité fondamentaux.</li>
-    <li><strong style="color:#111;">Défense Avancée</strong> Des piliers spécialisés ciblent les menaces sophistiquées. Ils traitent spécifiquement les APT, attaques Supply Chain et Insider Threat. Cette couche offre une réponse
-                    Ces trois niveaux sont interdépendants : une gouvernance défaillante compromet les contrôles techniques, tandis qu'une protection fondamentale inadéquate rend inefficaces les défenses avancées.
+                    Supply Chain Attack consiste à pirater un logiciel<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Hygiène Grandes Entreprises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: #FFD54F;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .centered-layout {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: #FFD54F;
+        }
+        .side-column {
+            flex: 1;
+            background: linear-gradient(180deg, #FFD54F 0%, #FFC107 100%);
+            min-width: 80px;
+            max-width: 200px;
+            height: 100vh;
+        }
+        .main-content {
+            flex: 2.5;
+            background: #fff;
+            color: #111 !important;
+            margin: 2em 0;
+            padding: 2em;
+            border-radius: 18px;
+            box-shadow: 0 0 24px rgba(60,0,80,0.12);
+            min-width: 320px;
+            max-width: 800px;
+            font-size: 0.97em;
+        }
+        .main-content h1, .main-content h2, .main-content h3 {
+            color: #3a0066;
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 2em;
+            margin-bottom: 0.2em;
+            margin-top: 0.2em;
+            line-height: 1.1;
+        }
+        .main-content h2 {
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+            margin-top: 1.2em;
+        }
+        .main-content h3 {
+            font-size: 1.1em;
+            margin-bottom: 0.2em;
+            margin-top: 1em;
+        }
+        .main-content p, .main-content ul, .main-content ol, .main-content blockquote {
+            margin-top: 0.3em;
+            margin-bottom: 0.7em;
+            font-size: 1em;
+            color: #111 !important;
+        }
+        .main-content strong {
+            font-size: 1.05em;
+        }
+        .main-content p strong,
+        .main-content ul strong {
+            color: #111 !important;
+        }
+        .main-content .byline {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1em;
+            margin-top: 0.5em;
+            font-size: 1.1em;
+        }
+        .main-content a {
+            color: #6a1b9a;
+            text-decoration: none;
+        }
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+        .main-content ul {
+            margin-bottom: 1em;
+            padding-left: 1.2em;
+        }
+        .main-content code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #111 !important;
+        }
+        @media (max-width: 900px) {
+            .centered-layout {
+                flex-direction: column;
+            }
+            .side-column {
+                display: none;
+            }
+            .main-content {
+                margin: 0;
+                border-radius: 0;
+                min-width: unset;
+                max-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-layout">
+        <div class="side-column"></div>
+        <div class="main-content" style="font-size:0.97em;">
+            <div style="text-align:center; margin-top:2.5em; margin-bottom:1.5em;">
+                <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right: 1.5em; color: #111; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="color: #0077b5; text-decoration: none; font-size: 1.5em;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <br>
+                <a href="https://robinboucher.tech/#welcome"
+                   style="display:inline-block; margin-top:1.2em; background:#741761; color:#fff; font-weight:bold; text-decoration:none; font-size:1.1em; padding:0.7em 1.6em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); transition:background 0.2s;">
+                    &larr; Retour à la page d'accueil
+                </a>
+            </div>
+             <div style="position:relative; width:100%; height:240px; margin-bottom:1.5em; display:flex; justify-content:center; align-items:center;">
+                <img src="../images/cyber_hygiene_grandesentreprises.png" alt="Cyber Hygiène Grandes Entreprises"
+                     style="position:static; max-width:320px; max-height:100%; width:auto; height:auto; opacity:1; box-shadow:0 4px 24px rgba(60,0,80,0.10); border-radius:12px;"/>
+            </div>
+            <div>
+                <h1>Cyber Hygiène Grandes Entreprises</h1>
+                <h2>Protéger les grandes entreprises face aux cybermenaces avancées</h2>
+                <div class="byline">
+                    Robin Boucher – Étudiant en cybersécurité<br>
+                    <em>15 août 2025</em>
+                </div>
+                <p>
+                    Ce guide en trois volets présente des conseils concrets pour naviguer en toute sécurité sur le web, que vous soyez un particulier, une PME ou une grande entreprise. Voici la troisième partie, dédiée aux grandes entreprises.
                 </p>
                 <p>
-                    Face à l'évolution constante des cybermenaces, ces frameworks doivent être régulièrement mis à jour et adaptés aux nouveaux risques émergents. Ici encore, il n’existe pas de protection unique. C’est la combinaison de plusieurs mesures qui construit une défense solide.
+                    Comme le souligne le Centre canadien pour la cybersécurité dans son rapport <em>Évaluation des cybermenaces nationales 2025-2026</em>, les grandes entreprises, malgré leurs ressources, font face à des menaces avancées :<br>
+                    <em>« La concentration des fournisseurs augmente la vulnérabilité en matière de cybersécurité »</em> (p. 37), tandis que les attaques ciblées par des acteurs étatiques et les risques internes exploitant des accès privilégiés deviennent de plus en plus fréquents (p. 23 et 35).
                 </p>
-                <p style="margin-top:2em;">
-                    Cet article fait partie d’une série sur la cyberhygiène.<br>
-                    <a href="cyberhygiene.personnel.html" target="_blank">Lire aussi : Guide pour les individus – Sécuriser sa navigation web</a><br>
-                    <a href="cyber_hygiene_PME.html" target="_blank">Lire aussi : Guide pour les PME – Sécuriser la navigation en entreprise</a>
+                <p>
+                    Les grandes entreprises ne sont pas protégées par leur taille ou leurs budgets importants. Au contraire, elles attirent les hackers justement pour ces raisons. Les cybercriminels s’adaptent constamment pour contourner les défenses. La vulnérabilité principale reste souvent humaine : un employé trompé par un email malveillant ou un logiciel compromis peut être le point d’entrée fatal. Un collaborateur mal intentionné constitue également une menace interne réelle.
                 </p>
-                <p>Si vous souhaitez renforcer vos mots de passe, je vous recommande de lire mon article précédent :
-    
-        <a href="La_cyber_securité_et_les_mots_de_passe.html" target="_blank">
-            La cybersécurité et les mots de passe – Guide pour renforcer votre sécurité en ligne
-        </a>.
 
-</p>
-                <p style="text-align:center; margin-top:2.5em; font-size:1.05em;">
-                    Cet article est aussi disponible sur&nbsp;:
-                    <a href="https://dev.to/robin_boucher_4a5559d1b96" target="_blank" style="color:#6a1b9a; font-weight:bold;">DEV Community</a>
-                    &nbsp;et&nbsp;
-                    <a href="https://medium.com/@robinboucher.tech" target="_blank" style="color:#6a1b9a; font-weight:bold;">Medium</a>
+                <h3>Danger 1 : Menace persistante avancée (APT – Advanced Persistent Threat)</h3>
+                <p><strong>Qu’est-ce que c’est ?</strong><br>
+                    Advanced Persistent Threat est une campagne sophistiquée, ciblée et prolongée d'attaques informatiques menée par un adversaire hautement qualifié. Ces acteurs infiltrent discrètement les réseaux d’une entreprise pour surveiller, voler des secrets industriels ou perturber des opérations critiques et il reste actif pendant plusieurs mois, copiant des données confidentielles sans se faire remarquer.
                 </p>
-            </div>
-        </div>
-        <div class="side-column"></div>
+                <p><strong>Pourquoi c’est dangereux pour une grande entreprise ?</strong></p>
+                <ul>
+                    <li>Vol de propriété intellectuelle : Perte de brevets, de formules, de prototypes.</li>
+                    <li>Atteinte à la souveraineté économique : Compromission de projets stratégiques.</li>
+                    <li>Perte de compétitivité internationale : Données volées utilisées par des concurrents.</li>
+                </ul>
+                <p><strong>Exemple concret :</strong><br>
+                    Des hackers ont pénétré le réseau d’un grand constructeur aéronautique via un logiciel de gestion RH utilisé par un partenaire. Ils sont restés actifs pendant plusieurs mois, volant des plans techniques secrets avant de les transmettre à un concurrent étranger.
+                </p>
+
+                <h3>Danger 2 : Attaque de la chaîne d’approvisionnement (Supply Chain Attack)</h3>
+                <p><strong>Qu’est-ce que c’est ?</strong><br>
+                    Supply Chain Attack consiste à pirater un logiciel
