@@ -37,6 +37,34 @@
         ul { margin-left:1.1em; }
         .btn { display:inline-block; margin-top:1.2em; background:#741761; color:#fff; padding:0.6em 1.2em; border-radius:10px; text-decoration:none; }
         .highlight { background: rgba(116,23,97,0.12); padding:1em; border-radius:10px; margin-top:1em; }
+        .typical-day-btn {
+            background: #4B3A8C;
+            color: #fff;
+            border: none;
+            padding: 0.6em 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .typical-day-content {
+            display: none;
+            margin-top: 0.8em;
+            background: rgba(255,255,255,0.03);
+            padding: 1em;
+            border-radius: 8px;
+            color: #eee;
+            line-height: 1.6;
+            text-align: left; /* ensure text is left-aligned */
+        }
+        .typical-day-content p,
+        .typical-day-content ul,
+        .typical-day-content li {
+            text-align: left;
+        }
+        .typical-day-content ul {
+            margin-left: 1.2em;
+            list-style-position: outside;
+        }
         @media (max-width:800px){ .centered-layout{padding:1em;} }
     </style>
 </head>
@@ -65,14 +93,14 @@
             <section>
                 <h2>Technical Exposure</h2>
                 <p>Although my position was not purely technical, it provided deep exposure to the architecture and workflows of Security Operations Centers (SOC).</p>
-                <p>I developed a solid understanding of:</p>
+            
                 <ul>
                     <li>Log analysis (Windows Events, WEC, EDR telemetry)</li>
                     <li>Detection and alerting workflows</li>
                     <li>SIEM correlation and event aggregation</li>
                     <li>How different security layers interact (EDR → SIEM → SOAR)</li>
                 </ul>
-                <p>For example, I observed how endpoint telemetry collected by EDR solutions is forwarded to SIEM platforms, where correlation rules generate alerts that can trigger automated responses.</p>
+                
             </section>
 
             <section>
@@ -93,7 +121,7 @@
                 <p>One of the most valuable aspects of this experience was understanding how cybersecurity services are deployed in real-world environments.</p>
                 <p>I gained insight into:</p>
                 <ul>
-                    <li>How logs are collected, centralized, and analyzed</li>
+                    <li>How logs are collected, centralized, and analyzed using collectors, agents, and Windows Event Collector (WEC).</li>
                     <li>How alerts are generated through correlation across multiple data sources</li>
                     <li>How SOC teams investigate and respond to threats</li>
                     <li>How different security products integrate into a unified defense strategy</li>
@@ -103,13 +131,8 @@
 
             <section>
                 <h2>Collaboration & Communication</h2>
-                <p>A major part of my role involved constant collaboration with:</p>
-                <ul>
-                    <li>Security analysts</li>
-                    <li>Engineers</li>
-                    <li>Project managers</li>
-                    <li>Clients</li>
-                </ul>
+                <p>Collaborated with cross-functional teams including Security Operations (SOC), Cloud Security, Vulnerability Management (VMaaS), Threat Detection & Response (IDR), Service Delivery, and PMO.</p>
+                <p>If I was not directly working with otheremployees, I had the time to meet them at the office.</p>
                 <p>This experience helped me develop the ability to navigate technical discussions while maintaining a strong focus on client satisfaction and clear communication.</p>
             </section>
 
@@ -136,6 +159,42 @@
                     <li>SOC operations</li>
                 </ul>
                 <p>This experience strengthened both my technical understanding and my ability to operate in a professional cybersecurity environment.</p>
+
+                <!-- Dropdown button inserted at end of Summary -->
+                <div style="text-align:center; margin-top:1.2em;">
+                    <button id="typical-day-btn" class="typical-day-btn" aria-expanded="false" aria-controls="typical-day-content">
+                        Typical day here
+                    </button>
+
+                    <div id="typical-day-content" class="typical-day-content" role="region" aria-hidden="true">
+                        <p>A typical day during my internship at GoSecure combined client coordination, internal collaboration, and ongoing onboarding tasks across multiple cybersecurity services.</p>
+
+                        <p>I usually started my day by reviewing active onboarding tickets in Zendesk. This allowed me to stay up to date on each client’s progress, respond to pending requests, and identify any blockers or urgent follow-ups from the previous day.</p>
+
+                        <p>The morning was followed by a daily team meeting (SCRUM) with the Project Management team. During this meeting, we aligned on priorities, shared updates on client onboarding progress, and discussed any challenges that required coordination with technical teams. It was also an opportunity to take on additional tasks when availability allowed.</p>
+
+                        <p>The rest of the day was structured around client onboarding activities. This included:</p>
+                        <ul>
+                            <li>Hosting or facilitating client meetings</li>
+                            <li>Coordinating with technical teams (SIEM, EDR, VMaaS, etc.)</li>
+                            <li>Taking detailed technical notes during discussions</li>
+                            <li>Ensuring accurate communication between all stakeholders</li>
+                        </ul>
+
+                        <p>Between meetings, I focused on operational and support tasks such as:</p>
+                        <ul>
+                            <li>Writing follow-up emails summarizing meetings, decisions, and action items</li>
+                            <li>Updating documentation and onboarding timelines</li>
+                            <li>Performing platform configurations for new clients (account setup, access, integrations)</li>
+                            <li>Supporting ongoing deployments by tracking progress and resolving minor issues</li>
+                        </ul>
+
+                        <p>Midweek (typically Wednesdays and Thursdays), I participated in more technical meetings involving security analysts and engineers. These sessions provided deeper insight into real-world cybersecurity operations, including deployment challenges, detection logic, and interactions between different security tools.</p>
+
+                        <p>Overall, my daily routine required strong organization, adaptability, and communication, as I continuously balanced multiple clients, tasks, and cross-team interactions in a fast-paced cybersecurity environment.</p>
+                    </div>
+                </div>
+
             </section>
 
             <div style="text-align:center; margin-top:1.5em;">
@@ -143,5 +202,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        (function(){
+            const btn = document.getElementById('typical-day-btn');
+            const content = document.getElementById('typical-day-content');
+            btn.addEventListener('click', function(){
+                const isOpen = content.style.display === 'block';
+                content.style.display = isOpen ? 'none' : 'block';
+                content.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+                btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+                if (!isOpen) content.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        })();
+    </script>
 </body>
 </html>
