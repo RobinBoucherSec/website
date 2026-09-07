@@ -1,0 +1,588 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Robin Boucher - Portfolio</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <!-- Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    </head>
+    <body class="is-preload">
+
+       
+
+        <!-- Social Links Bar -->
+        <div style="width:100%;background:#000000;padding:0.5em 0;text-align:center;position:fixed;top:0;left:0;z-index:1000;display:flex;justify-content:center;align-items:center;">
+            <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin:0 1em;color:#fff;text-decoration:none;font-size:1.5em;">
+                <i class="fab fa-github" aria-hidden="true"></i>
+                <span style="font-size:0.9em;vertical-align:middle;">GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="margin:0 1em;color:#0077b5;text-decoration:none;font-size:1.5em;">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                <span style="font-size:0.9em;vertical-align:middle;">LinkedIn</span>
+            </a>
+            <!-- Language Switch Text (top right, beside LinkedIn) -->
+            <span id="lang-btn"
+                style="background:none;color:#fff;border-radius:14px;padding:3px 12px;font-weight:bold;box-shadow:none;border:none;cursor:pointer;font-size:0.92em;margin-left:1.2em;user-select:none;">
+                Traduction Français / English
+            </span>
+        </div>
+
+       
+
+        <!-- Sidebar -->
+        <section id="sidebar">
+            <div class="inner">
+                <nav>
+                    <ul>
+                        <li><a href="#welcome"><i class="fa fa-house"></i> <span class="tr-en">Welcome Page</span><span class="tr-fr" style="display:none;">Page d'accueil</span></a></li>
+                        <li><a href="#labs-ctfs"><i class="fa fa-flask"></i> <span class="tr-en">Labs & CTFs</span><span class="tr-fr" style="display:none;">Labos & CTFs</span></a></li>
+                        <li><a href="#articles"><i class="fa fa-newspaper"></i> <span class="tr-en">My Articles</span><span class="tr-fr" style="display:none;">Mes Articles</span></a></li>
+                        <li><a href="#education"><i class="fa fa-graduation-cap"></i> <span class="tr-en">Education</span><span class="tr-fr" style="display:none;">Éducation</span></a></li>
+                        <li><a href="#whoiam"><i class="fa fa-user"></i> <span class="tr-en">Who I Am</span><span class="tr-fr" style="display:none;">Qui suis-je</span></a></li>
+                        <li><a href="#workexperience"><i class="fa fa-briefcase"></i> <span class="tr-en">Work Experience</span><span class="tr-fr" style="display:none;">Expérience professionnelle</span></a></li>
+                        <li><a href="#contact"><i class="fa fa-envelope"></i> <span class="tr-en">Contact</span><span class="tr-fr" style="display:none;">Contact</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Welcome Page -->
+            <section id="welcome" class="wrapper style1 fullscreen fade-up">
+                <div class="inner">
+                    <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:2rem; margin-bottom:1.5em;">
+                        <div style="flex:0 0 auto; text-align:center;">
+                            <img 
+                                src="images/photorpfessionnal.png" 
+                                alt="Robin Boucher portrait" 
+                                style="width:200px; height:200px; object-fit:cover; border-radius:50%; box-shadow:0 4px 24px rgba(60,0,80,0.13);"
+                            />
+                        </div>
+                        <div style="flex:1 1 320px; min-width:280px;">
+                            <h1 style="font-size:1.75em; margin-top:0;">
+                                <span class="tr-en">My Digital Playground - or portfolio</span>
+                                <span class="tr-fr" style="display:none;">Mon terrain de jeu numérique - ou portfolio</span>
+                            </h1>
+                            <p class="tr-en">I'm Robin Boucher, a Cybersecurity professional, turning complex challenges into clear work. Here I share secure samples of my work as a way to grow in the world of CyberSecurity.</p>
+                            <p class="tr-fr" style="display:none;">Je m'appelle Robin Boucher, professionnel en cybersécurité, transformant des défis complexes en solutions claires et structurées. Ici, je partage des exemples de mon travail pour progresser dans le monde de la cybersécurité.</p>
+                            <p class="tr-en"></p>
+                            <p class="tr-fr" style="display:none;"></p>
+                        </div>
+                    </div>
+                    <aside style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius:1rem; padding:1rem 1.2rem; box-shadow:0 8px 22px rgba(0,0,0,0.14);">
+                        <h2 style="margin-top:0;"><span class="tr-en">Testimonials</span><span class="tr-fr" style="display:none;">Témoignages</span></h2>
+                        <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+                            <div style="flex:1 1 300px; background: rgba(0,0,0,0.14); border-radius:0.8rem; padding:0.85rem;">
+                                <h3 style="margin-top:0;"><span class="tr-en">Collège Cumberland</span><span class="tr-fr" style="display:none;">Collège Cumberland</span></h3>
+                                <p style="line-height:1.4; margin-bottom:0.8rem;"><span class="tr-en">With this letter of recommendation, we wish to highlight his personal commitment as well as the quality of the work he has done. Robin Boucher will certainly create value in the field ...</span><span class="tr-fr" style="display:none;">Nous souhaitons avec cette lettre de recommandation souligner son investissement personnel, ainsi que la qualité du travail qu’il a effectué. Robin Boucher saura certainement créer de la valeur dans le milieu ...</span></p>
+                                <p style="font-weight:bold; margin:0;"><span class="tr-en">Emmanuel Martin-Jean</span><span class="tr-fr" style="display:none;">Emmanuel Martin-Jean</span></p>
+                                <p style="font-size:0.95rem; margin:0 0 0.8rem;"><span class="tr-en">Director of Studies, Collège Cumberland</span><span class="tr-fr" style="display:none;">Directeur des études, Collège Cumberland</span></p>
+                                <a href="testimonials/Lettre de recommendation CS_Boucher, Robin-Stage (2).pdf" target="_blank" rel="noopener noreferrer" class="button-link" style="display:inline-block; background:#74176181; color:#fff; text-decoration:none; padding:0.45em 0.85em; border-radius:0.6em; font-weight:600; border:1px solid #3f2d75;"><span class="tr-en">Read full letter (PDF)</span><span class="tr-fr" style="display:none;">Lire la lettre complète (PDF)</span></a>
+                            </div>
+                            <div style="flex:1 1 300px; background: rgba(0,0,0,0.14); border-radius:0.8rem; padding:0.85rem;">
+                                <h3 style="margin-top:0;"><span class="tr-en">GoSecure</span><span class="tr-fr" style="display:none;">GoSecure</span></h3>
+                                <p style="line-height:1.4; margin-bottom:0.8rem;"><span class="tr-en">“Robin quickly stood out through his motivation, initiative, and strong interest in technical aspects. He contributed to the deployment of cybersecurity solutions and improved our internal processes by implementing automation tools that are still in use today...”</span><span class="tr-fr" style="display:none;">« Robin s’est rapidement démarqué par sa motivation, son initiative et son intérêt pour les aspects techniques. Il a contribué au déploiement de solutions de cybersécurité et à l’amélioration de nos processus internes grâce à des outils d’automatisation encore utilisés aujourd’hui... »</span></p>
+                                <p style="font-weight:bold; margin:0;"><span class="tr-en">Alexander Harpin</span><span class="tr-fr" style="display:none;">Alexander Harpin</span></p>
+                                <p style="font-size:0.95rem; margin:0 0 0.8rem;"><span class="tr-en">Director of Services, GoSecure</span><span class="tr-fr" style="display:none;">Directeur des services, GoSecure</span></p>
+                                <a href="testimonials/Recomandation_Robin-GoSecure_signed.pdf" target="_blank" rel="noopener noreferrer" class="button-link" style="display:inline-block; background:#74176181; color:#fff; text-decoration:none; padding:0.45em 0.85em; border-radius:0.6em; font-weight:600; border:1px solid #3f2d75;"><span class="tr-en">View GoSecure recommendation (PDF)</span><span class="tr-fr" style="display:none;">Voir la recommandation GoSecure (PDF)</span></a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- Labs & CTFs -->
+            <section id="labs-ctfs" class="wrapper style1 fullscreen fade-up" style="background-color: #74176181;">
+                <div class="inner">
+                    <h2>
+                        <span class="tr-en">Labs & CTFs</span>
+                        <span class="tr-fr" style="display:none;">Labos & CTFs</span>
+                    </h2>
+                    <p class="tr-en">Preview of Labs and CTF write-ups. Click on a title to see more details.</p>
+                    <p class="tr-fr" style="display:none;">Aperçu des labos et des write-ups CTF. Cliquez sur un titre pour voir plus de détails.</p>
+                    <div style="display: flex; gap: 2em; flex-wrap: wrap;">
+                        <!-- Labs Column -->
+                        <div style="flex:1; min-width:220px;">
+                            <h3 class="tr-en">Labs</h3>
+                            <h3 class="tr-fr" style="display:none;">Labos</h3>
+                            <ul style="padding-left:0; list-style:none;">
+                             <ul style="padding-left:0; list-style:none; margin-top:1.5em;">
+                                <li>
+                                    <a 
+                                       style="display:inline-block; background:#4B3A8C; color:#fff; font-weight:bold; text-decoration:none; font-size:1.05em; padding:0.5em 1.3em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); margin-bottom:0.7em; transition:background 0.2s;">
+                                        <span class="tr-en">Cryptography Projects </span>
+                                        <span class="tr-fr" style="display:none;">Projets de cryptographie </span>
+                                    </a>
+                                </li>
+                                 </h4>
+                                <ul style="padding-left:0; list-style:none;">
+                                    <li>
+                                        <a href="projects/crypto/main_page_crypto.html" class="button-link" target="_blank">
+                                            <i class=></i>
+                                            <span class="tr-en">Cryptography Projects (AES, RSA, Diffie-Hellman, Hash cracking)</span>
+                                        <span class="tr-fr" style="display:none;">Projets de cryptographie (AES, RSA, Diffie-Hellman, cassage de hash)</span>
+                                        </a>
+                                    </li>
+                            </ul>
+                                <li>
+                                    <a 
+                                       style="display:inline-block; background:#4B3A8C; color:#fff; font-weight:bold; text-decoration:none; font-size:1.05em; padding:0.5em 1.3em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); margin-bottom:0.7em; transition:background 0.2s;">
+                                        <span class="tr-en">Detection, Monitoring & Response</span>
+                                        <span class="tr-fr" style="display:none;">Détection, Monitoring & Réponse</span>
+                                    </a>
+                                    <ul style="padding-left:0; list-style:none;">
+                                    <li>
+                                        <a href="projects/projects/splunk_lab.html" target="_blank">
+                                            <i class=></i>
+                                            <span class="tr-en">Splunk Lab (Concepts, Logs, Alerts, SOAR Playbook)</span>
+                                            <span class="tr-fr" style="display:none;">Lab Splunk (Concepts, journaux, alertes, playbook SOAR)</span>
+                                        </a>
+                                    </li>
+                                </li>
+                            </ul>
+                            <!-- Nouvelle section Infrastructure & Sécurité Opérationnelle -->
+                            <div style="margin-top:1.5em;">
+                                <h4 style="display:inline-block; background:#4B3A8C; color:#fff; font-weight:bold; text-decoration:none; font-size:1.05em; padding:0.5em 1.3em; border-radius:1.2em; box-shadow:0 2px 8px rgba(60,0,80,0.10); margin-bottom:0.7em; transition:background 0.2s;">
+                                    <span class="tr-en">Infrastructure & Operational Security</span>
+                                    <span class="tr-fr" style="display:none;">Infrastructure & Sécurité Opérationnelle</span>
+                                </h4>
+                                <ul style="padding-left:0; list-style:none;">
+                                    <li>
+                                        <a href="https://bold-top-b0e.notion.site/ebd/20fd8ff66ad280e5a84ec60647b61c65" class="button-link" target="_blank">
+                                            <i class=></i>
+                                            <span class="tr-en">PfSense Lab</span>
+                                            <span class="tr-fr" style="display:none;">Lab PfSense</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://bold-top-b0e.notion.site/ebd/1ded8ff66ad28014be8dc6e19390c18e" target="_blank">
+                                            <i class=></i>
+                                            <span class="tr-en">Active Directory</span>
+                                            <span class="tr-fr" style="display:none;">Active Directory</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="button-link" href="https://bold-top-b0e.notion.site/ebd/1d5d8ff66ad280c89aa4d9e961e320aa">
+                                            <span class="tr-en">Simple PKT Lab</span>
+                                            <span class="tr-fr" style="display:none;">Lab simple de PKT</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="button-link" href="https://github.com/RobinBoucherSec/cisco_packet_tracer_lab_basics">
+                                            <span class="tr-en">4-Network PKT Lab</span>
+                                            <span class="tr-fr" style="display:none;">Lab de PKT de 4 réseaux</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                        <!-- CTF Column -->
+                        <div style="flex:1; min-width:220px;">
+                            <h3 class="tr-en">CTF Write-ups</h3>
+                            <h3 class="tr-fr" style="display:none;">Write-ups CTF</h3>
+                            <ul>
+                                <li>
+                                    <span class="preview">
+                                        <a href="https://github.com/RobinBoucherSec/OverTheWire-Bandit-WriteUp" target="_blank" style="font-size:0.95em;">
+                                            <i class="fab fa-github"></i>
+                                            <span class="tr-en">Bandit CTF GitHub Repo</span>
+                                            <span class="tr-fr" style="display:none;">Repo GitHub Bandit CTF</span>
+                                        </a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTF Write-up 1 Details (hidden by default, shown when clicked) -->
+            <section id="ctf1" class="wrapper style2 fade-up" style="display:none;">
+                <div class="inner">
+                    <h3>CTF Write-up 1</h3>
+                    <p>Here will be the full write-up for CTF 1.</p>
+                    <a href="#labs-ctfs" class="button small">Back to CTF List</a>
+                </div>
+            </section>
+
+            <!-- CTF Write-up 2 Details -->
+            <section id="ctf2" class="wrapper style2 fade-up" style="display:none;">
+                <div class="inner">
+                    <h3>CTF Write-up 2</h3>
+                    <p>Here will be the full write-up for CTF 2.</p>
+                    <a href="#labs-ctfs" class="button small">Back to CTF List</a>
+                </div>
+            </section>
+
+            <!-- Work Experience (moved up) -->
+            <section id="workexperience" class="wrapper fade-up" style="background-color: #4B3A8C;">
+                <div class="inner">
+                    <h2>
+                        <span class="tr-en">Work Experience</span>
+                        <span class="tr-fr" style="display:none;">Expérience professionnelle</span>
+                    </h2>
+                    <ul>
+                        <li>
+                            <span class="tr-en" style="display:inline-flex;align-items:center;gap:8px;">
+                                <strong>Compliance & Strategy Manager</strong>
+                                <span>at</span>
+                                <img src="images/cybershieldmaple.JPEG" alt="CyberShieldMaple" style="height:110px; vertical-align:middle; border-radius:4px;">
+                            </span>
+                            <span class="tr-fr" style="display:none;">
+                                <span style="display:inline-flex;align-items:center;gap:8px;">
+                                    <strong>Responsable Stratégie & Conformité</strong>
+                                    <span>à</span>
+                                    <img src="images/cybershieldmaple.JPEG" alt="CyberShieldMaple" style="height:110px; vertical-align:middle; border-radius:4px;">
+                                </span>
+                            </span>
+                            <br>
+                            <span style="font-size:0.95em;" class="tr-en">From 2026 to Now</span>
+                            <span style="font-size:0.95em;display:none;" class="tr-fr">De 2026 à maintenant</span>
+                            <p style="font-size:0.95em; margin-top:0.3em;" class="tr-en">Visibility and compliance automation for Canadian clinics and law firms</p>
+                            <p style="font-size:0.95em; margin-top:0.3em; display:none;" class="tr-fr">Visibilité et automatisation de la conformité pour les cliniques et cabinets d'avocats canadiens</p>
+                            <ul>
+                                <li class="tr-en">
+                                    <a href="mailto:robinboucher.tech@gmail.com" 
+                                       class="button-link" style="display:inline-block;background:#74176181;color:#fff;padding:0.4em 0.9em;border-radius:0.9em;text-decoration:none;">
+                                        Contact for details
+                                    </a>
+                                </li>
+                                <li class="tr-fr" style="display:none;">
+                                    <a href="mailto:robinboucher.tech@gmail.com" 
+                                       class="button-link" style="display:inline-block;background:#74176181;color:#fff;padding:0.4em 0.9em;border-radius:0.9em;text-decoration:none;">
+                                        Contactez-moi pour les détails
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="tr-en" style="display:inline-flex;align-items:center;gap:8px;">
+                                <strong>Cybersecurity Intern as Project Manager</strong>
+                                <span>at</span>
+                                <img src="images/gosecure.png" alt="GoSecure" style="height:40px; vertical-align:middle; border-radius:4px;">
+                            </span>
+                            <span class="tr-fr" style="display:none;">
+                                <span style="display:inline-flex;align-items:center;gap:8px;">
+                                    <strong>Stagiaire en cybersécurité en Chargé de Projet</strong>
+                                    <span>at</span>
+                                    <img src="images/gosecure.png" alt="GoSecure" style="height:40px; vertical-align:middle; border-radius:4px;">
+                                </span>
+                            </span>
+                            <br>
+                            <span style="font-size:0.95em;" class="tr-en">From November 2025 to March 2026</span>
+                            <span style="font-size:0.95em;display:none;" class="tr-fr">De novembre 2025 à mars 2026</span>
+                            <ul>
+                                <li class="tr-en">I have contributed to the onboarding of managed security services (SIEM, EDR/MXDR, VMaaS, DWM, IDR).
+Through this role, I gained a solid understanding of log analysis (Windows events, WEC, EDR telemetry), detection and alerting workflows, SIEM correlation, and SOC operations.
+I worked with tools such as FortiSIEM, Microsoft Defender for Endpoint, Microsoft Sentinel, FortiEDR, and Flare, while contributing to documentation and technical validation processes.
+</li>
+                                <li class="tr-en">
+  <a href="gosecure/gosecure_internship.html" target="_blank" rel="noopener noreferrer"
+     class="button-link" style="display:inline-block;background:#74176181;color:#fff;padding:0.4em 0.9em;border-radius:0.9em;text-decoration:none;">
+    Complete details of work experience here
+  </a>
+</li>
+
+                                <li class="tr-fr" style="display:none;">
+  <a href="gosecure/gosecure_internship.html" target="_blank" rel="noopener noreferrer"
+     class="button-link" style="display:inline-block;background:#74176181;color:#fff;padding:0.4em 0.9em;border-radius:0.9em;text-decoration:none;">
+    Fiche détaillée de mon expérience
+  </a>
+</li>
+                            </ul>
+                        </li>
+                        <!-- Add more work experiences as needed -->
+                    </ul>
+                </div>
+            </section>
+
+           
+
+            <!-- Education -->
+            <section id="education" class="wrapper style1 fade-up" style="background-color: #74176181;">
+                <div class="inner">
+                    <h2>
+                        <span class="tr-en">Education</span>
+                        <span class="tr-fr" style="display:none;">Éducation</span>
+                    </h2>
+                    <div style="display: flex; gap: 2em; flex-wrap: wrap;">
+                        <div style="flex:1; min-width:200px;">
+                            <h3 class="tr-en">School</h3>
+                            <h3 class="tr-fr" style="display:none;">École</h3>
+                            <p class="tr-en">Cybersecurity at Cumberland College (AEC)</p>
+                            <p class="tr-fr" style="display:none;">Cybersécurité au College Cumberland Atestation d'Études Collégiales (AEC)</p>
+                          <img src="images\cumberland.png" alt="Google Cybersecurity" style="height:60px;vertical-align:middle;margin-left:8px;border-radius:6px;">
+                          
+
+                        </div>
+                        <div style="flex:1; min-width:200px;">
+                            <h3 class="tr-en">Certifications</h3>
+                            <h3 class="tr-fr" style="display:none;">Certifications</h3>
+                            <!-- ENGLISH VERSION -->
+                            <div class="tr-en">
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a href="https://www.credly.com/badges/6ea04259-487e-4036-8ffb-2a0994c8fad9/public_url" target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/securityplus.png" alt="CompTIA Security+" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>CompTIA Security+ Certification</span>
+                                    </a>
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a href="https://learn.microsoft.com/en-us/users/robinboucher-9638/credentials/f43811cef4af13f9?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/az900.png" alt="Azure-900" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Azure-900 Fundamental Certification</span>
+                                    </a>
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a href="https://www.coursera.org/account/accomplishments/professional-cert/5XIZ7PFCOXUL" target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/certgoogle.png" alt="Google Cybersecurity" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Google Cybersecurity Certification</span>
+                                    </a>
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/iso27001LI.png" alt="ISO 27001 Lead Implementer" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Certified ISO 27001 Lead Implementer, PECB</span>
+                                    </a>
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a  target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/CAPM.png" alt="Certified Associate in Project Management" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Currently working on Certified Associate in Project Management (CAPM) PMI</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- FRENCH VERSION -->
+                            <div class="tr-fr" style="display:none;">
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a href="https://www.credly.com/badges/6ea04259-487e-4036-8ffb-2a0994c8fad9/public_url" target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/securityplus.png" alt="CompTIA Security+" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Certification CompTIA Security+</span>
+                                    </a>
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a href="https://learn.microsoft.com/en-us/users/robinboucher-9638/credentials/f43811cef4af13f9?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/az900.png" alt="Azure-900" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Certification Azure-900 Fundamental</span>
+                                    </a>
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a href="https://www.coursera.org/account/accomplishments/professional-cert/5XIZ7PFCOXUL" target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/certgoogle.png" alt="Google Cybersecurity" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Certification Google Cybersecurity</span>
+                                    </a>
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a href="NOTHING YET-NEED THE LINK OF ISO CERT" target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/iso27001LI.png" alt="ISO 27001 Lead Implementer" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Certification ISO 27001 Lead Implementer PECB</span>
+                                    </a>
+                                </div>
+                                <!-- French CAPM entry added -->
+                                <div style="display:flex;align-items:center;margin-bottom:1em;">
+                                    <a href="NOTHING YET-NEED THE LINK OF CAPM" target="_blank" style="color:inherit;text-decoration:none;display:flex;align-items:center;">
+                                        <img src="images/CAPM.png" alt="CAPM" style="height:60px;margin-right:12px;border-radius:6px;">
+                                        <span>Travail présentement sur Certified Associate in Project Management (CAPM) - PMI</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="flex:1; min-width:200px;">
+                            <h3 class="tr-en">Events & Conferences</h3>
+                            <h3 class="tr-fr" style="display:none;">Événements & Conférences</h3>
+   <p class="tr-en">Volunteer at NorthSec 2026</p>
+                            <p class="tr-fr" style="display:none;">Bénévole au NorthSec 2026</p>
+ <p class="tr-en">Volunteer at MTL Connect 2025</p>
+                            <p class="tr-fr" style="display:none;">Bénévole au MTL Connect 2025</p>
+<p class="tr-en">Volunteer at GoSec2025 (welcoming and wellbeing of speakers and room management)</p>
+                            <p class="tr-fr" style="display:none;">Bénévole au GoSec2025 (accueil, bien-être des conférencier·ères et responsable de salle.)</p>
+<p class="tr-en">Volunteer at Forum INCYBER 2025 in Montréal, responsable of the speaker room</p>
+                            <p class="tr-fr" style="display:none;">Bénévole au Forum INCYBER 2025 à Montréal, responsable de la speaker room</p>
+ <p class="tr-en">Volunteer at Hackfest 2025, responsable of conference room 4</p>
+                            <p class="tr-fr" style="display:none;">Bénévole au Hackfest 2025, responsable de la salle de conférence 4</p>
+
+                            <p class="tr-en">Attended Hackfest 2024</p>
+                            <p class="tr-fr" style="display:none;">Participation au Hackfest 2024</p>
+                           
+
+                            
+
+                            
+
+                           
+                          
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+<!-- My Articles (moved down) -->
+            <section id="articles" class="wrapper style2 fade-up">
+                <div class="inner">
+                    <h2>
+                        <span class="tr-en">My Articles</span>
+                        <span class="tr-fr" style="display:none;">Mes Articles</span>
+                    </h2>
+                    <ul>
+                        <li>
+                            <a href="articles/La_cyber_securité_et_les_mots_de_passe.html" target="_blank">
+                                La cybersécurité et les mots de passe
+                            </a>
+                        </li>
+                        <li>
+                            <a href="articles/cyberhygiene.personnel.html" target="_blank">
+                                Cyberhygiène personnelle
+                            </a>
+                        </li>
+                        <li>
+                            <a href="articles/cyber_hygiene_PME.html" target="_blank">
+                                Cyberhygiène PME
+                            </a>
+                        </li>
+                        <li>
+                            <a href="articles/cyber_hygiene_grandesentreprises.html" target="_blank">
+                                Cyberhygiène Grandes Entreprises
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Who I Am -->
+            <section id="whoiam" class="wrapper style1 fullscreen fade-up" style="background-color: #74176181;">
+                <div class="inner">
+                    <h2>
+                        <span class="tr-en">Who I Am</span>
+                        <span class="tr-fr" style="display:none;">Qui suis-je</span>
+                    </h2>
+                    <p class="tr-en">
+                        <strong>Robin Boucher • Cybersecurity professional</strong><br>
+                        
+                    </p>
+                    <p class="tr-fr" style="display:none;">
+                        <strong>Robin Boucher • Professionnel en cybersécurité</strong><br>
+                        Je suis basé au Québec, avec un fort intérêt pour comprendre comment les systèmes interagissent, comment les attaques surviennent et comment elles peuvent être détectées et atténuées.
+                    </p>
+                    <p class="tr-en">
+                         I’m based in Quebec with a strong interest in understanding how systems interact, how attacks occur, and how they can be detected and mitigated.
+                    </p>
+                    <p class="tr-fr" style="display:none;">
+                        Grâce à mes études au Collège Cumberland et à un stage récent chez GoSecure, j’ai développé une base solide en cybersécurité ainsi qu’une exposition pratique à des environnements techniques et aux opérations de sécurité.
+                    </p>
+                    <p class="tr-en">
+                       Through my studies at Cumberland College and a recent internship at GoSecure, I developed a solid foundation in cybersecurity, along with practical exposure to technical environments and security operations.
+                    </p>
+                    <p class="tr-fr" style="display:none;">
+                       
+                    </p>
+                </div>
+            </section>
+
+             
+
+            <!-- Footer (now uses same style as Articles) -->
+        <footer id="footer" class="wrapper style2 fade-up">
+            <div class="inner" style="display:flex; align-items:center; justify-content:space-between; padding-top:0.5em; padding-bottom:0.5em; gap:1em; flex-wrap:wrap;">
+                
+                <!-- Contact moved here -->
+                <div style="min-width:220px;">
+                    <h2 style="margin:0 0 0.4em 0;">
+                        <span class="tr-en">Contact</span>
+                        <span class="tr-fr" style="display:none;">Contact</span>
+                    </h2>
+                    <ul style="list-style:none; padding:0; font-size:1.05em; margin:0;">
+                        <li>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:robinboucher.tech@gmail.com" style="color: inherit; text-decoration: underline; margin-left:0.5em;">
+                                robinboucher.tech@gmail.com
+                            </a>
+                        </li>
+                        <li style="margin-top:0.6em;">
+                            <a href="https://github.com/RobinBoucherSec" target="_blank" style="margin-right:1.2em; color:inherit; text-decoration:none; font-size:1.05em;">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/robin-boucher-6a0327267/" target="_blank" style="color:inherit; text-decoration:none; font-size:1.05em;">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Copyright / small menu -->
+                <ul class="menu" style="margin: 0;">
+                    <li>&copy; Robin Boucher. All rights reserved.</li>
+                </ul>
+
+                <!-- QR code -->
+                <img 
+                    src="images\qrcode.png" 
+                    alt="QR code for robinboucher.tech" 
+                    style="margin-left: 0.5em; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); width: 160px; height: 160px;" 
+                />
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            // Language switcher
+            document.addEventListener('DOMContentLoaded', function() {
+                const langSelect = document.getElementById('language-select');
+                langSelect.addEventListener('change', function() {
+                    const lang = langSelect.value;
+                    document.querySelectorAll('.tr-en').forEach(el => el.style.display = (lang === 'en') ? '' : 'none');
+                    document.querySelectorAll('.tr-fr').forEach(el => el.style.display = (lang === 'fr') ? '' : 'none');
+                });
+            });
+
+            // Simple show/hide for CTF details
+            document.addEventListener('DOMContentLoaded', function() {
+                const ctfLinks = document.querySelectorAll('.ctf-link');
+                const ctfSections = [document.getElementById('ctf1'), document.getElementById('ctf2')];
+                ctfLinks.forEach((link, idx) => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Hide all CTF detail sections
+                        ctfSections.forEach(sec => { if(sec) sec.style.display = 'none'; });
+                        // Show the selected one
+                        const target = document.querySelector(link.getAttribute('href'));
+                        if(target) target.style.display = 'block';
+                        // Scroll to the section
+                        if(target) target.scrollIntoView({behavior: "smooth"});
+                    });
+                });
+                // Back buttons
+                document.querySelectorAll('.button.small').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        ctfSections.forEach(sec => { if(sec) sec.style.display = 'none'; });
+                        const labs = document.getElementById('labs-ctfs');
+                        if(labs) labs.scrollIntoView({behavior: "smooth"});
+                    });
+                });
+            });
+
+            // Language switcher text (clickable)
+            document.addEventListener('DOMContentLoaded', function() {
+                const btn = document.getElementById('lang-btn');
+                let lang = 'en';
+                btn.addEventListener('click', function() {
+                    lang = (lang === 'en') ? 'fr' : 'en';
+                    document.querySelectorAll('.tr-en').forEach(el => el.style.display = (lang === 'en') ? '' : 'none');
+                    document.querySelectorAll('.tr-fr').forEach(el => el.style.display = (lang === 'fr') ? '' : 'none');
+                });
+            });
+        </script>
+    </body>
+</html>
