@@ -116,6 +116,7 @@
             <div class="container">
                 <!-- Contact Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact</h2>
+                <p class="text-center mb-3 contact-email" style="font-size: 0.9rem;"><a href="mailto:info@robinboucher.tech">info@robinboucher.tech</a></p>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -132,29 +133,30 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form id="contactForm">
+                            <button class="btn btn-primary btn-xl d-block mx-auto mb-4 contact-submit-button" id="submitButton" type="submit">Envoyer le message</button>
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Entrez votre nom..." data-sb-validations="required" />
+                                <input class="form-control" id="name" name="name" type="text" placeholder="Entrez votre nom..." required />
                                 <label for="name">Nom complet</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">Votre nom est requis.</div>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="nom@exemple.com" data-sb-validations="required,email" />
+                                <input class="form-control" id="email" name="email" type="email" placeholder="nom@exemple.com" required />
                                 <label for="email">Adresse courriel</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">Votre adresse courriel est requise.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">L’adresse courriel n’est pas valide.</div>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" required />
                                 <label for="phone">Numéro de téléphone</label>
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">Votre numéro de téléphone est requis.</div>
                             </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Entrez votre message ici..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <textarea class="form-control" id="message" name="message" placeholder="Entrez votre message ici..." style="height: 10rem" required></textarea>
                                 <label for="message">Message</label>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">Un message est requis.</div>
                             </div>
@@ -165,9 +167,7 @@
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3">
                                     <div class="fw-bolder">Message envoyé avec succès !</div>
-                                    Pour activer ce formulaire, inscrivez-vous à
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    Votre message a été transmis.
                                 </div>
                             </div>
                             <!-- Submit error message-->
@@ -175,8 +175,6 @@
                             <!-- This is what your users will see when there is-->
                             <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l’envoi du message.</div></div>
-                            <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Envoyer</button>
                         </form>
                     </div>
                 </div>

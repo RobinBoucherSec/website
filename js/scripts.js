@@ -51,4 +51,50 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    const contactForm = document.querySelector('#contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async event => {
+            event.preventDefault();
+
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return;
+            }
+
+            const formData = new FormData(contactForm);
+            const submitButton = contactForm.querySelector('#submitButton');
+            const successMessage = contactForm.querySelector('#submitSuccessMessage');
+            const errorMessage = contactForm.querySelector('#submitErrorMessage');
+
+            formData.append('_subject', 'Message depuis le site web');
+            formData.append('_captcha', 'false');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+            successMessage.classList.add('d-none');
+            errorMessage.classList.add('d-none');
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/info@robinboucher.tech', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Échec de l’envoi');
+                }
+
+                contactForm.reset();
+                successMessage.classList.remove('d-none');
+            } catch (error) {
+                errorMessage.classList.remove('d-none');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Envoyer le message';
+            }
+        });
+    }
+
 });

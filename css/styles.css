@@ -11004,6 +11004,27 @@ html {
   object-fit: cover;
   border-radius: 50%;
 }
+
+.contact-email a {
+  color: #000;
+}
+
+.contact-submit-button {
+  position: relative;
+  z-index: 10;
+  color: #fff !important;
+  background-color: #741761 !important;
+  border-color: #741761 !important;
+  opacity: 1 !important;
+}
+
+.contact-submit-button:hover,
+.contact-submit-button:focus {
+  color: #fff !important;
+  background-color: #5d124e !important;
+  border-color: #5d124e !important;
+}
+
 #about {
   background-image: url("../picture.website/pic01.jpg");
   background-size: cover;
