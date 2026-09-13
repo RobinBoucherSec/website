@@ -139,9 +139,12 @@ body {
   font-size: 0.95rem;
 }
 
-.cookie-banner a,
-.privacy-link {
+.cookie-banner a {
   color: #bfdbfe;
+}
+
+.privacy-link {
+  color: #fff;
 }
 
 .cookie-banner-actions {
