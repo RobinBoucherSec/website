@@ -147,6 +147,19 @@ body {
   color: #fff;
 }
 
+.privacy-policy a[href^="mailto:"] {
+  color: #000;
+}
+
+.privacy-policy a[href^="mailto:"]:hover {
+  color: #000;
+}
+
+.privacy-policy .privacy-return-link,
+.privacy-policy .privacy-return-link:hover {
+  color: #000;
+}
+
 .cookie-banner-actions {
   display: flex;
   flex: 0 0 auto;
