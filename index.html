@@ -208,8 +208,26 @@
         </footer>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; Robin Boucher Consultation 2026</small></div>
+            <div class="container">
+                <small>Copyright &copy; Robin Boucher Consultation 2026</small>
+                <a class="privacy-link d-block mt-2" href="politique-confidentialite.html">Politique de confidentialité</a>
+                <button class="cookie-settings-link" id="cookieSettings" type="button">Gérer mes témoins</button>
+            </div>
         </div>
+        <!-- Consentement aux témoins -->
+        <section class="cookie-banner" id="cookieBanner" aria-labelledby="cookieBannerTitle" hidden>
+            <div class="cookie-banner-content">
+                <div>
+                    <h2 id="cookieBannerTitle">Votre vie privée compte</h2>
+                    <p>Ce site utilise des témoins nécessaires à son fonctionnement. Avec votre accord, nous pouvons aussi utiliser des témoins facultatifs pour améliorer votre expérience. Vous pouvez modifier votre choix en tout temps.</p>
+                    <a href="politique-confidentialite.html">En savoir plus sur les témoins et la confidentialité</a>
+                </div>
+                <div class="cookie-banner-actions">
+                    <button class="cookie-button cookie-button-secondary" id="cookieReject" type="button">Refuser les témoins facultatifs</button>
+                    <button class="cookie-button cookie-button-primary" id="cookieAccept" type="button">Accepter les témoins facultatifs</button>
+                </div>
+            </div>
+        </section>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">

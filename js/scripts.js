@@ -97,4 +97,32 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+    const cookieBanner = document.querySelector('#cookieBanner');
+    const cookieAccept = document.querySelector('#cookieAccept');
+    const cookieReject = document.querySelector('#cookieReject');
+    const cookieSettings = document.querySelector('#cookieSettings');
+    const cookieConsentKey = 'robinboucher-cookie-consent';
+
+    const hideCookieBanner = () => {
+        cookieBanner.hidden = true;
+    };
+
+    const saveCookieConsent = consent => {
+        localStorage.setItem(cookieConsentKey, consent);
+        hideCookieBanner();
+    };
+
+    if (cookieBanner && cookieAccept && cookieReject && cookieSettings) {
+        if (!localStorage.getItem(cookieConsentKey)) {
+            cookieBanner.hidden = false;
+        }
+
+        cookieAccept.addEventListener('click', () => saveCookieConsent('accepted'));
+        cookieReject.addEventListener('click', () => saveCookieConsent('rejected'));
+        cookieSettings.addEventListener('click', () => {
+            cookieBanner.hidden = false;
+            cookieAccept.focus();
+        });
+    }
+
 });
