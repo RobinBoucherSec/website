@@ -98,8 +98,7 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
     const cookieBanner = document.querySelector('#cookieBanner');
-    const cookieAccept = document.querySelector('#cookieAccept');
-    const cookieReject = document.querySelector('#cookieReject');
+    const cookieOk = document.querySelector('#cookieOk');
     const cookieSettings = document.querySelector('#cookieSettings');
     const cookieConsentKey = 'robinboucher-cookie-consent';
 
@@ -112,16 +111,15 @@ window.addEventListener('DOMContentLoaded', event => {
         hideCookieBanner();
     };
 
-    if (cookieBanner && cookieAccept && cookieReject && cookieSettings) {
+    if (cookieBanner && cookieOk && cookieSettings) {
         if (!localStorage.getItem(cookieConsentKey)) {
             cookieBanner.hidden = false;
         }
 
-        cookieAccept.addEventListener('click', () => saveCookieConsent('accepted'));
-        cookieReject.addEventListener('click', () => saveCookieConsent('rejected'));
+        cookieOk.addEventListener('click', () => saveCookieConsent('acknowledged'));
         cookieSettings.addEventListener('click', () => {
             cookieBanner.hidden = false;
-            cookieAccept.focus();
+            cookieOk.focus();
         });
     }
 
