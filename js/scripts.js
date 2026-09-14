@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', event => {
     const cookieBanner = document.querySelector('#cookieBanner');
     const cookieOk = document.querySelector('#cookieOk');
     const cookieSettings = document.querySelector('#cookieSettings');
-    const cookieConsentKey = 'robinboucher-cookie-consent';
+    const cookieConsentKey = 'robinboucher-cookie-notice-v2';
 
     const hideCookieBanner = () => {
         cookieBanner.hidden = true;
