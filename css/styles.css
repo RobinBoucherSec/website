@@ -11121,6 +11121,14 @@ html {
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
+.masthead-heading-governance {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 67.2%;
+}
+.masthead-heading-law {
+  font-size: 90%;
+}
 .masthead .masthead-subheading {
   font-size: 1.25rem;
 }
